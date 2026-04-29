@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2 Worksheet — Designing Your AI Operating System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root{--bg:#faf8f4;--bg-card:#fff;--gold:#8b6914;--gold-light:#c9a84c;--gold-bg:rgba(139,105,20,.06);--text-primary:#1a1612;--text-secondary:#504840;--text-muted:#8a8078;--border:rgba(139,105,20,.2);--green:#3d6b3d;--blue:#3d5b8f;--green-bg:rgba(61,107,61,.06);--blue-bg:rgba(61,91,143,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.7}
+        @media print{body{background:#fff}.no-print{display:none}.page-break{page-break-before:always}.write-area{min-height:120px}}
+        .page{max-width:800px;margin:0 auto;padding:60px 40px}
+        .header{border-bottom:3px solid var(--gold);padding-bottom:24px;margin-bottom:40px}.header-label{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.header h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;margin-bottom:4px}.header .subtitle{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);font-style:italic}.header-meta{display:flex;gap:30px;margin-top:16px;font-size:.8rem;color:var(--text-muted)}.header-meta span{color:var(--gold);font-weight:600}
+        .section{margin-bottom:40px}.section-number{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px}.section h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:12px}.section p{color:var(--text-secondary);margin-bottom:12px}
+        .write-area{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;min-height:100px;margin:12px 0}.write-area .prompt{font-size:.8rem;color:var(--text-muted);font-style:italic;margin-bottom:8px}.write-area .lines{background-image:repeating-linear-gradient(transparent,transparent 28px,rgba(139,105,20,.1) 28px,rgba(139,105,20,.1) 29px);min-height:80px}
+        .quote-box{border-left:4px solid var(--gold);padding:16px 20px;margin:16px 0;background:var(--gold-bg);border-radius:0 8px 8px 0}.quote-box p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--text-primary);margin-bottom:4px}.quote-box .attr{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--gold);font-style:normal}
+        .exercise-box{background:var(--green-bg);border:2px solid var(--green);border-radius:12px;padding:28px;margin:20px 0}.exercise-box h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green);margin-bottom:4px}.exercise-box .timer{display:inline-block;background:rgba(61,107,61,.15);color:var(--green);padding:2px 12px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:12px}
+        .checklist{list-style:none;margin:12px 0}.checklist li{padding:8px 0 8px 32px;position:relative;color:var(--text-secondary)}.checklist li::before{content:'☐';position:absolute;left:0;font-size:1.2rem;color:var(--gold)}
+        .compare-table{width:100%;border-collapse:collapse;margin:16px 0}.compare-table th{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border)}.compare-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06);font-size:.88rem;color:var(--text-secondary)}
+        .footer{border-top:1px solid var(--border);padding-top:20px;margin-top:40px;text-align:center;font-size:.75rem;color:var(--text-muted)}
+        .pipeline-draw{display:flex;align-items:center;gap:4px;margin:16px 0;flex-wrap:wrap}.pipe-box{flex:1;min-width:100px;padding:16px 8px;border:2px dashed var(--border);border-radius:8px;text-align:center;min-height:80px}.pipe-box .label-small{font-size:.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px}.pipe-arrow-sm{color:var(--gold);font-size:1.2rem}
+    </style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <div class="header-label">Module 02 · Worksheet</div>
+        <h1>Designing Your AI Operating System</h1>
+        <div class="subtitle">Architecture Before Automation</div>
+        <div class="header-meta"><div><span>Course:</span> The AI Workflow Curriculum</div><div><span>Time:</span> 60 minutes</div><div><span>Format:</span> Individual + Group</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part A</div>
+        <h2>Audit: Where Is Your Work Right Now?</h2>
+        <p>Before designing a system, map where your AI output currently lives. Check all that apply:</p>
+        <ul class="checklist">
+            <li>Chat histories (ChatGPT, Claude, Gemini conversations)</li>
+            <li>Downloads folder (PDFs, docs, images generated by AI)</li>
+            <li>Email (responses, drafts, generated content)</li>
+            <li>Scattered notes apps (Apple Notes, Notion, Google Docs)</li>
+            <li>Nowhere — I use the output immediately and don't save it</li>
+            <li>A structured system (describe below)</li>
+        </ul>
+        <div class="write-area">
+            <div class="prompt">If you have a system, describe it. If you don't, describe what happens when you try to find something you generated with AI three weeks ago.</div>
+            <div class="lines"></div>
+        </div>
+    </div>
+
+    <div class="section page-break">
+        <div class="section-number">Part B</div>
+        <h2>Design Your Pipeline</h2>
+        <p>Every workflow has stages. Design yours. You can have 3–5 stages. Name each stage, define what enters it, what exits it, and who decides when something moves forward.</p>
+
+        <div class="pipeline-draw">
+            <div class="pipe-box"><div class="label-small">Stage 1</div></div>
+            <div class="pipe-arrow-sm">→</div>
+            <div class="pipe-box"><div class="label-small">Stage 2</div></div>
+            <div class="pipe-arrow-sm">→</div>
+            <div class="pipe-box"><div class="label-small">Stage 3</div></div>
+            <div class="pipe-arrow-sm">→</div>
+            <div class="pipe-box"><div class="label-small">Stage 4</div></div>
+            <div class="pipe-arrow-sm">→</div>
+            <div class="pipe-box"><div class="label-small">Stage 5</div></div>
+        </div>
+
+        <table class="compare-table">
+            <thead><tr><th>Stage</th><th>What enters</th><th>What exits</th><th>Who decides</th></tr></thead>
+            <tbody>
+                <tr><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part C</div>
+        <h2>Define Your Permission Model</h2>
+        <p>Who does what in your operation? Fill in permissions for each role (or add your own roles).</p>
+
+        <table class="compare-table">
+            <thead><tr><th>Action</th><th>Human</th><th>AI / Agent</th><th>System (automated)</th></tr></thead>
+            <tbody>
+                <tr><td>Create new projects</td><td></td><td></td><td></td></tr>
+                <tr><td>Write content / drafts</td><td></td><td></td><td></td></tr>
+                <tr><td>Edit / refine work</td><td></td><td></td><td></td></tr>
+                <tr><td>Move work to next stage</td><td></td><td></td><td></td></tr>
+                <tr><td>Approve for publishing</td><td></td><td></td><td></td></tr>
+                <tr><td>Publish / deploy</td><td></td><td></td><td></td></tr>
+                <tr><td>Delete / archive</td><td></td><td></td><td></td></tr>
+            </tbody>
+        </table>
+
+        <div class="quote-box">
+            <p>"The permission model is the immune system. Without it, agents create chaos and the human spends all their time cleaning up."</p>
+            <div class="attr">— Principle from CONDUCTOR.md</div>
+        </div>
+    </div>
+
+    <div class="section page-break">
+        <div class="section-number">Part D</div>
+        <h2>Write Your Boot Sequence</h2>
+        <p>Design the 3–6 step checklist that every AI session should start with. What does the AI need to read or check before doing any work?</p>
+
+        <div class="exercise-box">
+            <h3>🔄 Boot Sequence Design</h3>
+            <span class="timer">⏱ 10 min</span>
+            <div class="write-area" style="background:transparent;border-color:var(--green)">
+                <div class="prompt">Step 1: What does the AI read first? (Your system doc, project brief, etc.)</div>
+                <div class="lines" style="min-height:40px"></div>
+            </div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)">
+                <div class="prompt">Step 2: What does it check? (Inbox, email, calendar, etc.)</div>
+                <div class="lines" style="min-height:40px"></div>
+            </div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)">
+                <div class="prompt">Step 3: What does it scan? (Project status, pending work, etc.)</div>
+                <div class="lines" style="min-height:40px"></div>
+            </div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)">
+                <div class="prompt">Steps 4–6: (if needed)</div>
+                <div class="lines" style="min-height:60px"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part E</div>
+        <h2>Where Does Your System Leak?</h2>
+        <p>Look at your pipeline design from Part B. Answer honestly:</p>
+
+        <div class="write-area">
+            <div class="prompt">1. Where does work enter your system that ISN'T captured by Stage 1? (e.g., Slack messages, voice notes, sticky notes, "I'll remember this")</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">2. Where does work get stuck? Which stage is the bottleneck?</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">3. Where does work leak OUT of the system? (Work that gets done but never makes it to the final stage — it just sits somewhere half-finished)</div>
+            <div class="lines"></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part F</div>
+        <h2>Key Concepts Reference</h2>
+        <table class="compare-table">
+            <thead><tr><th>Concept</th><th>Definition</th></tr></thead>
+            <tbody>
+                <tr><td style="font-weight:600">Five-Stage Pipeline</td><td>Triage → Assigned → In Progress → Approval → Completed. Every piece of work, no exceptions.</td></tr>
+                <tr><td style="font-weight:600">Permission Model</td><td>Three roles (Human, Orchestrator, Agents) with non-overlapping permissions. Prevents chaos.</td></tr>
+                <tr><td style="font-weight:600">Boot Sequence</td><td>The 6-step startup that loads memory into a zero-memory system. Run it every session.</td></tr>
+                <tr><td style="font-weight:600">Close-Down Procedure</td><td>Update sync state, update system doc, verify file system. Memory storage before session ends.</td></tr>
+                <tr><td style="font-weight:600">Folder Structure Is Law</td><td>Only the 5-stage pipeline folders. No rogue folders. Lesson #18.</td></tr>
+                <tr><td style="font-weight:600">Dashboard ≠ Human Dashboard</td><td>The task tracker is a sub-view. The human dashboard shows what the HUMAN needs. Lesson #21.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">The AI Workflow Curriculum · Module 02 · The Labora Collective<br>© 2026 Dr. Yamicia Connor. All rights reserved.</div>
+</div>
+</body></html>

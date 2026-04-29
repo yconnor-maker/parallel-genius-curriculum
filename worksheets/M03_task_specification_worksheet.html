@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 3 Worksheet — Writing for Machines</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>:root{--bg:#faf8f4;--bg-card:#fff;--gold:#8b6914;--gold-light:#c9a84c;--gold-bg:rgba(139,105,20,.06);--text-primary:#1a1612;--text-secondary:#504840;--text-muted:#8a8078;--border:rgba(139,105,20,.2);--green:#3d6b3d;--blue:#3d5b8f;--green-bg:rgba(61,107,61,.06);--blue-bg:rgba(61,91,143,.06)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);line-height:1.7}@media print{body{background:#fff}.no-print{display:none}.page-break{page-break-before:always}.write-area{min-height:120px}}.page{max-width:800px;margin:0 auto;padding:60px 40px}.header{border-bottom:3px solid var(--gold);padding-bottom:24px;margin-bottom:40px}.header-label{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.header h1{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:600;margin-bottom:4px}.header .subtitle{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--gold-light);font-style:italic}.header-meta{display:flex;gap:30px;margin-top:16px;font-size:.8rem;color:var(--text-muted)}.header-meta span{color:var(--gold);font-weight:600}.section{margin-bottom:40px}.section-number{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-bottom:8px}.section h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:12px}.section p{color:var(--text-secondary);margin-bottom:12px}.write-area{background:var(--bg-card);border:1px solid var(--border);border-radius:8px;padding:20px;min-height:100px;margin:12px 0}.write-area .prompt{font-size:.8rem;color:var(--text-muted);font-style:italic;margin-bottom:8px}.write-area .lines{background-image:repeating-linear-gradient(transparent,transparent 28px,rgba(139,105,20,.1) 28px,rgba(139,105,20,.1) 29px);min-height:80px}.quote-box{border-left:4px solid var(--gold);padding:16px 20px;margin:16px 0;background:var(--gold-bg);border-radius:0 8px 8px 0}.quote-box p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-style:italic;color:var(--text-primary);margin-bottom:4px}.quote-box .attr{font-family:'DM Sans',sans-serif;font-size:.75rem;color:var(--gold);font-style:normal}.exercise-box{background:var(--green-bg);border:2px solid var(--green);border-radius:12px;padding:28px;margin:20px 0}.exercise-box h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--green);margin-bottom:4px}.exercise-box .timer{display:inline-block;background:rgba(61,107,61,.15);color:var(--green);padding:2px 12px;border-radius:20px;font-size:.75rem;font-weight:600;margin-bottom:12px}.compare-table{width:100%;border-collapse:collapse;margin:16px 0}.compare-table th{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border)}.compare-table td{padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.06);font-size:.88rem;color:var(--text-secondary)}.code-block{background:#f5f3ee;border:1px solid var(--border);border-radius:8px;padding:16px;font-family:'Courier New',monospace;font-size:.82rem;color:#3d3d3d;line-height:1.8;margin:16px 0}.footer{border-top:1px solid var(--border);padding-top:20px;margin-top:40px;text-align:center;font-size:.75rem;color:var(--text-muted)}</style>
+</head>
+<body>
+<div class="page">
+    <div class="header">
+        <div class="header-label">Module 03 · Worksheet</div>
+        <h1>Writing for Machines</h1>
+        <div class="subtitle">Task Specification</div>
+        <div class="header-meta"><div><span>Course:</span> The AI Workflow Curriculum</div><div><span>Time:</span> 45 minutes</div><div><span>Format:</span> Individual + Partner</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part A</div>
+        <h2>Diagnose a Bad Task</h2>
+        <p>Read this AI request. Identify everything wrong with it.</p>
+        <div class="code-block">"Write me a blog post about our new product. Make it engaging and SEO-friendly. Around 1500 words. Include a call to action."</div>
+        <div class="write-area"><div class="prompt">List every missing element that would prevent an agent from producing exactly what you want:</div><div class="lines"></div></div>
+        <div class="write-area"><div class="prompt">What assumptions is this request making that the AI can't verify?</div><div class="lines" style="min-height:60px"></div></div>
+    </div>
+
+    <div class="section page-break">
+        <div class="section-number">Part B</div>
+        <h2>Write a Self-Contained Task Spec</h2>
+        <p>Take a real request from your work and transform it into a proper task specification.</p>
+        <div class="exercise-box">
+            <h3>📋 Task Spec Builder</h3>
+            <span class="timer">⏱ 15 min</span>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">TASK NAME:</div><div class="lines" style="min-height:30px"></div></div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">INSTRUCTIONS (what to do — be specific, no ambiguity):</div><div class="lines"></div></div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">SPECIFIED OUTPUTS (exact file names and formats):</div><div class="lines" style="min-height:60px"></div></div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">OPERATING RULES (constraints the agent must follow):</div><div class="lines" style="min-height:60px"></div></div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">COMPLETION GATE (three things that must be true):</div><div class="lines" style="min-height:60px"></div></div>
+            <div class="write-area" style="background:transparent;border-color:var(--green)"><div class="prompt">SOURCE DOCUMENTS (list every file, table, or resource the agent needs):</div><div class="lines" style="min-height:60px"></div></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part C</div>
+        <h2>Precision Framing Practice</h2>
+        <p>For each of these questions, apply the three-step precision framing method.</p>
+
+        <div class="write-area"><div class="prompt">QUESTION: "Why aren't our customers renewing?"<br><br>Step 1 — What do I already know (not just what I can measure)?</div><div class="lines" style="min-height:60px"></div></div>
+        <div class="write-area"><div class="prompt">Step 2 — What's the mechanism, not just the correlation?</div><div class="lines" style="min-height:60px"></div></div>
+        <div class="write-area"><div class="prompt">Step 3 — What does this question assume?</div><div class="lines" style="min-height:60px"></div></div>
+        <div class="write-area"><div class="prompt">REFRAMED QUESTION (after applying all three steps):</div><div class="lines" style="min-height:60px"></div></div>
+    </div>
+
+    <div class="section page-break">
+        <div class="section-number">Part D</div>
+        <h2>Partner Review: The Executability Test</h2>
+        <div class="exercise-box">
+            <h3>👥 Swap your task spec with a partner</h3>
+            <span class="timer">⏱ 10 min</span>
+            <p style="color:var(--text-secondary)">Read your partner's task spec. Try to execute it EXACTLY as written. Track every question you have — every place where you'd need to ask the author what they meant.</p>
+        </div>
+        <div class="write-area"><div class="prompt">Questions I had while trying to execute my partner's task spec:</div><div class="lines"></div></div>
+        <div class="write-area"><div class="prompt">Questions my partner had about MY task spec:</div><div class="lines"></div></div>
+        <div class="write-area"><div class="prompt">What I'll fix in my spec based on this feedback:</div><div class="lines"></div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Part E</div>
+        <h2>Results Log Practice</h2>
+        <p>Write a Results Log entry for something you did today — as if you had to brief someone who wasn't there.</p>
+        <div class="write-area" style="min-height:140px"><div class="prompt">RESULTS LOG — [Today's Date]<br>What was done:<br>What was decided:<br>What's still open:<br>What the next person needs to know:</div><div class="lines" style="min-height:120px"></div></div>
+        <div class="quote-box"><p>"Write it like you're briefing someone who wasn't in the room."</p><div class="attr">— Conductor Lesson #6</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-number">Reference</div>
+        <h2>Key Concepts</h2>
+        <table class="compare-table">
+            <thead><tr><th>Concept</th><th>Definition</th></tr></thead>
+            <tbody>
+                <tr><td style="font-weight:600">Self-Contained Task</td><td>Agent never needs to find other docs. Instructions, rules, outputs, and context all baked in.</td></tr>
+                <tr><td style="font-weight:600">Results Log</td><td>Permanent record that survives after chat deletion. What was done, decided, and left open.</td></tr>
+                <tr><td style="font-weight:600">Precision Framing</td><td>Start from what you know → name the mechanism → ask what the question assumes.</td></tr>
+                <tr><td style="font-weight:600">Completion Gate</td><td>Three tests: outputs exist + log complete + no self-reported gaps.</td></tr>
+                <tr><td style="font-weight:600">Source References</td><td>Every file, table, or resource the agent needs must be listed in the spec. Lesson #34.</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">The AI Workflow Curriculum · Module 03 · The Labora Collective<br>© 2026 Dr. Yamicia Connor. All rights reserved.</div>
+</div>
+</body></html>

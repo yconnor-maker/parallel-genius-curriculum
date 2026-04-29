@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflow Curriculum — Course Syllabus | The Labora Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0d0d0d;
+            --bg-card: #1a1a1a;
+            --bg-hover: #242424;
+            --gold: #c9a84c;
+            --gold-light: #e8d48b;
+            --gold-dim: rgba(201, 168, 76, 0.15);
+            --text-primary: #f0ece2;
+            --text-secondary: #a8a29e;
+            --text-muted: #6b6560;
+            --border: rgba(201, 168, 76, 0.2);
+            --accent-blue: #5b8fb9;
+            --accent-green: #6b9e6b;
+            --accent-coral: #c97b63;
+            --accent-purple: #8b7bb5;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 40px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(201,168,76,0.08) 0%, transparent 100%);
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+        .hero .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .hero .author {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 500;
+        }
+
+        /* Stats strip */
+        .stats-strip {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            padding: 30px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .stat { text-align: center; }
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Content */
+        .content { max-width: 1000px; margin: 0 auto; padding: 60px 40px; }
+
+        .section-header {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        .section-desc {
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* Module grid */
+        .module-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
+
+        .module-card {
+            display: grid;
+            grid-template-columns: 60px 1fr auto;
+            align-items: start;
+            gap: 24px;
+            padding: 28px 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .module-card:hover {
+            background: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.1);
+        }
+
+        .module-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .module-info { }
+        .module-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: var(--text-primary);
+        }
+        .module-thesis {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        .module-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag {
+            font-size: 0.7rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            background: var(--gold-dim);
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        .tag.blue { background: rgba(91,143,185,0.15); color: var(--accent-blue); }
+        .tag.green { background: rgba(107,158,107,0.15); color: var(--accent-green); }
+        .tag.coral { background: rgba(201,123,99,0.15); color: var(--accent-coral); }
+        .tag.purple { background: rgba(139,123,181,0.15); color: var(--accent-purple); }
+
+        .module-materials {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 120px;
+            text-align: right;
+        }
+        .material-badge {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+        .material-badge .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+        .material-badge .dot.blue { background: var(--accent-blue); }
+        .material-badge .dot.green { background: var(--accent-green); }
+        .material-badge .dot.coral { background: var(--accent-coral); }
+
+        /* Deliverables */
+        .deliverables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 60px;
+        }
+        .deliverable-card {
+            padding: 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+        }
+        .deliverable-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .deliverable-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .deliverable-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Journey visual */
+        .journey {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            margin: 40px 0 60px;
+            flex-wrap: wrap;
+        }
+        .journey-step {
+            text-align: center;
+            padding: 16px 20px;
+            position: relative;
+        }
+        .journey-step .step-num {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--gold-dim);
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 0 auto 8px;
+        }
+        .journey-step .step-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 80px;
+            margin: 0 auto;
+        }
+        .journey-arrow {
+            color: var(--gold);
+            font-size: 1.2rem;
+            opacity: 0.4;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+        }
+        th {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-align: left;
+            padding: 12px 16px;
+            border-bottom: 2px solid var(--border);
+        }
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+        tr:hover td { color: var(--text-primary); background: rgba(201,168,76,0.03); }
+
+        /* Quote */
+        blockquote {
+            border-left: 3px solid var(--gold);
+            padding: 20px 24px;
+            margin: 30px 0;
+            background: var(--gold-dim);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .stats-strip { gap: 30px; flex-wrap: wrap; }
+            .module-card { grid-template-columns: 1fr; gap: 12px; }
+            .module-materials { text-align: left; flex-direction: row; flex-wrap: wrap; }
+            .material-badge { justify-content: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-label">The Labora Collective</div>
+    <h1>The AI Workflow Curriculum</h1>
+    <p class="subtitle">How a physician-engineer built a production-grade AI operating system — and what it reveals about how knowledge work actually functions in the AI era.</p>
+    <p class="author">Dr. Yamicia Connor, MD, PhD, MPH</p>
+</div>
+
+<div class="stats-strip">
+    <div class="stat">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Modules</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Slide Decks</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">10</div>
+        <div class="stat-label">Worksheets</div>
+    </div>
+    <div class="stat">
+        <div class="stat-number">34</div>
+        <div class="stat-label">Lessons Learned</div>
+    </div>
+</div>
+
+<div class="content">
+
+    <!-- Course Overview -->
+    <div class="section-header">Course Overview</div>
+    <div class="section-title">Not a Course About Prompting</div>
+    <p class="section-desc">This curriculum teaches the real skills behind effective AI use — skills that were learned in operating rooms, not tech blogs. Every concept comes from actual production systems, real operational failures, and over a year of daily intensive AI use.</p>
+
+    <blockquote>"I don't use prompts. I talk to the AI the way I talk to a colleague. I explain what I'm trying to do. I think out loud. I contradict myself. I explore tangents. I come back to the main thread."</blockquote>
+
+    <!-- Learning Journey -->
+    <div class="section-header" style="margin-top: 50px;">Learning Journey</div>
+    <div class="section-title">Five Phases of Mastery</div>
+
+    <div class="journey">
+        <div class="journey-step">
+            <div class="step-num">1</div>
+            <div class="step-label">Foundation</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step">
+            <div class="step-num">2</div>
+            <div class="step-label">Architecture</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step">
+            <div class="step-num">3</div>
+            <div class="step-label">Orchestration</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step">
+            <div class="step-num">4</div>
+            <div class="step-label">Production</div>
+        </div>
+        <div class="journey-arrow">→</div>
+        <div class="journey-step">
+            <div class="step-num">5</div>
+            <div class="step-label">Mastery</div>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Phase</th>
+                <th>Modules</th>
+                <th>Focus</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: var(--gold); font-weight: 600;">Foundation</td>
+                <td>M1 – M2</td>
+                <td>How to talk to AI + How to build your system</td>
+                <td>Week 1–2</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-blue); font-weight: 600;">Architecture</td>
+                <td>M3 – M4</td>
+                <td>Writing tasks that work + Multi-agent systems</td>
+                <td>Week 3–4</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-green); font-weight: 600;">Orchestration</td>
+                <td>M5 – M6</td>
+                <td>Visual communication + Knowledge persistence</td>
+                <td>Week 5–6</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-coral); font-weight: 600;">Production</td>
+                <td>M7 – M8</td>
+                <td>Idea-to-deliverable pipeline + AI Brain</td>
+                <td>Week 7–8</td>
+            </tr>
+            <tr>
+                <td style="color: var(--accent-purple); font-weight: 600;">Mastery</td>
+                <td>M9 – M10</td>
+                <td>Cognitive load + Skills that survive every tool change</td>
+                <td>Week 9–10</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Module Cards -->
+    <div class="section-header">Modules</div>
+    <div class="section-title">The Ten Skills</div>
+
+    <div class="module-grid">
+
+        <div class="module-card">
+            <div class="module-number">01</div>
+            <div class="module-info">
+                <div class="module-title">The Dictation Method — Thinking Out Loud</div>
+                <div class="module-thesis">The most important AI skill isn't writing prompts. It's the ability to think out loud into a machine and have your thinking reflected back in structured form.</div>
+                <div class="module-tags">
+                    <span class="tag">Foundation</span>
+                    <span class="tag blue">Keynote Essay</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Handout</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">02</div>
+            <div class="module-info">
+                <div class="module-title">Designing Your AI Operating System</div>
+                <div class="module-thesis">AI tools without architecture produce chaos. The difference between "using AI" and running an AI-powered operation is the existence of a persistent system design.</div>
+                <div class="module-tags">
+                    <span class="tag">Foundation</span>
+                    <span class="tag green">System Design</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot coral"></span> Diagram</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">03</div>
+            <div class="module-info">
+                <div class="module-title">Writing for Machines — Task Specification</div>
+                <div class="module-thesis">The quality of AI output is entirely determined by the quality of the task specification. This is a teachable skill that most people skip.</div>
+                <div class="module-tags">
+                    <span class="tag blue">Architecture</span>
+                    <span class="tag coral">Template Included</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Task Template</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">04</div>
+            <div class="module-info">
+                <div class="module-title">Multi-Agent Orchestration</div>
+                <div class="module-thesis">A system of agents working in parallel is transformational — but only with an orchestration layer that prevents them from stepping on each other. Featuring "The Consumption Test" for agent effectiveness.</div>
+                <div class="module-tags">
+                    <span class="tag blue">Architecture</span>
+                    <span class="tag purple">Advanced</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot coral"></span> Diagram</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">05</div>
+            <div class="module-info">
+                <div class="module-title">Visual-First Communication</div>
+                <div class="module-thesis">Reading is slow. Default to visual formats. If someone can't absorb your output mid-workday, the output failed — not the person.</div>
+                <div class="module-tags">
+                    <span class="tag green">Orchestration</span>
+                    <span class="tag coral">Format Guide</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Format Hierarchy</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">06</div>
+            <div class="module-info">
+                <div class="module-title">The Knowledge Extraction Problem</div>
+                <div class="module-thesis">AI has zero persistent memory. If you don't extract knowledge before the session ends, it's gone forever.</div>
+                <div class="module-tags">
+                    <span class="tag green">Orchestration</span>
+                    <span class="tag">Critical Concept</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Extraction Checklist</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">07</div>
+            <div class="module-info">
+                <div class="module-title">The Production Loop — Idea to Deliverable</div>
+                <div class="module-thesis">AI generates thinking. Humans do the making. The making hasn't gotten faster. Features the "Clinical Work as IP" Dictation-to-Product Pipeline case study.</div>
+                <div class="module-tags">
+                    <span class="tag coral">Production</span>
+                    <span class="tag">Case Study</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot coral"></span> Loop Diagram</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">08</div>
+            <div class="module-info">
+                <div class="module-title">Building Your AI Brain</div>
+                <div class="module-thesis">Your AI is only as good as the knowledge system it can access. A persistent knowledge layer turns temporary sessions into durable institutional memory.</div>
+                <div class="module-tags">
+                    <span class="tag coral">Production</span>
+                    <span class="tag purple">Build Exercise</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot coral"></span> Architecture Map</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">09</div>
+            <div class="module-info">
+                <div class="module-title">The Human-AI Workflow — Protecting the Human</div>
+                <div class="module-thesis">AI doesn't reduce work. It intensifies it. Features the "$31,700 Billing Backlog" case study on how infrastructure outpaces human execution.</div>
+                <div class="module-tags">
+                    <span class="tag purple">Mastery</span>
+                    <span class="tag">Research-Backed</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Self-Assessment</div>
+            </div>
+        </div>
+
+        <div class="module-card">
+            <div class="module-number">10</div>
+            <div class="module-info">
+                <div class="module-title">Durable Skills vs. Workarounds</div>
+                <div class="module-thesis">Most "AI skills" are workarounds that will be obsolete in six months. The durable skills are the same ones that made people effective before AI.</div>
+                <div class="module-tags">
+                    <span class="tag purple">Mastery</span>
+                    <span class="tag">Capstone</span>
+                </div>
+            </div>
+            <div class="module-materials">
+                <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+                <div class="material-badge"><span class="dot blue"></span> Worksheet</div>
+                <div class="material-badge"><span class="dot green"></span> Skills Audit</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Capstone -->
+    <div class="module-card" style="border-color: var(--gold); box-shadow: 0 4px 20px rgba(201, 168, 76, 0.05); margin-bottom: 60px;">
+        <div class="module-number"><span style="font-size: 1.2rem; display:block; margin-top:6px; line-height: 1.1;">CAP<br>STONE</span></div>
+        <div class="module-info">
+            <div class="module-title">Masterclass: The Content Moat</div>
+            <div class="module-thesis">AI capabilities are easily replicated. Proprietary clinical experience is not. How to translate direct bedside practice into unique, compounding intellectual property.</div>
+            <div class="module-tags">
+                <span class="tag" style="background: var(--gold); color: var(--bg-deep);">Founders/Clinicians</span>
+                <span class="tag blue">Case Study</span>
+            </div>
+        </div>
+        <div class="module-materials">
+            <div class="material-badge"><span class="dot"></span> Slide Deck</div>
+            <div class="material-badge"><span class="dot blue"></span> Architecture Map</div>
+            <div class="material-badge"><span class="dot coral"></span> Roma Case Study</div>
+        </div>
+    </div>
+
+    <!-- Per-Module Deliverables -->
+    <div class="section-header">Course Materials</div>
+    <div class="section-title">What Each Module Includes</div>
+
+    <div class="deliverables-grid">
+        <div class="deliverable-card">
+            <div class="deliverable-icon">🎤</div>
+            <div class="deliverable-name">Lecture Deck</div>
+            <div class="deliverable-desc">15–25 slides with speaker notes, quotes from YC's articles, and diagrams</div>
+        </div>
+        <div class="deliverable-card">
+            <div class="deliverable-icon">📝</div>
+            <div class="deliverable-name">Worksheet</div>
+            <div class="deliverable-desc">Hands-on exercises, reflection questions, and application templates</div>
+        </div>
+        <div class="deliverable-card">
+            <div class="deliverable-icon">📊</div>
+            <div class="deliverable-name">Infographic / Diagram</div>
+            <div class="deliverable-desc">Visual summary of the module's key concept — print-ready</div>
+        </div>
+        <div class="deliverable-card">
+            <div class="deliverable-icon">📖</div>
+            <div class="deliverable-name">Source Reading</div>
+            <div class="deliverable-desc">Full-text articles and essays by YC as assigned reading</div>
+        </div>
+        <div class="deliverable-card">
+            <div class="deliverable-icon">🎧</div>
+            <div class="deliverable-name">Audio Version</div>
+            <div class="deliverable-desc">ElevenLabs voice-clone audio for review on the go</div>
+        </div>
+    </div>
+
+    <!-- Source Material -->
+    <div class="section-header">Source Material</div>
+    <div class="section-title">Written from Practice, Not Theory</div>
+    <p class="section-desc" style="margin-bottom: 30px;">Every module draws from real, published source material — articles, system documentation, operational transcripts, and a year of lessons learned in production.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Modules</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="color: var(--text-primary);">I Don't Use Prompts: What a Surgeon Taught Me About Talking to AI</td>
+                <td>Published Essay</td>
+                <td>M1, M3, M7, M9</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">How to Ask the Right Question</td>
+                <td>Published Essay</td>
+                <td>M1, M3, M9</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">The Pool</td>
+                <td>Published Essay</td>
+                <td>M10</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">CONDUCTOR.md (34 Lessons Learned)</td>
+                <td>System Doc</td>
+                <td>All Modules</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">YC / AI Sync — Zoom Transcript</td>
+                <td>Live Session</td>
+                <td>M2, M3, M7, M8</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">YC Dictation Archive (60+ files)</td>
+                <td>Raw Dictation</td>
+                <td>M1, M6</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">YC AI Series (7 articles)</td>
+                <td>Article Series</td>
+                <td>M1, M3, M7, M9, M10</td>
+            </tr>
+            <tr>
+                <td style="color: var(--text-primary);">Teacher Persona Agent Extracts (April 2026)</td>
+                <td>Live Operation Logs</td>
+                <td>M4, M7, M9, Capstone</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="footer">
+    The AI Workflow Curriculum · The Labora Collective · Dr. Yamicia Connor, MD, PhD, MPH<br>
+    <span style="color: var(--gold);">Version 2.1 — April 2026 (Teacher Extract Update)</span>
+</div>
+
+</body>
+</html>

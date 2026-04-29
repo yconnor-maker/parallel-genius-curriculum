@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Workflow Curriculum — Key Diagrams & Infographics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #0d0d0d;
+            --bg-card: #1a1a1a;
+            --gold: #c9a84c;
+            --gold-dim: rgba(201,168,76,0.12);
+            --text-primary: #f0ece2;
+            --text-secondary: #a8a29e;
+            --text-muted: #6b6560;
+            --border: rgba(201,168,76,0.2);
+            --green: #6b9e6b;
+            --blue: #5b8fb9;
+            --coral: #c97b63;
+            --purple: #8b7bb5;
+            --red: #c96363;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 60px 40px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-header .label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .page-header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        .diagrams { max-width: 1000px; margin: 0 auto; padding: 40px; }
+
+        /* Diagram section */
+        .diagram-section {
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(201,168,76,0.1);
+        }
+        .diagram-section:last-child { border-bottom: none; }
+        .diagram-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .diagram-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .diagram-desc {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            max-width: 700px;
+            font-size: 0.95rem;
+        }
+
+        /* ==============================
+           DIAGRAM 1: Five-Stage Pipeline
+           ============================== */
+        .pipeline-diagram {
+            display: flex;
+            align-items: stretch;
+            gap: 4px;
+            margin: 30px 0;
+        }
+        .pipeline-stage {
+            flex: 1;
+            padding: 24px 16px;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+        .pipeline-stage:hover { transform: translateY(-4px); }
+        .pipeline-stage.s1 { background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.3); }
+        .pipeline-stage.s2 { background: rgba(91,143,185,0.08); border: 1px solid rgba(91,143,185,0.3); }
+        .pipeline-stage.s3 { background: rgba(107,158,107,0.08); border: 1px solid rgba(107,158,107,0.3); }
+        .pipeline-stage.s4 { background: rgba(201,123,99,0.08); border: 1px solid rgba(201,123,99,0.3); }
+        .pipeline-stage.s5 { background: rgba(139,123,181,0.08); border: 1px solid rgba(139,123,181,0.3); }
+        .pipeline-stage .stage-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        .pipeline-stage.s1 .stage-num { color: var(--gold); }
+        .pipeline-stage.s2 .stage-num { color: var(--blue); }
+        .pipeline-stage.s3 .stage-num { color: var(--green); }
+        .pipeline-stage.s4 .stage-num { color: var(--coral); }
+        .pipeline-stage.s5 .stage-num { color: var(--purple); }
+        .pipeline-stage .stage-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 8px 0 4px;
+        }
+        .pipeline-stage .stage-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .pipeline-stage .stage-who {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        .pipeline-arrow {
+            display: flex;
+            align-items: center;
+            font-size: 1.2rem;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        /* ========================================
+           DIAGRAM 2: Permission Model
+           ======================================== */
+        .permission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 30px 0;
+        }
+        .perm-card {
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+        }
+        .perm-card .icon { font-size: 2rem; margin-bottom: 12px; }
+        .perm-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+        .perm-card .role {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .perm-can, .perm-cannot {
+            font-size: 0.8rem;
+            margin: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .perm-can { color: var(--green); }
+        .perm-cannot { color: var(--red); }
+        .perm-can::before { content: '✓'; position: absolute; left: 0; }
+        .perm-cannot::before { content: '✗'; position: absolute; left: 0; }
+
+        /* ========================================
+           DIAGRAM 3: Format Hierarchy
+           ======================================== */
+        .format-pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            margin: 30px 0;
+        }
+        .format-level {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 24px;
+            border-radius: 10px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .format-level:hover { transform: translateX(8px); }
+        .format-level .rank {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            min-width: 40px;
+        }
+        .format-level .fmt-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .format-level .fmt-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-left: auto;
+        }
+        .format-level .bar {
+            height: 6px;
+            border-radius: 3px;
+            flex: 1;
+            max-width: 200px;
+        }
+        .f1 { background: rgba(107,158,107,0.08); border: 1px solid rgba(107,158,107,0.3); }
+        .f1 .rank, .f1 .fmt-name { color: var(--green); }
+        .f1 .bar { background: var(--green); }
+        .f2 { background: rgba(91,143,185,0.06); border: 1px solid rgba(91,143,185,0.2); }
+        .f2 .rank, .f2 .fmt-name { color: var(--blue); }
+        .f2 .bar { background: var(--blue); width: 80%; }
+        .f3 { background: rgba(201,168,76,0.06); border: 1px solid rgba(201,168,76,0.2); }
+        .f3 .rank, .f3 .fmt-name { color: var(--gold); }
+        .f3 .bar { background: var(--gold); width: 60%; }
+        .f4 { background: rgba(139,123,181,0.06); border: 1px solid rgba(139,123,181,0.15); }
+        .f4 .rank, .f4 .fmt-name { color: var(--purple); }
+        .f4 .bar { background: var(--purple); width: 40%; }
+        .f5 { background: rgba(201,99,99,0.04); border: 1px solid rgba(201,99,99,0.15); }
+        .f5 .rank, .f5 .fmt-name { color: var(--red); }
+        .f5 .bar { background: var(--red); width: 20%; }
+
+        /* ========================================
+           DIAGRAM 4: Three Phases
+           ======================================== */
+        .phases-flow {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .phase-card {
+            padding: 28px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .phase-card.p1 {
+            background: rgba(107,158,107,0.08);
+            border: 2px solid rgba(107,158,107,0.3);
+        }
+        .phase-card.p2 {
+            background: rgba(91,143,185,0.08);
+            border: 2px solid rgba(91,143,185,0.3);
+        }
+        .phase-card.p3 {
+            background: rgba(201,99,99,0.08);
+            border: 2px solid rgba(201,99,99,0.3);
+        }
+        .phase-card .phase-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+        .phase-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .phase-card.p1 h4 { color: var(--green); }
+        .phase-card.p2 h4 { color: var(--blue); }
+        .phase-card.p3 h4 { color: var(--red); }
+        .phase-card .phase-speed {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            margin: 8px 0;
+        }
+        .phase-card.p1 .phase-speed { color: var(--green); }
+        .phase-card.p2 .phase-speed { color: var(--blue); }
+        .phase-card.p3 .phase-speed { color: var(--red); }
+        .phase-card .phase-detail {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* ========================================
+           DIAGRAM 5: Production Loop
+           ======================================== */
+        .loop-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 30px 0;
+        }
+        .loop-row {
+            display: grid;
+            grid-template-columns: 100px 1fr auto;
+            gap: 16px;
+            align-items: center;
+            padding: 16px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .loop-stage {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .loop-desc { font-size: 0.88rem; color: var(--text-secondary); }
+        .loop-key {
+            font-size: 0.7rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .loop-row.ingest { border-left: 4px solid var(--gold); }
+        .loop-row.ingest .loop-stage { color: var(--gold); }
+        .loop-row.ingest .loop-key { background: var(--gold-dim); color: var(--gold); }
+        .loop-row.complete { border-left: 4px solid var(--blue); }
+        .loop-row.complete .loop-stage { color: var(--blue); }
+        .loop-row.complete .loop-key { background: rgba(91,143,185,0.15); color: var(--blue); }
+        .loop-row.distribute { border-left: 4px solid var(--green); }
+        .loop-row.distribute .loop-stage { color: var(--green); }
+        .loop-row.distribute .loop-key { background: rgba(107,158,107,0.15); color: var(--green); }
+
+        /* ========================================
+           DIAGRAM 6: Durable vs Workaround Skills
+           ======================================== */
+        .skills-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .skills-col {
+            padding: 28px;
+            border-radius: 16px;
+        }
+        .skills-col.durable {
+            background: rgba(107,158,107,0.06);
+            border: 2px solid rgba(107,158,107,0.3);
+        }
+        .skills-col.workaround {
+            background: rgba(201,99,99,0.06);
+            border: 2px solid rgba(201,99,99,0.3);
+        }
+        .skills-col h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+        .skills-col.durable h4 { color: var(--green); }
+        .skills-col.workaround h4 { color: var(--red); }
+        .skill-item {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+        .skill-item:last-child { border-bottom: none; }
+        .skill-item .skill-name { font-weight: 600; }
+        .skill-item .skill-module {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .pipeline-diagram { flex-direction: column; }
+            .pipeline-arrow { justify-content: center; transform: rotate(90deg); }
+            .permission-grid { grid-template-columns: 1fr; }
+            .phases-flow { grid-template-columns: 1fr; }
+            .skills-compare { grid-template-columns: 1fr; }
+        }
+
+        @media print {
+            body { background: white; color: black; }
+            .diagram-section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-header">
+    <div class="label">The AI Workflow Curriculum</div>
+    <h1>Key Diagrams & Infographics</h1>
+</div>
+
+<div class="diagrams">
+
+    <!-- DIAGRAM 1: Five-Stage Pipeline -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 1 · Module 2</div>
+        <div class="diagram-title">The Five-Stage Pipeline</div>
+        <div class="diagram-desc">Every piece of work moves through exactly five stages. This is not project management theory — this is the actual running system.</div>
+
+        <div class="pipeline-diagram">
+            <div class="pipeline-stage s1">
+                <div class="stage-num">1</div>
+                <div class="stage-name">Triage</div>
+                <div class="stage-desc">Unsorted. Nothing reviewed yet.</div>
+                <div class="stage-who">YC + Conductor decide</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-stage s2">
+                <div class="stage-num">2</div>
+                <div class="stage-name">Assigned</div>
+                <div class="stage-desc">Task folders ready to claim.</div>
+                <div class="stage-who">Conductor creates</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-stage s3">
+                <div class="stage-num">3</div>
+                <div class="stage-name">In Progress</div>
+                <div class="stage-desc">Active work. Agents write ONLY here.</div>
+                <div class="stage-who">Agents execute</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-stage s4">
+                <div class="stage-num">4</div>
+                <div class="stage-name">Approval</div>
+                <div class="stage-desc">Done work. Human reviews.</div>
+                <div class="stage-who">YC approves</div>
+            </div>
+            <div class="pipeline-arrow">→</div>
+            <div class="pipeline-stage s5">
+                <div class="stage-num">5</div>
+                <div class="stage-name">Completed</div>
+                <div class="stage-desc">Approved + closed.</div>
+                <div class="stage-who">Outputs routed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAGRAM 2: Permission Model -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 2 · Module 2 & 4</div>
+        <div class="diagram-title">The Permission Model</div>
+        <div class="diagram-desc">Three roles. No overlap. This prevents the chaos that happens when everyone can do everything.</div>
+
+        <div class="permission-grid">
+            <div class="perm-card">
+                <div class="icon">👩🏽‍⚕️</div>
+                <h4>Yamicia (Human)</h4>
+                <div class="role">Product Owner</div>
+                <div class="perm-can">Approve or reject work</div>
+                <div class="perm-can">Make editorial decisions</div>
+                <div class="perm-can">Define priorities</div>
+                <div class="perm-can">Authorize public actions</div>
+                <div class="perm-cannot">Chase files</div>
+                <div class="perm-cannot">Re-explain context</div>
+                <div class="perm-cannot">Fix what agents broke</div>
+            </div>
+            <div class="perm-card">
+                <div class="icon">🎼</div>
+                <h4>Conductor</h4>
+                <div class="role">Orchestrator</div>
+                <div class="perm-can">Write tasks</div>
+                <div class="perm-can">Create folders</div>
+                <div class="perm-can">Move files between stages</div>
+                <div class="perm-can">Monitor all folders</div>
+                <div class="perm-cannot">Generate content</div>
+                <div class="perm-cannot">Make editorial decisions</div>
+                <div class="perm-cannot">Publish without approval</div>
+            </div>
+            <div class="perm-card">
+                <div class="icon">🤖</div>
+                <h4>Agents</h4>
+                <div class="role">Executors</div>
+                <div class="perm-can">Do assigned work</div>
+                <div class="perm-can">Write specified outputs</div>
+                <div class="perm-can">Claim tasks (one move)</div>
+                <div class="perm-cannot">Create folders</div>
+                <div class="perm-cannot">Move files</div>
+                <div class="perm-cannot">Write outside task folder</div>
+                <div class="perm-cannot">Deploy or publish</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAGRAM 3: Format Hierarchy -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 3 · Module 5</div>
+        <div class="diagram-title">The Visual-First Format Hierarchy</div>
+        <div class="diagram-desc">"Reading is slow. YC is context-switching all day." Default to the highest-impact format.</div>
+
+        <div class="format-pyramid">
+            <div class="format-level f1">
+                <div class="rank">1st</div>
+                <div class="fmt-name">Slide Deck</div>
+                <div class="bar"></div>
+                <div class="fmt-desc">5 slides, 90 seconds</div>
+            </div>
+            <div class="format-level f2">
+                <div class="rank">2nd</div>
+                <div class="fmt-name">Annotated Images</div>
+                <div class="bar"></div>
+                <div class="fmt-desc">Visual + callouts</div>
+            </div>
+            <div class="format-level f3">
+                <div class="rank">3rd</div>
+                <div class="fmt-name">Clickable HTML</div>
+                <div class="bar"></div>
+                <div class="fmt-desc">Minimal text, interactive</div>
+            </div>
+            <div class="format-level f4">
+                <div class="rank">4th</div>
+                <div class="fmt-name">Audio Summary</div>
+                <div class="bar"></div>
+                <div class="fmt-desc">Listen while mobile</div>
+            </div>
+            <div class="format-level f5">
+                <div class="rank">5th</div>
+                <div class="fmt-name">Long-form Text</div>
+                <div class="bar"></div>
+                <div class="fmt-desc">Last resort</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAGRAM 4: Three Phases -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 4 · Module 1 & 7</div>
+        <div class="diagram-title">The Three Phases of Knowledge Work</div>
+        <div class="diagram-desc">AI isn't universally good or bad — it excels at phases 1 and 2 and fails at phase 3. The execution gap is where the real work lives.</div>
+
+        <div class="phases-flow">
+            <div class="phase-card p1">
+                <div class="phase-emoji">💡</div>
+                <h4>Research & Design</h4>
+                <div class="phase-speed">10×</div>
+                <div class="phase-detail">AI acceleration<br>Brainstorming, logic mapping, hypothesis testing</div>
+            </div>
+            <div class="phase-card p2">
+                <div class="phase-emoji">🔬</div>
+                <h4>Refinement</h4>
+                <div class="phase-speed">5×</div>
+                <div class="phase-detail">Dictation matters most<br>Pressure-testing, filling gaps, iteration</div>
+            </div>
+            <div class="phase-card p3">
+                <div class="phase-emoji">⚠️</div>
+                <h4>Execution</h4>
+                <div class="phase-speed">0.7×</div>
+                <div class="phase-detail">AI falls apart<br>70% done, 30% is where real work lives</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAGRAM 5: Production Loop -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 5 · Module 7</div>
+        <div class="diagram-title">The Production Loop</div>
+        <div class="diagram-desc">Content production at The Labora Collective is a continuous loop. It never finishes — it just keeps cycling.</div>
+
+        <div class="loop-diagram">
+            <div class="loop-row ingest">
+                <div class="loop-stage">Ingest</div>
+                <div class="loop-desc">Get everything into Coda as draft rows. Whatever state it's in, just get it registered. <strong> If it's not in Coda, it doesn't exist.</strong></div>
+                <div class="loop-key">STAGE 1</div>
+            </div>
+            <div class="loop-row complete">
+                <div class="loop-stage">Complete</div>
+                <div class="loop-desc">Push drafts through the Article Completion Workflow: anchor image, actual text (proofread, stylized), references, social derivatives, sensitivity review, HTML build.</div>
+                <div class="loop-key">STAGE 2</div>
+            </div>
+            <div class="loop-row distribute">
+                <div class="loop-stage">Distribute</div>
+                <div class="loop-desc">HTML templating → Netlify deploy. Selected articles → LinkedIn + Substack. Weekly newsletter assembly + social promotion.</div>
+                <div class="loop-key">STAGE 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIAGRAM 6: Durable vs Workaround -->
+    <div class="diagram-section">
+        <div class="diagram-label">Diagram 6 · Module 10</div>
+        <div class="diagram-title">Durable Skills vs. Workarounds</div>
+        <div class="diagram-desc">Most "AI skills" won't survive the next tool change. These are the ones that will — and the ones that won't.</div>
+
+        <div class="skills-compare">
+            <div class="skills-col durable">
+                <h4>✅ Durable Skills</h4>
+                <div class="skill-item">
+                    <div class="skill-name">Dictation — thinking out loud into a system</div>
+                    <div class="skill-module">Module 1</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Architecture design — building persistent systems</div>
+                    <div class="skill-module">Module 2</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Precision framing — asking the right question</div>
+                    <div class="skill-module">Module 3</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Orchestration — managing multiple agents</div>
+                    <div class="skill-module">Module 4</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Knowledge extraction — capturing what matters</div>
+                    <div class="skill-module">Module 6</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Cognitive load management — protecting the human</div>
+                    <div class="skill-module">Module 9</div>
+                </div>
+            </div>
+            <div class="skills-col workaround">
+                <h4>⚠️ Workarounds</h4>
+                <div class="skill-item">
+                    <div class="skill-name">Memorizing specific prompt templates</div>
+                    <div class="skill-module">Obsolete when tools change</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Learning one tool's interface</div>
+                    <div class="skill-module">Obsolete when tools change</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Manual copy-paste workflows</div>
+                    <div class="skill-module">Automation will replace</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Single-agent, single-session thinking</div>
+                    <div class="skill-module">Multi-agent is the future</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">"Act as a [role]" role-play prompts</div>
+                    <div class="skill-module">Superficial, doesn't transfer</div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Platform-specific tricks</div>
+                    <div class="skill-module">Obsolete every 6 months</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

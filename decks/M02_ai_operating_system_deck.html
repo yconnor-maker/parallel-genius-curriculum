@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 2: Designing Your AI Operating System — Slide Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared_deck_styles.css">
+    <style>
+        :root{--bg-deep:#0d0d0d;--bg-card:#1a1a1a;--gold:#c9a84c;--gold-dim:rgba(201,168,76,.12);--text-primary:#f0ece2;--text-secondary:#a8a29e;--text-muted:#6b6560;--border:rgba(201,168,76,.2);--green:#6b9e6b;--blue:#5b8fb9;--coral:#c97b63;--purple:#8b7bb5;--red:#c96363}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;background:var(--bg-deep);color:var(--text-primary)}
+        .nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,13,13,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:12px 32px}.nav-left{font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:3px}.nav-center{font-family:'Cormorant Garamond',serif;font-size:1.1rem}.nav-right{display:flex;gap:8px;align-items:center}.nav-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);padding:8px 20px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;transition:all .2s}.nav-btn:hover{background:var(--gold-dim);border-color:var(--gold)}.slide-counter{font-size:.85rem;color:var(--text-muted);min-width:60px;text-align:center}
+        .slide{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:80px 60px;border-bottom:1px solid rgba(201,168,76,.08);position:relative}.slide-inner{max-width:900px;width:100%}.slide-num{position:absolute;top:80px;right:60px;font-family:'Cormorant Garamond',serif;font-size:4rem;font-weight:700;color:rgba(201,168,76,.08)}.slide-label{font-size:.7rem;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}.slide h1{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:600;line-height:1.15;margin-bottom:24px}.slide h2{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:600;line-height:1.2;margin-bottom:24px}.slide h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;margin-bottom:16px}.slide p,.slide li{font-size:1.15rem;line-height:1.8;color:var(--text-secondary)}.slide ul{list-style:none;margin:16px 0}.slide ul li{padding:8px 0 8px 24px;position:relative}.slide ul li::before{content:'';position:absolute;left:0;top:16px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+        .big-quote{font-family:'Cormorant Garamond',serif;font-size:2rem;font-style:italic;line-height:1.5;color:var(--text-primary);border-left:4px solid var(--gold);padding-left:32px;margin:30px 0}.big-quote .attribution{display:block;font-size:.9rem;font-style:normal;color:var(--gold);margin-top:16px;font-family:'DM Sans',sans-serif}
+        .step-list{margin:24px 0}.step-item{display:grid;grid-template-columns:48px 1fr;gap:16px;margin-bottom:20px;align-items:start}.step-circle{width:48px;height:48px;border-radius:50%;background:var(--gold-dim);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.2rem;color:var(--gold)}.step-content h4{font-size:1.05rem;font-weight:600;margin-bottom:4px}.step-content p{font-size:.95rem;color:var(--text-secondary)}
+        .data-box{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:28px;margin:24px 0}.data-box .label{font-size:.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:12px}
+        .speaker-note{margin-top:40px;padding:16px 20px;background:rgba(91,143,185,.08);border:1px solid rgba(91,143,185,.2);border-radius:8px;font-size:.8rem;color:var(--blue)}.speaker-note::before{content:'🎤 SPEAKER NOTE: ';font-weight:700}
+        .slide.title-slide{background:linear-gradient(180deg,rgba(201,168,76,.06) 0%,transparent 60%)}.slide.title-slide h1{font-size:4rem}.title-meta{font-size:1rem;color:var(--text-muted);margin-top:20px}.title-meta span{color:var(--gold)}
+        .exercise-box{background:rgba(107,158,107,.06);border:2px solid rgba(107,158,107,.3);border-radius:16px;padding:36px;margin:20px 0}.exercise-box h3{color:var(--green)}.exercise-box .timer{display:inline-block;background:rgba(107,158,107,.15);color:var(--green);padding:4px 14px;border-radius:20px;font-size:.8rem;font-weight:600;margin-bottom:16px}
+        .pipeline{display:flex;align-items:center;justify-content:center;gap:0;margin:30px 0;flex-wrap:wrap}.pipe-step{text-align:center;padding:20px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;min-width:120px}.pipe-step .emoji{font-size:1.5rem;margin-bottom:6px}.pipe-step .pipe-label{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px}.pipe-step .pipe-desc{font-size:.7rem;color:var(--text-muted);margin-top:4px}.pipe-arrow{font-size:1.5rem;color:var(--gold);padding:0 8px}
+        .code-block{background:#111;border:1px solid var(--border);border-radius:8px;padding:20px;font-family:'Courier New',monospace;font-size:.85rem;color:var(--green);line-height:1.8;margin:20px 0;overflow-x:auto}
+        .perm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0}.perm-card{padding:20px;border-radius:12px;background:var(--bg-card);border:1px solid var(--border)}.perm-card h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;margin-bottom:4px}.perm-card .role{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:10px}.perm-can,.perm-no{font-size:.8rem;margin:3px 0;padding-left:16px;position:relative}.perm-can{color:var(--green)}.perm-no{color:var(--red)}.perm-can::before{content:'✓';position:absolute;left:0}.perm-no::before{content:'✗';position:absolute;left:0}
+        @media(max-width:768px){.slide{padding:80px 24px}.slide h1{font-size:2.2rem}.slide h2{font-size:1.6rem}.perm-grid{grid-template-columns:1fr}.nav-center{display:none}}
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-left">Module 02</div>
+    <div class="nav-center">Designing Your AI Operating System</div>
+    <div class="nav-right">
+        <button class="nav-btn" onclick="prevSlide()">← Prev</button>
+        <span class="slide-counter" id="slideCounter">1 / 15</span>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+</div>
+<div id="slidesContainer" style="padding-top:60px">
+
+<div class="slide title-slide" id="slide-1"><div class="slide-inner">
+    <div class="slide-label">Module 02 · The AI Workflow Curriculum</div>
+    <h1>Designing Your AI Operating System</h1>
+    <h3 style="color:var(--gold);font-weight:400;font-style:italic">Architecture Before Automation</h3>
+    <div class="title-meta"><span>Dr. Yamicia Connor, MD, PhD, MPH</span><br>The Labora Collective</div>
+</div><div class="slide-num">01</div></div>
+
+<div class="slide" id="slide-2"><div class="slide-inner">
+    <div class="slide-label">The Problem</div>
+    <h2>Without architecture, AI produces chaos.</h2>
+    <p style="font-size:1.3rem;margin-bottom:24px">Most people use AI like a search engine with better grammar. They get useful outputs, but those outputs go nowhere — they pile up in chat histories, downloads folders, and scattered docs that nobody can find.</p>
+    <p>The difference between someone who "uses AI" and someone who runs an AI-powered operation is one thing: <strong style="color:var(--gold)">a persistent system design</strong>.</p>
+</div><div class="slide-num">02</div></div>
+
+<div class="slide" id="slide-3"><div class="slide-inner">
+    <div class="slide-label">Source Material</div>
+    <h2>What we're drawing from</h2>
+    <div class="data-box">
+        <div class="label">CONDUCTOR.md</div>
+        <p style="color:var(--text-secondary)">48,000 words. 619 lines. 34 lessons learned. The live, running system design document for a multi-agent AI operation managing two companies, 60+ tasks, and 6 AI agents.</p>
+        <p style="margin-top:12px;color:var(--gold);font-weight:600">This is not a whitepaper. It's the actual code.</p>
+    </div>
+</div><div class="slide-num">03</div></div>
+
+<div class="slide" id="slide-4"><div class="slide-inner">
+    <div class="slide-label">The Architecture</div>
+    <h2>The Five-Stage Pipeline</h2>
+    <p style="margin-bottom:20px">Every piece of work moves through exactly five stages. No exceptions.</p>
+    <div class="pipeline">
+        <div class="pipe-step" style="border-color:var(--gold)"><div class="emoji">📥</div><div class="pipe-label" style="color:var(--gold)">1. Triage</div><div class="pipe-desc">Unsorted</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" style="border-color:var(--blue)"><div class="emoji">📋</div><div class="pipe-label" style="color:var(--blue)">2. Assigned</div><div class="pipe-desc">Ready to claim</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" style="border-color:var(--green)"><div class="emoji">⚙️</div><div class="pipe-label" style="color:var(--green)">3. In Progress</div><div class="pipe-desc">Active work</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" style="border-color:var(--coral)"><div class="emoji">👁️</div><div class="pipe-label" style="color:var(--coral)">4. Approval</div><div class="pipe-desc">Human reviews</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step" style="border-color:var(--purple)"><div class="emoji">✅</div><div class="pipe-label" style="color:var(--purple)">5. Complete</div><div class="pipe-desc">Closed</div></div>
+    </div>
+    <div class="speaker-note">The key insight: this isn't a Kanban board someone designed in Notion. This is the actual folder structure on YC's computer. The folders ARE the system. No tool required.</div>
+</div><div class="slide-num">04</div></div>
+
+<div class="slide" id="slide-5"><div class="slide-inner">
+    <div class="slide-label">Lesson #18</div>
+    <div class="big-quote" style="font-size:2.2rem">
+        "Folder structure is LAW. Only the 5-stage pipeline. NO rogue folders. Agents in other sessions create ad hoc folders that break the system because content becomes invisible."
+        <span class="attribution">— Conductor Lesson #18</span>
+    </div>
+    <p style="margin-top:24px">This lesson was learned the hard way. Agents kept creating folders like <code>_Needs_Review</code> and <code>_Ready_To_Publish</code>. Content ended up invisible to the dashboard and the orchestrator. The fix: make the folder structure sacred.</p>
+</div><div class="slide-num">05</div></div>
+
+<div class="slide" id="slide-6"><div class="slide-inner">
+    <div class="slide-label">The Permission Model</div>
+    <h2>Three Roles. No Overlap.</h2>
+    <div class="perm-grid">
+        <div class="perm-card">
+            <h4>👩🏽‍⚕️ Human (YC)</h4>
+            <div class="role">Approver</div>
+            <div class="perm-can">Approve / reject</div>
+            <div class="perm-can">Editorial decisions</div>
+            <div class="perm-can">Define priorities</div>
+            <div class="perm-no">Chase files</div>
+            <div class="perm-no">Re-explain context</div>
+        </div>
+        <div class="perm-card">
+            <h4>🎼 Conductor</h4>
+            <div class="role">Orchestrator</div>
+            <div class="perm-can">Write tasks</div>
+            <div class="perm-can">Move files</div>
+            <div class="perm-can">Create folders</div>
+            <div class="perm-no">Generate content</div>
+            <div class="perm-no">Publish</div>
+        </div>
+        <div class="perm-card">
+            <h4>🤖 Agents</h4>
+            <div class="role">Executors</div>
+            <div class="perm-can">Do assigned work</div>
+            <div class="perm-can">Write outputs</div>
+            <div class="perm-no">Create folders</div>
+            <div class="perm-no">Move files</div>
+            <div class="perm-no">Deploy</div>
+        </div>
+    </div>
+</div><div class="slide-num">06</div></div>
+
+<div class="slide" id="slide-7"><div class="slide-inner">
+    <div class="slide-label">The Boot Sequence</div>
+    <h2>How the System Starts Every Session</h2>
+    <p style="margin-bottom:16px">AI has zero persistent memory. Every session starts from scratch. The boot sequence IS memory retrieval.</p>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-content"><h4>Mount system folder</h4><p>Connect to the persistent file system</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-content"><h4>Read AGENT_SYNC_STATE</h4><p>What did every other agent do since last time?</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-content"><h4>Read CONDUCTOR.md</h4><p>Who am I? What are the rules? What's the current state?</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-content"><h4>Scan all 5 stages</h4><p>What's in each folder? What needs attention?</p></div></div>
+        <div class="step-item"><div class="step-circle">5</div><div class="step-content"><h4>Sweep for dictations</h4><p>Has YC dictated anything new? This is the ignition switch.</p></div></div>
+        <div class="step-item"><div class="step-circle">6</div><div class="step-content"><h4>Report to human</h4><p>What changed? What's blocked? What needs decisions?</p></div></div>
+    </div>
+</div><div class="slide-num">07</div></div>
+
+<div class="slide" id="slide-8"><div class="slide-inner">
+    <div class="slide-label">Key Lesson</div>
+    <h2>One Dashboard to Rule Them All</h2>
+    <div class="big-quote">
+        "YC looks at ONE place. Don't create separate docs she has to hunt for."
+        <span class="attribution">— Conductor Lesson #9</span>
+    </div>
+    <div class="data-box" style="margin-top:24px">
+        <div class="label">But Wait — Lesson #21</div>
+        <p style="color:var(--text-secondary)">"The dashboard is NOT YC's dashboard — it's the Conductor's task tracker. YC is a human, not an AI tool. Her dashboard should show: her schedule, her concerns, decisions needed. The Conductor Task Tracker is a sub-view, not the homepage."</p>
+    </div>
+    <p style="margin-top:16px;color:var(--gold)">Lesson 9 and Lesson 21 are the same team. The system learned that even "one dashboard" needs to be human-facing, not system-facing.</p>
+</div><div class="slide-num">08</div></div>
+
+<div class="slide" id="slide-9"><div class="slide-inner">
+    <div class="slide-label">Real System</div>
+    <h2>The Actual Folder Structure</h2>
+    <div class="code-block">AI Agent Inbox/
+├── 1_Triage/            — Unsorted. YC + Conductor decide.
+├── 2_TaskAssignments/   — Task folders ready to claim.
+│   └── TASK_25_article_verification/
+│       └── TASK_25_article_completion.md
+├── 3_InProgress/        — Active work. Agents write ONLY here.
+│   └── TASK_25_article_verification/
+│       ├── TASK_25_completion_DONE.md
+│       └── TASK_25_verification_report.md
+├── 4_WaitingOnApproval/ — Done. Human reviews.
+├── 5_Completed/         — Approved + closed.
+├── CONDUCTOR.md         — System brain.
+├── INBOX_RULES.md       — Agent operating rules.
+└── YC_DASHBOARD.html    — Human-facing view.</div>
+</div><div class="slide-num">09</div></div>
+
+<div class="slide" id="slide-10"><div class="slide-inner">
+    <div class="slide-label">The Close-Down</div>
+    <h2>How the System Ends Every Session</h2>
+    <p style="margin-bottom:16px">If the boot sequence is memory retrieval, the close-down is memory storage.</p>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-content"><h4>Update AGENT_SYNC_STATE.md</h4><p>Timestamp, completed items, status changes</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-content"><h4>Update CONDUCTOR.md</h4><p>What happened this session? Current state section.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-content"><h4>Verify file system</h4><p>No files sitting outside the five-stage system.</p></div></div>
+    </div>
+    <div class="data-box">
+        <div class="label">Conductor Lesson #28</div>
+        <p style="color:var(--text-secondary)">"If a session is archived without close-down, the file system survives. The loss is narrative context from the chat. Reconstruct from: file timestamps, dashboard state, Slack posts, folder contents."</p>
+    </div>
+</div><div class="slide-num">10</div></div>
+
+<div class="slide" id="slide-11"><div class="slide-inner">
+    <div class="slide-label">Lesson #25</div>
+    <div class="big-quote" style="font-size:2.2rem">
+        "Auto-execute processing work. Don't ask. Brain dump processing, dictation sweeps, dashboard updates, task routing — these are standing orders. Do them. Save the human's attention for decisions that actually require judgment."
+        <span class="attribution">— Conductor Lesson #25</span>
+    </div>
+</div><div class="slide-num">11</div></div>
+
+<div class="slide" id="slide-12"><div class="slide-inner">
+    <div class="slide-label">Design Principle</div>
+    <h2>The System Protects the Human</h2>
+    <ul>
+        <li><strong>Agents can't create folders</strong> — prevents sprawl</li>
+        <li><strong>Agents can't move files (except claiming)</strong> — prevents confusion</li>
+        <li><strong>Nothing goes public without human approval</strong> — prevents liability</li>
+        <li><strong>Results Log captures everything</strong> — chat can be deleted</li>
+        <li><strong>Boot sequence runs automatically</strong> — human doesn't brief the AI</li>
+        <li><strong>Dashboard updates without asking</strong> — human always sees current state</li>
+    </ul>
+    <p style="margin-top:24px;color:var(--gold)">"She shouldn't have to chase files, re-explain context, or fix what agents broke. That's your job." — The Permission Model</p>
+</div><div class="slide-num">12</div></div>
+
+<div class="slide" id="slide-13"><div class="slide-inner">
+    <div class="slide-label">Workshop</div>
+    <h2>Design Your Own</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 15 Minutes</span>
+        <h3>Exercise: Map Your Pipeline</h3>
+        <div class="step-list">
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,.15);border-color:var(--green);color:var(--green)">1</div><div class="step-content"><h4>Map your current workflow</h4><p>Where does work enter your system? Where does it get stuck? Where does it leak out?</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,.15);border-color:var(--green);color:var(--green)">2</div><div class="step-content"><h4>Design a 3–5 stage pipeline</h4><p>Name each stage. Define what enters, what exits, and who decides.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,.15);border-color:var(--green);color:var(--green)">3</div><div class="step-content"><h4>Define your permission model</h4><p>Who can move files? Who approves? What does the AI NEVER do without asking?</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,.15);border-color:var(--green);color:var(--green)">4</div><div class="step-content"><h4>Write your boot sequence</h4><p>What does every new AI session need to read first?</p></div></div>
+        </div>
+    </div>
+</div><div class="slide-num">13</div></div>
+
+<div class="slide" id="slide-14"><div class="slide-inner">
+    <div class="slide-label">Module 2 Takeaways</div>
+    <h2>What You Now Know</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">✓</div><div class="step-content"><h4>Architecture before automation</h4><p>Build the system before you let AI loose in it</p></div></div>
+        <div class="step-item"><div class="step-circle">✓</div><div class="step-content"><h4>Five stages, three roles, no exceptions</h4><p>The pipeline is the constraint that makes everything else work</p></div></div>
+        <div class="step-item"><div class="step-circle">✓</div><div class="step-content"><h4>Boot + Close-Down = Memory</h4><p>AI has zero memory — your system design is what creates persistence</p></div></div>
+        <div class="step-item"><div class="step-circle">✓</div><div class="step-content"><h4>The system protects the human</h4><p>Every constraint exists to prevent the human from having to chase, re-explain, or fix</p></div></div>
+    </div>
+</div><div class="slide-num">14</div></div>
+
+<div class="slide title-slide" id="slide-15"><div class="slide-inner" style="text-align:center">
+    <div class="slide-label">Coming Up Next</div>
+    <h1 style="font-size:3rem">Module 03</h1>
+    <h3 style="color:var(--gold);font-weight:400;font-style:italic">Writing for Machines — Task Specification</h3>
+    <p style="margin-top:24px;color:var(--text-secondary);max-width:600px;margin-left:auto;margin-right:auto">You have a system. Now you need to write instructions that agents can actually follow. We'll build self-contained task files, Results Logs, and precision framing.</p>
+    <div class="title-meta" style="margin-top:40px"><span>📝 Worksheet:</span> Complete the Module 2 worksheet<br><span>📖 Reading:</span> CONDUCTOR.md — The Folder System section</div>
+</div><div class="slide-num">15</div></div>
+
+</div>
+<script>
+let c=1;const t=15;function u(){document.getElementById('slideCounter').textContent=c+' / '+t}function g(n){c=Math.max(1,Math.min(n,t));document.getElementById('slide-'+c).scrollIntoView({behavior:'smooth'});u()}function nextSlide(){g(c+1)}function prevSlide(){g(c-1)}
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nextSlide()}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide()}});
+const o=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){const n=parseInt(e.target.id.replace('slide-',''));if(n){c=n;u()}}})},{threshold:.5});document.querySelectorAll('.slide').forEach(s=>o.observe(s));
+</script>
+</body></html>

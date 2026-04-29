@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 03: Writing for Machines — Parallel Genius</title>
+<meta name="description" content="The quality of AI output is determined by your task specification. Learn to write for machines. By Dr. Yamicia Connor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
+
+<section class="module-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 1: Foundation</p>
+    <p class="module-label" style="color: var(--rose)">Module 03</p>
+    <h1>Writing for Machines</h1>
+    <p class="module-subtitle">Task Specification as a Teachable Skill</p>
+    <div class="module-meta">
+      <span class="meta-item"><strong>Track:</strong> Foundation</span>
+      <span class="meta-item"><strong>Duration:</strong> 90 min</span>
+      <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Overview</p>
+    <h2>Core Thesis</h2>
+    <div class="prose-block">
+      <p>The quality of AI output is entirely determined by the quality of the task specification. Writing a good task spec is a teachable skill that most people skip — and then blame the AI for bad results.</p>
+    </div>
+    <blockquote class="module-quote">"There is a specific kind of failure that looks like research. It produces data. It generates citations. It has methodology sections and confidence intervals. And it answers the wrong question so precisely that no one notices the wrong question was asked."</blockquote>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Key Concepts</p>
+    <h2>What You'll Learn</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>1. The Self-Contained Task File</h4>
+        <p>Every task file must be self-contained. The agent should not need to go find other documents. Every task includes: header, instructions, specified outputs, operating rules, results log, and completion gate.</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. The Results Log Is the Permanent Record</h4>
+        <p>"Chat dies. Everything must be extracted. Write it like you're briefing someone who wasn't in the room."</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. Precision Framing</h4>
+        <p>Start from what you know, not what you can measure. Name the mechanism, not the correlation. Ask what the question assumes. Every research question has embedded assumptions.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. Don't Solve Non-Problems</h4>
+        <p>"Before writing a task, ask: does completing this move the pipeline forward?" Agents that don't know what exists produce work that conflicts with reality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Slide Deck</p>
+    <h2>Module 03 Presentation</h2>
+    <div class="deck-embed">
+      <iframe src="../decks/M03_task_specification_deck.html" title="Module 03 Slide Deck"></iframe>
+      <div class="deck-actions">
+        <a href="../decks/M03_task_specification_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a>
+        <a href="../worksheets/M03_task_specification_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <div class="workshop-block">
+      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p>
+      <h3>Rewrite a Vague Request</h3>
+      <p>Take a vague request ("make me a social media plan") and rewrite it as a self-contained task spec using the CONDUCTOR.md template. Include: instructions, specified outputs with exact file names, operating rules, and a completion gate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Source Readings</p>
+    <h2>Go Deeper</h2>
+    <ul class="source-list">
+      <li><span class="source-label">Primary</span> INBOX_RULES.md + TASK_TEMPLATE_v3.md</li>
+      <li><span class="source-label">Supporting</span> "How to Ask the Right Question" (YC essay)</li>
+      <li><span class="source-label">Conductor</span> Lesson #34: "Agents don't know what exists unless the task spec tells them."</li>
+    </ul>
+    <div class="module-nav">
+      <a href="m02.html">← Prev: AI Operating System</a>
+      <a href="m04.html">Next: Multi-Agent Orchestration →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

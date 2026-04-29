@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 06: Knowledge Extraction — Parallel Genius</title>
+<meta name="description" content="AI has zero persistent memory between sessions. Building systems that survive the amnesia is the foundational infrastructure problem. By Dr. Yamicia Connor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
+
+<section class="module-hero">
+  <div class="container">
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 3: Research</p>
+    <p class="module-label" style="color: var(--teal)">Module 06</p>
+    <h1>The Knowledge Extraction Problem</h1>
+    <p class="module-subtitle">Surviving AI's Zero-Memory Problem</p>
+    <div class="module-meta"><span class="meta-item"><strong>Track:</strong> Research</span><span class="meta-item"><strong>Duration:</strong> 90 min</span><span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span></div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Overview</p><h2>Core Thesis</h2>
+    <div class="prose-block"><p>AI has zero persistent memory between sessions. Every conversation is temporary. If you don't extract knowledge before the session ends, it's gone forever. Building systems that survive the amnesia is the foundational infrastructure problem of AI-powered operations.</p></div>
+    <blockquote class="module-quote">"AI agents have ZERO persistent memory between sessions. The checkpoint/sync systems exist BECAUSE of this limitation. Never assume an agent 'remembers.'"</blockquote>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Key Concepts</p><h2>What You'll Learn</h2>
+    <div class="concept-grid">
+      <div class="concept-card"><h4>1. Knowledge Extraction Before Deletion</h4><p>"When a task completes, extract institutional knowledge → route to permanent home → then delete. Don't let the completed folder become a graveyard."</p></div>
+      <div class="concept-card"><h4>2. Brain Dump Mode</h4><p>YC dumps rapid-fire ideas/tasks into a file. The Conductor processes each entry into a proper task, workflow design, or decision point. This captures thinking that would otherwise die in the chat.</p></div>
+      <div class="concept-card"><h4>3. AGENT_SYNC_STATE</h4><p>A single file that tells every agent what every other agent has been doing. Updated at session close. This is how agents coordinate without persistent memory.</p></div>
+      <div class="concept-card"><h4>4. Archived Session Recovery</h4><p>"If a session is archived without close-down, the file system survives. The loss is narrative context. Reconstruct from: file timestamps, dashboard state, Slack posts, folder contents."</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Slide Deck</p><h2>Module 06 Presentation</h2>
+    <div class="deck-embed"><iframe src="../decks/M06_knowledge_extraction_deck.html" title="Module 06 Slide Deck"></iframe><div class="deck-actions"><a href="../decks/M06_knowledge_extraction_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a><a href="../worksheets/M06_knowledge_extraction_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a></div></div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <div class="workshop-block">
+      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p><h3>Write an Extraction Memo</h3>
+      <p>End your next AI session by writing a 5-sentence "extraction memo": what you worked on, what you decided, what you'd tell the next version of yourself (or the next agent) to pick up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <ul class="source-list">
+      <li><span class="source-label">Primary</span> CONDUCTOR.md — Close-Down Procedure, AGENT_SYNC_STATE, Brain Dump Processing</li>
+      <li><span class="source-label">System</span> Lesson #5: "AI agents have ZERO persistent memory between sessions."</li>
+      <li><span class="source-label">System</span> Lesson #14: "Knowledge extraction before deletion."</li>
+    </ul>
+    <div class="module-nav"><a href="m05.html">← Prev: Visual-First Communication</a><a href="m07.html">Next: The Production Loop →</a></div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

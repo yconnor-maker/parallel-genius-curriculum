@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Curriculum Update</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F2EDE8; --surface: #FFFFFF; --text: #555555; --muted: #8c8279;
+    --border: #e2d8cf; --pink: #FB6F92; --gold: #C8AC83; 
+    --light-pink: rgba(251,111,146,0.1); --light-gold: rgba(200,172,131,0.1);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; padding: 32px 20px; font-size: 14px; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; color: #333333; }
+  h1 { font-size: 2.2rem; font-weight: 700; }
+  h2 { font-size: 1.5rem; margin-top: 10px; margin-bottom: 20px; }
+  .banner { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--gold); }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+  @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr 1fr; } }
+  .stat-card { background: var(--surface); padding: 16px; border-radius: 8px; border: 1px solid var(--border); text-align: center; }
+  .stat-card h3 { font-size: 1.6rem; color: var(--gold); margin-bottom: 4px; font-family: 'Inter', sans-serif;}
+  .stat-card p { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin-bottom: 14px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .badge { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge-deployed { background: var(--light-gold); color: #a48250; }
+  .badge-action { background: var(--light-pink); color: var(--pink); }
+  details { margin-bottom: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+  details summary { cursor: pointer; font-weight: 600; font-size: 1.1rem; color: #333; padding: 16px 24px; list-style: none; position: relative; border-bottom: 1px solid transparent; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;}
+  details[open] summary { border-bottom-color: var(--border); color: var(--pink); }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after { content: "+"; position: absolute; right: 24px; color: var(--gold); }
+  details[open] summary::after { content: "−"; }
+  .details-content { padding: 16px 24px; }
+  ul { padding-left: 20px; margin-bottom: 10px; }
+  li { margin-bottom: 6px; }
+  textarea { width: 100%; height: 120px; padding: 12px; border: 1px solid var(--border); border-radius: 4px; font-family: 'Inter', sans-serif; resize: vertical; margin-top: 10px; }
+  button { background: var(--gold); color: white; border: none; padding: 8px 16px; border-radius: 4px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+  button:hover { background: #b59b75; }
+  .sources { font-size: 0.8rem; color: var(--muted); font-family: monospace; }
+  .footer { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 40px; }
+  a { color: var(--pink); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="banner">
+  <div>
+    <h1>AI Curriculum Update</h1>
+    <p>Last Updated: April 10, 2026</p>
+  </div>
+  <div><span class="badge badge-deployed">In Development</span></div>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card"><h3>12+</h3><p>Extracts Created</p></div>
+  <div class="stat-card"><h3>PWA</h3><p>App Format</p></div>
+  <div class="stat-card"><h3>2 Tiers</h3><p>Format Strategy</p></div>
+  <div class="stat-card"><h3>$10-15</h3><p>Price Point</p></div>
+</div>
+
+<div class="card" style="border-left: 4px solid var(--pink);">
+  <div class="card-header">
+    <h2 style="margin: 0;">Vision & Integration</h2>
+  </div>
+  <p>The AI Curriculum is designed around the <strong>Parallel Genius Framework</strong>. It bridges the gap between high-level Labora Collective intelligence and tactical implementation methodologies. Content is structured via the <em>Editorial Format Strategy</em>, delineating free conceptual intelligence from premium tactical methodology.</p>
+</div>
+
+<details open>
+  <summary>Decisions Made (Revenue & Ops Sync)</summary>
+  <div class="details-content">
+    <ul>
+      <li><strong>Format:</strong> The curriculum will be delivered via bite-sized Digital Applets, structured as Progressive Web Apps (PWA) to avoid app store friction while feeling native.</li>
+      <li><strong>Pricing Strategy:</strong> Accessible micro-tier pricing set at <strong>$10–$15 per digital applet</strong>.</li>
+      <li><strong>Dual-Track Pedagogy:</strong> Curricula separate the "what/why" (free/newsletter) from the strictly operational "how-to" (premium modules).</li>
+      <li><strong>Teacher Persona:</strong> The agent "Teacher Persona" is active and routinely logs pedagogical extracts directly into the drive infrastructure.</li>
+    </ul>
+  </div>
+</details>
+
+<details open>
+  <summary>Current Curriculum State & Assets</summary>
+  <div class="details-content">
+    <p>Extensive curriculum consolidation has been fully executed. Current active assets on the YC Ops Hub (<a href="https://yc-ops-hub.netlify.app/dashboards/ai-curriculum/">Dashboard</a>):</p>
+    <ul>
+      <li><strong>Master Extracts:</strong> <code>AI_ARTICLES_MASTER_EXTRACT.md</code> & <code>AI_DICTATIONS_MASTER_EXTRACT.md</code>.</li>
+      <li><strong>Pedagogical Logs:</strong> Continuous daily extractions via the agentic Teacher persona (e.g., <code>TEACHER_EXTRACT_2026-04-09.md</code>).</li>
+      <li><strong>Operational Strategy:</strong> Syllabus outlines (<code>course_syllabus.html</code>) and reconciliation rules (<code>AI_WORKFLOW_CURRICULUM_v2.md</code>, <code>EDITORIAL_FORMAT_STRATEGY.md</code>) are cemented.</li>
+      <li><strong>Team Guide:</strong> <code>TEAM_CURRICULUM_WALKTHROUGH.html</code> exists to train the ops team on accessing these assets.</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Decisions Needed / Open Questions</summary>
+  <div class="details-content">
+    <ul>
+      <li>What is the concrete launch cadence for the applets? (e.g., 1 per week vs. batched drops).</li>
+      <li>What platform will handle the micro-transactions (Stripe Links vs. specialized PWA paywall integration)?</li>
+      <li>Final signup of the specific first three applet titles to move into pure production.</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>Team Action Items</summary>
+  <div class="details-content">
+    <ul>
+      <li><strong>Ops Team:</strong> Review the <a href="https://yc-ops-hub.netlify.app/dashboards/ai-curriculum/">AI Curriculum Dashboard</a> and walk through the updated <code>TEAM_CURRICULUM_WALKTHROUGH.html</code>.</li>
+      <li><strong>Content Team:</strong> Align next output to the Dual-Track pedagogical flow outlined in the new Editorial Format Strategy.</li>
+      <li><strong>YC Review:</strong> Provide go/no-go on first applets and preferred checkout flow for the $10-$15 price bracket.</li>
+    </ul>
+  </div>
+</details>
+
+<details>
+  <summary>YC Feedback / Notes</summary>
+  <div class="details-content">
+    <textarea id="yc-notes" placeholder="Drop notes for the team here. Auto-saves locally."></textarea>
+    <button onclick="exportJSON()">Export Notes (.json)</button>
+  </div>
+</details>
+
+<details>
+  <summary>Sources Read</summary>
+  <div class="details-content sources">
+    - YC Ops Hub: https://yc-ops-hub.netlify.app/api/projects<br>
+    - YC Ops Hub: https://yc-ops-hub.netlify.app/dashboards/ai-curriculum/<br>
+    - Antigravity Prompt 41 Context Notes (April 9 Revenue session)<br>
+    - Local Files: Agent Activity Log/TEACHER_EXTRACT_2026-04-09.md
+  </div>
+</details>
+
+<div class="footer">
+  <p>Generated autonomously by Antigravity | <span id="timestamp"></span></p>
+</div>
+
+</div>
+
+<script>
+  document.getElementById('timestamp').innerText = new Date().toLocaleString();
+  
+  const notesField = document.getElementById('yc-notes');
+  let timeout;
+  
+  if(localStorage.getItem('ai-curriculum-notes')) {
+    notesField.value = localStorage.getItem('ai-curriculum-notes');
+  }
+
+  notesField.addEventListener('input', function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      localStorage.setItem('ai-curriculum-notes', notesField.value);
+    }, 1500);
+  });
+
+  function exportJSON() {
+    const data = {
+      timestamp: new Date().toISOString(),
+      notes: notesField.value
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'AI_Curriculum_Feedback_' + new Date().getTime() + '.json';
+    a.click();
+  }
+</script>
+</body>
+</html>

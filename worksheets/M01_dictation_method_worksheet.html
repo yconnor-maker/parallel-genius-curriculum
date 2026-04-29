@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 1 Worksheet — The Dictation Method | The Labora Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf8f4;
+            --bg-card: #ffffff;
+            --gold: #8b6914;
+            --gold-light: #c9a84c;
+            --gold-bg: rgba(139,105,20,0.06);
+            --text-primary: #1a1612;
+            --text-secondary: #504840;
+            --text-muted: #8a8078;
+            --border: rgba(139,105,20,0.2);
+            --accent-green: #3d6b3d;
+            --accent-blue: #3d5b8f;
+            --green-bg: rgba(61,107,61,0.06);
+            --blue-bg: rgba(61,91,143,0.06);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.7;
+        }
+        @media print {
+            body { background: white; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+            .write-area { min-height: 120px; }
+        }
+
+        /* Layout */
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Header */
+        .header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 24px;
+            margin-bottom: 40px;
+        }
+        .header-label {
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .header .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--gold-light);
+            font-style: italic;
+        }
+        .header-meta {
+            display: flex;
+            gap: 30px;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .header-meta span { color: var(--gold); font-weight: 600; }
+
+        /* Section */
+        .section {
+            margin-bottom: 40px;
+        }
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 8px;
+        }
+        .section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .section p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        /* Write area */
+        .write-area {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 100px;
+            margin: 12px 0;
+            position: relative;
+        }
+        .write-area .prompt {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        .write-area .lines {
+            background-image: repeating-linear-gradient(
+                transparent, transparent 28px,
+                rgba(139,105,20,0.1) 28px, rgba(139,105,20,0.1) 29px
+            );
+            min-height: 80px;
+        }
+
+        /* Quote box */
+        .quote-box {
+            border-left: 4px solid var(--gold);
+            padding: 16px 20px;
+            margin: 16px 0;
+            background: var(--gold-bg);
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-box p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .quote-box .attr {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        /* Exercise box */
+        .exercise-box {
+            background: var(--green-bg);
+            border: 2px solid var(--accent-green);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 20px 0;
+        }
+        .exercise-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: var(--accent-green);
+            margin-bottom: 4px;
+        }
+        .exercise-box .timer {
+            display: inline-block;
+            background: rgba(61,107,61,0.15);
+            color: var(--accent-green);
+            padding: 2px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Comparison table */
+        .compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+        .compare-table th {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-align: left;
+            padding: 10px 12px;
+            border-bottom: 2px solid var(--border);
+        }
+        .compare-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        /* Checklist */
+        .checklist { list-style: none; margin: 12px 0; }
+        .checklist li {
+            padding: 8px 0 8px 32px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+            color: var(--gold);
+        }
+
+        /* Reflection box */
+        .reflection-box {
+            background: var(--blue-bg);
+            border: 1px solid var(--accent-blue);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+        .reflection-box h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        /* Scale */
+        .scale-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .scale-label { font-size: 0.8rem; color: var(--text-muted); min-width: 80px; }
+        .scale-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .scale-dot {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        /* Footer */
+        .footer {
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-label">Module 01 · Worksheet</div>
+        <h1>The Dictation Method</h1>
+        <div class="subtitle">Thinking Out Loud</div>
+        <div class="header-meta">
+            <div><span>Course:</span> The AI Workflow Curriculum</div>
+            <div><span>Time:</span> 45 minutes</div>
+            <div><span>Format:</span> Individual + Discussion</div>
+        </div>
+    </div>
+
+    <!-- Part A: Pre-Assessment -->
+    <div class="section">
+        <div class="section-number">Part A</div>
+        <h2>Pre-Assessment: How Do You Currently Use AI?</h2>
+        <p>Before we introduce the dictation method, let's establish your baseline. Answer honestly — there are no wrong answers.</p>
+
+        <div class="write-area">
+            <div class="prompt">1. Describe your current approach to AI. How do you typically start an AI interaction? (e.g., write a prompt, use a template, just start talking, etc.)</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">2. How long is your typical AI interaction? (Circle one)</div>
+            <p style="display: flex; gap: 20px; flex-wrap: wrap; padding-top: 8px;">
+                <span style="border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px;">One prompt</span>
+                <span style="border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px;">2–5 exchanges</span>
+                <span style="border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px;">5–15 min</span>
+                <span style="border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px;">15–60 min</span>
+                <span style="border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px;">1+ hours</span>
+            </p>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">3. On a scale of 1–10, how satisfied are you with the quality of what you get from AI?</div>
+            <div class="scale-row">
+                <span class="scale-label">Low quality</span>
+                <div class="scale-dots">
+                    <div class="scale-dot">1</div>
+                    <div class="scale-dot">2</div>
+                    <div class="scale-dot">3</div>
+                    <div class="scale-dot">4</div>
+                    <div class="scale-dot">5</div>
+                    <div class="scale-dot">6</div>
+                    <div class="scale-dot">7</div>
+                    <div class="scale-dot">8</div>
+                    <div class="scale-dot">9</div>
+                    <div class="scale-dot">10</div>
+                </div>
+                <span class="scale-label">Exceptional</span>
+            </div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">4. What's the biggest frustration you have with AI output right now?</div>
+            <div class="lines"></div>
+        </div>
+    </div>
+
+    <!-- Part B: The Key Distinction -->
+    <div class="section page-break">
+        <div class="section-number">Part B</div>
+        <h2>Prompting vs. Dictation: Classify These Interactions</h2>
+        <p>Read each AI interaction below. Label it <strong>P</strong> (prompting) or <strong>D</strong> (dictation). Then explain why.</p>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Interaction</th>
+                    <th style="width: 10%;">P or D?</th>
+                    <th style="width: 30%;">Why?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>"Write me a social media plan for Q3. Include Instagram, LinkedIn, and TikTok. Make it professional."</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>"I'm trying to figure out why our email open rates dropped. It might be the subject lines, but I also changed the send time last month. And now I'm wondering if the content itself is the issue because we switched writers..."</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>"Act as a marketing expert. You have 20 years of experience in B2B SaaS. Generate 10 LinkedIn post ideas for a CEO."</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>"Here's what I'm wrestling with. I need to hire someone, but I can't tell if I need a content strategist or a project manager. The real problem might be that I'm doing both roles myself and I'm the bottleneck..."</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>"Summarize this article in 3 bullet points."</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quote-box">
+            <p>"AI is most useful when you give it your incomplete thinking and let it help you complete it. Not your polished prompt. Your messy, contradictory, half-formed ideas."</p>
+            <div class="attr">— Dr. Yamicia Connor, "I Don't Use Prompts"</div>
+        </div>
+    </div>
+
+    <!-- Part C: The Exercise -->
+    <div class="section">
+        <div class="section-number">Part C</div>
+        <h2>Hands-On Exercise: Your First Dictation</h2>
+
+        <div class="exercise-box">
+            <h3>🎙️ Dictation Exercise</h3>
+            <span class="timer">⏱ 5 min recording + 10 min reflection</span>
+
+            <ul class="checklist">
+                <li><strong>Pick a real work problem.</strong> Not a simple question — something messy and unresolved that you're currently stuck on.</li>
+                <li><strong>Open a voice recorder</strong> on your phone (Voice Memos, Otter, or any app).</li>
+                <li><strong>Talk about the problem for 5 minutes.</strong> Don't write. Don't outline first. Just talk. Think out loud. Let yourself contradict yourself, go on tangents, come back.</li>
+                <li><strong>Transcribe it</strong> (using the app, Whisper, or manual transcription).</li>
+                <li><strong>Feed the transcript to an AI.</strong> At the top, type: <em>"Below is a 5-minute voice recording transcript where I'm thinking through a work problem. Tell me: (1) What am I actually trying to solve? (2) What assumptions am I making? (3) What did I avoid saying?"</em></li>
+            </ul>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">What work problem did you choose?</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area" style="min-height: 140px;">
+            <div class="prompt">What did the AI reflect back that surprised you? What did it catch that you hadn't articulated?</div>
+            <div class="lines" style="min-height: 120px;"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">Compare: If you had written a prompt for this same problem (in 2–3 sentences, typed), what would you have said? How is that different from what you dictated?</div>
+            <div class="lines"></div>
+        </div>
+    </div>
+
+    <!-- Part D: The Vulnerability Factor -->
+    <div class="section page-break">
+        <div class="section-number">Part D</div>
+        <h2>The Vulnerability Factor</h2>
+
+        <div class="quote-box">
+            <p>"The idea of speaking your unfinished thoughts into a system and having them organized, challenged, and refined feels alien. It feels vulnerable. It feels like you're exposing incomplete thinking. But that's exactly the point."</p>
+            <div class="attr">— Dr. Yamicia Connor</div>
+        </div>
+
+        <div class="reflection-box">
+            <h3>🤔 Reflection Questions</h3>
+            <div class="write-area" style="background: transparent; border-color: var(--accent-blue);">
+                <div class="prompt">1. During the dictation exercise, what did you notice about your own comfort level? Was it easy or hard to speak incomplete thoughts out loud?</div>
+                <div class="lines"></div>
+            </div>
+            <div class="write-area" style="background: transparent; border-color: var(--accent-blue);">
+                <div class="prompt">2. What would you NOT say to an AI that you might say to a trusted colleague? Why? What does that tell you about how you're using the tool?</div>
+                <div class="lines"></div>
+            </div>
+            <div class="write-area" style="background: transparent; border-color: var(--accent-blue);">
+                <div class="prompt">3. If "AI quality is proportional to the quality of thinking you put in," what's currently limiting the quality of thinking you put in?</div>
+                <div class="lines"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Part E: Application Plan -->
+    <div class="section">
+        <div class="section-number">Part E</div>
+        <h2>Application Plan: This Week</h2>
+        <p>Design a realistic plan to try the dictation method in your actual work this week.</p>
+
+        <div class="write-area">
+            <div class="prompt">1. What recurring task or problem would benefit most from dictation instead of typing?</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">2. When will you try it? (Be specific: day, time, context)</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">3. What's your recording setup? (Phone app, Plaud, desktop, etc.)</div>
+            <div class="lines"></div>
+        </div>
+
+        <div class="write-area">
+            <div class="prompt">4. What would "success" look like? How will you know if dictation worked better than your usual approach?</div>
+            <div class="lines"></div>
+        </div>
+    </div>
+
+    <!-- Part F: Post-Assessment -->
+    <div class="section">
+        <div class="section-number">Part F</div>
+        <h2>Post-Assessment</h2>
+
+        <div class="write-area">
+            <div class="prompt">After today's session, on a scale of 1–10, how confident are you that you could use the dictation method in your work?</div>
+            <div class="scale-row">
+                <span class="scale-label">Not at all</span>
+                <div class="scale-dots">
+                    <div class="scale-dot">1</div>
+                    <div class="scale-dot">2</div>
+                    <div class="scale-dot">3</div>
+                    <div class="scale-dot">4</div>
+                    <div class="scale-dot">5</div>
+                    <div class="scale-dot">6</div>
+                    <div class="scale-dot">7</div>
+                    <div class="scale-dot">8</div>
+                    <div class="scale-dot">9</div>
+                    <div class="scale-dot">10</div>
+                </div>
+                <span class="scale-label">Very confident</span>
+            </div>
+        </div>
+
+        <div class="write-area" style="min-height: 120px;">
+            <div class="prompt">What is the ONE thing you're taking away from this module?</div>
+            <div class="lines" style="min-height: 100px;"></div>
+        </div>
+    </div>
+
+    <!-- Key Concepts Handout -->
+    <div class="section page-break">
+        <div class="section-number">Reference</div>
+        <h2>Module 1 — Key Concepts Handout</h2>
+
+        <table class="compare-table">
+            <thead>
+                <tr>
+                    <th>Concept</th>
+                    <th>Definition</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">Dictation Method</td>
+                    <td>Thinking out loud into a system and having your thinking reflected back in structured form. Originates from surgical operative reports.</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">Prompting (transactional)</td>
+                    <td>A one-shot input → output exchange. Optimized for the machine. Answer-seeking. Most AI advice is organized around this.</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">Three Phases</td>
+                    <td>Research & Design (AI excels) → Refinement (dictation matters most) → Execution (AI falls apart).</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">The Plaud Pipeline</td>
+                    <td>Dictate → Transcribe → Process → Tasks → Execute. No keyboard required.</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">AI Super Productivity Paradox</td>
+                    <td>AI accelerates output while organizational systems remain unchanged, creating more coordination work, not less. (Asana, 2026)</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">The Execution Gap</td>
+                    <td>AI gets you 70% of the way. The last 30% is where the real work lives — and there's now 10× more of it.</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: 600; color: var(--text-primary);">Vulnerability as Method</td>
+                    <td>AI is most useful when you give it your incomplete thinking. Polished prompts produce polished mediocrity.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="quote-box">
+            <p>"This article was dictated while managing three children, preparing dinner, and navigating an interruption involving hot milk. That's the proof of concept."</p>
+            <div class="attr">— Dr. Yamicia Connor</div>
+        </div>
+
+        <p style="margin-top: 24px; font-weight: 600; color: var(--gold);">📖 Assigned Reading: "I Don't Use Prompts: What a Surgeon Taught Me About Talking to AI" (full text)</p>
+    </div>
+
+    <div class="footer">
+        The AI Workflow Curriculum · Module 01 · The Labora Collective<br>
+        © 2026 Dr. Yamicia Connor. All rights reserved.
+    </div>
+
+</div>
+
+</body>
+</html>
