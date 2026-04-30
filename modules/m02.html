@@ -4,65 +4,276 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 02: AI Operating System — Parallel Genius</title>
-<meta name="description" content="AI tools without architecture produce chaos. Learn to design your AI operating system — roles, pipelines, permissions. By Dr. Yamicia Connor.">
+<meta name="description" content="AI tools without architecture produce chaos. Learn to design your AI operating system — roles, pipelines, permissions, and the infrastructure that makes parallel genius possible. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HERO                                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
     <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 1: Foundation</p>
     <p class="module-label" style="color: var(--rose)">Module 02</p>
     <h1>Designing Your AI Operating System</h1>
     <p class="module-subtitle">Architecture, Pipelines, and Permissions</p>
     <div class="module-meta">
-      <span class="meta-item"><strong>Track:</strong> Foundation</span>
+      <span class="meta-item"><strong>Track:</strong> Foundation — "How I Build"</span>
       <span class="meta-item"><strong>Duration:</strong> 90 min</span>
       <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 1: CORE THESIS                  -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p>
+    <p class="section-eyebrow">The Argument</p>
     <h2>Core Thesis</h2>
     <div class="prose-block">
-      <p>AI tools without architecture produce chaos. The difference between someone who "uses AI" and someone who runs an AI-powered operation is the existence of a persistent system design — roles, permissions, file structures, information flow — that constrains and channels AI output into productive work.</p>
+      <p>AI tools without architecture produce chaos. The difference between someone who "uses AI" and someone who runs an AI-powered operation is the existence of a <strong>persistent system design</strong> — roles, permissions, file structures, information flow — that constrains and channels AI output into productive work.</p>
+      <p>Most people start with AI as a chatbot. They open a window, ask a question, close it, open a new window, ask a different question. Every conversation is an island. Nothing connects. Nothing persists. Every session starts from zero. This is AI as a toy.</p>
+      <p>An operating system turns AI from a toy into infrastructure. It gives AI a place to live, a structure to operate within, and rules it must follow. Without this, you will spend more time managing AI's output than doing the work AI was supposed to help with.</p>
     </div>
+
+    <blockquote class="module-quote">
+      "AI tools without architecture produce chaos. The difference between someone who 'uses AI' and someone who runs an AI-powered operation is the existence of a persistent system design."
+    </blockquote>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 2: THE PROBLEM — WHAT HAPPENS   -->
+<!-- WITHOUT ARCHITECTURE                     -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p>
-    <h2>What You'll Learn</h2>
+    <p class="section-eyebrow">The Problem</p>
+    <h2>What Happens Without a System</h2>
+    <div class="prose-block">
+      <p>Before Yamicia built her AI operating system, here is what was happening:</p>
+    </div>
     <div class="concept-grid">
       <div class="concept-card">
-        <h4>1. The Five-Stage Pipeline</h4>
-        <p>Every piece of work moves through exactly five stages: Triage → Task Assignments → In Progress → Waiting On Approval → Completed. This is not project management theory. This is the actual running system.</p>
+        <h4>Files Everywhere</h4>
+        <p>"There's, like, files everywhere. And I don't know how to control these agents from, like, just putting their shit everywhere." Agents create ad hoc folders. Content becomes invisible. Work is duplicated because nobody — including the AI — knows what already exists.</p>
       </div>
       <div class="concept-card">
-        <h4>2. The Permission Model</h4>
-        <p>Three roles, no overlap: Agents do assigned work. The Conductor orchestrates. Yamicia approves. Nothing leaves Waiting On Approval without human sign-off.</p>
+        <h4>Dashboard Chaos</h4>
+        <p>"I essentially deleted my dashboard because he got so confused. He had 5 or 6 different versions of the dashboard." Without structure, AI tries to be helpful by creating organizing documents — which creates more chaos, not less.</p>
       </div>
       <div class="concept-card">
-        <h4>3. Folder Structure Is Law</h4>
-        <p>"Only the 5-stage pipeline. NO rogue folders. Agents in other sessions create ad hoc folders that break the system because content becomes invisible."</p>
+        <h4>Redundant Conversations</h4>
+        <p>"A lot of what I think is happening is the conductor has all these logs, but they're not condensing them. A lot of the stuff we talk about is the exact same because it's still fucked up. So we're talking about the same thing because it's still not fixed." Without persistent memory, you repeat yourself endlessly.</p>
       </div>
       <div class="concept-card">
-        <h4>4. The Boot Sequence</h4>
-        <p>Every session starts the same way: mount the system folder, read the sync state, scan all five stages, sweep for dictations, check Slack. This is the system's immune system against AI's zero-memory problem.</p>
+        <h4>Slow Humans, Fast Machines</h4>
+        <p>"People are slow... whereas I need them to take 50 pieces of content and put it up, they're still at 10." The real bottleneck is rarely the AI — it's the human process around it. The system must be designed for <em>human</em> speed, not machine speed.</p>
       </div>
     </div>
-    <blockquote class="module-quote" style="margin-top: 32px">"YC looks at ONE place — the dashboard. Don't create separate docs she has to hunt for."</blockquote>
+    <blockquote class="module-quote" style="margin-top: 32px">"The problem isn't AI. The problem is that you're trying to run a professional operation on top of a consumer product. You wouldn't run a hospital on text messages."</blockquote>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 3: THE FIVE-LAYER ARCHITECTURE  -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">The Architecture</p>
+    <h2>Five Layers of an AI Operating System</h2>
+    <div class="prose-block">
+      <p>Every AI operating system — whether you're a solo creator, a small team, or a growing organization — needs five layers. You can build these with free tools. The architecture matters more than the tools.</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Layer 1: The Pipeline</h4>
+        <p>Every piece of work moves through defined stages. In Yamicia's system, the pipeline has five stages: <strong>Triage → Task Assignment → In Progress → Waiting on Approval → Completed</strong>. Work enters at one end and exits at the other. Nothing floats.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>Real example:</strong> A dictation arrives by email. It enters Triage. The system creates a task. An agent processes it. The output goes to Waiting on Approval. YC reviews and approves — or sends it back. Only then is it Completed.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Layer 2: The Folder Structure</h4>
+        <p>"Only the 5-stage pipeline. NO rogue folders. Agents in other sessions create ad hoc folders that break the system because content becomes invisible." Your folder structure <em>is</em> your pipeline. Every file must live inside one of your pipeline stages. If a file doesn't fit, you have a gap in your pipeline — not a reason for a new folder.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Layer 3: The Permission Model</h4>
+        <p>Three roles, no overlap: <strong>Agents do assigned work. The Conductor orchestrates. The human approves.</strong> Nothing leaves "Waiting on Approval" without human sign-off. This is the circuit breaker that prevents AI from publishing, deploying, or distributing anything the human hasn't explicitly reviewed.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Layer 4: The Boot Sequence</h4>
+        <p>Every session starts the same way: mount the system folder, read the sync state, scan all pipeline stages, sweep for new inputs (dictations, emails, Slack messages), check for pending approvals. This is the system's immune response against AI's zero-memory architecture. It guarantees continuity between sessions.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Layer 5: The Dashboard</h4>
+        <p>"YC looks at ONE place — the dashboard. Don't create separate docs she has to hunt for." The dashboard is the single source of truth. It shows pipeline status, pending approvals, recent completions, and blocked items. If it's not on the dashboard, it doesn't exist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 4: THE EDITORIAL PIPELINE       -->
+<!-- (A REAL SYSTEM IN ACTION)               -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Case Study</p>
+    <h2>A Real System: The Editorial Pipeline</h2>
+    <div class="prose-block">
+      <p>This is the actual editorial pipeline Yamicia built for the Labora Collective. It was designed iteratively — through conversations with AI, trial and error, and real production constraints. It has 15 stages with explicit exit criteria for each one.</p>
+      <p>The point isn't to copy this pipeline. The point is to see what a <em>designed</em> system looks like — versus the "wing it" approach most people use.</p>
+    </div>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="overflow-x: auto;">
+        <h4>The 15-Stage Editorial Pipeline</h4>
+        <table style="width:100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 12px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--rose); text-align:left;">
+              <th style="padding: 8px 12px; width:40px">#</th>
+              <th style="padding: 8px 12px;">Phase</th>
+              <th style="padding: 8px 12px;">Exit Criteria</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">0</td><td style="padding:8px 12px">👉 Start Here</td><td style="padding:8px 12px">Journal set, owner set, type set</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">1</td><td style="padding:8px 12px">💡 Intake</td><td style="padding:8px 12px">Metadata complete, owners assigned</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">2</td><td style="padding:8px 12px">🔗 Series Processing</td><td style="padding:8px 12px">Series map consistent, siblings linked</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">3</td><td style="padding:8px 12px">🏷️ Tagging & Refinement</td><td style="padding:8px 12px">Taxonomy complete, approvals noted</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">4</td><td style="padding:8px 12px">💡 Editorial Planning</td><td style="padding:8px 12px">Publish date set, internal deadlines set</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">5</td><td style="padding:8px 12px">🔬 Research & Clinical</td><td style="padding:8px 12px">Research packet complete, citations drafted</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">6</td><td style="padding:8px 12px">✍️ Drafting</td><td style="padding:8px 12px">Draft shared for edit, assets list defined</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">7</td><td style="padding:8px 12px">🖋️ Editing</td><td style="padding:8px 12px">Ready for Revisions or Ready for Final</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">8</td><td style="padding:8px 12px">🔄 Revisions</td><td style="padding:8px 12px">Final text locked, assets ready</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">9</td><td style="padding:8px 12px">🎨 Media Build</td><td style="padding:8px 12px">Draft fully formatted, media placed, links validated</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">10</td><td style="padding:8px 12px">✅ QC</td><td style="padding:8px 12px">QC passed, issues resolved</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">11</td><td style="padding:8px 12px">🚚 Distribution</td><td style="padding:8px 12px">Ready to post or posted, URL captured</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">12</td><td style="padding:8px 12px">📦 Packaging</td><td style="padding:8px 12px">Packaging kit complete, learnings logged</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px">13</td><td style="padding:8px 12px">📱 Social & Engagement</td><td style="padding:8px 12px">Social complete, insights logged, follow-ups created</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px">14</td><td style="padding:8px 12px">📊 Analytics</td><td style="padding:8px 12px">Performance assessed, improvements documented</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top: 32px">"We don't start from a schedule because we have no basis to make that decision yet. Our assets are the material. The strategy is how we deploy them."</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 5: CHOOSING YOUR TOOLS          -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">The Tools</p>
+    <h2>Building Your Stack — Without Being an Engineer</h2>
+    <div class="prose-block">
+      <p>Yamicia is a physician, not a software engineer. She built her AI operating system by <em>talking to AI about what she needed</em> and having it help her implement the solution. You don't need to code. You need to know what you need.</p>
+    </div>
+
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>The Database Layer</h4>
+        <p>Tools like Coda, Airtable, or Notion serve as your persistent state — the place where your pipeline lives, your content is tracked, and your metadata is stored. Yamicia started with Coda. The specific tool matters less than having <em>any</em> structured data layer.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px">"Help me understand Netlify because it's seeing like it's deep research. I feel like this might be the exact thing I need... What can I actually do? I wanna know what I can do."</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Deployment Layer</h4>
+        <p>GitHub stores your work. Netlify publishes it. This sounds technical — it isn't. Yamicia learned both by asking AI to explain them in plain English. The key insight: "Why build a website at all when Netlify is so much easier?" The right tools eliminate gatekeepers.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Communication Layer</h4>
+        <p>Slack, email, or whatever your team already uses. The system must be able to <em>receive</em> inputs (dictations, requests) and <em>push</em> outputs (drafts, notifications) through the channels people actually check. Don't add new channels — route through existing ones.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The AI Layer</h4>
+        <p>Claude, ChatGPT, Gemini, or equivalent. This is the processing engine. But the AI is not the system — it's a component <em>inside</em> the system. The system tells the AI what to do, not the other way around. "I want essentially like a person... I want the computer to click the buttons."</p>
+      </div>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top: 32px">"I'm not a computer person. I'm a physician. I need you to talk to me like you were explaining it to a regular person. I know you want to do this — this allows you to do this."</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 6: THE HARDEST LESSON           -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">The Real Lesson</p>
+    <h2>Your System Will Break. That's How You Know It's Working.</h2>
+    <div class="prose-block">
+      <p>The editorial pipeline above didn't arrive as a finished product. It was built through months of conversations, failures, rebuilds, and hard-won clarity. Here is the uncomfortable truth about building your AI operating system:</p>
+    </div>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>Iteration Is The Method</h4>
+        <p>You will build something, use it, discover it doesn't work, rebuild it. The conversation where Yamicia built her workflow phases had <strong>92 messages</strong>. She went back and forth with AI for hours refining exit criteria, adding stages she'd forgotten, removing stages that didn't make sense. The system was designed <em>through</em> the conversation, not before it.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Start Smaller Than You Think</h4>
+        <p>"I have limited time and I need to leave this database in usable form within an hour... so those are my practical constraints." Your first version should be functional within a single work session. Depth comes later. A working 5-stage pipeline is infinitely more valuable than a theoretical 15-stage pipeline you never implement.</p>
+      </div>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top: 32px">"Let's take this one step at a time. Give me what I need for the phase table."</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 7: EXERCISES                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Build Your Operating System</h2>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: Map Your Current Chaos</h4>
+        <p>Before you build anything, document what you actually do. For the next 3 days, track every task you do that involves AI. Note: what tool you used, where the output went, who (if anyone) reviewed it, and whether you could find it again a week later. This audit reveals where your system is leaking.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: Design Your Pipeline</h4>
+        <p>Take the chaos map from Exercise 1 and design a pipeline. Start with 3-5 stages maximum. Define the entry criteria (what triggers a task entering this stage) and exit criteria (what must be true before a task moves to the next stage). Write this in plain language, not jargon.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: The Boot Sequence</h4>
+        <p>Write a 5-step checklist that you will run at the start of every AI work session. This is your boot sequence. It should cover: (1) What inputs have arrived since last session? (2) What's in progress? (3) What's waiting on approval? (4) What's blocked? (5) What's the most important thing to work on right now? Tape this to your monitor.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 4: Ask AI to Build It</h4>
+        <p>Take your pipeline design and your boot sequence. Open your AI tool. Say: "I need you to help me set up a system. Here is my pipeline. Here is how each session should start. Help me implement this in [Coda / Airtable / Notion / Google Sheets]." Let the conversation iterate. The system will emerge from the dialogue.</p>
+      </div>
+    </div>
+
+    <div class="prose-block" style="margin-top: 24px;">
+      <p><strong>Reflection Question:</strong> Where does work enter your life? Where does it get stuck? Where does it leak out of the system and get lost? These three questions will tell you more about your operating system needs than any framework.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 8: SLIDE DECK + RESOURCES       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
     <p class="section-eyebrow">Slide Deck</p>
     <h2>Module 02 Presentation</h2>
@@ -76,16 +287,9 @@
   </div>
 </section>
 
-<section class="module-section" style="background: var(--surface-warm)">
-  <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p>
-      <h3>Design Your Pipeline</h3>
-      <p>Map your current workflow as a pipeline. Where does work enter? Where does it get stuck? Where does it leak out of the system? Design a 3–5 stage pipeline for your own operation.</p>
-    </div>
-  </div>
-</section>
-
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 9: SOURCE READINGS              -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section">
   <div class="container">
     <p class="section-eyebrow">Source Readings</p>
@@ -94,6 +298,9 @@
       <li><span class="source-label">Primary</span> CONDUCTOR.md — the 48,000-word system design document for YC's multi-agent operation</li>
       <li><span class="source-label">System</span> Lesson #18: "Only the 5-stage pipeline. NO rogue folders."</li>
       <li><span class="source-label">System</span> Lesson #9: "One dashboard to rule them all."</li>
+      <li><span class="source-label">Case Study</span> "Coda workflow database formatting for team navigation" — 80-message session building the editorial pipeline in real time</li>
+      <li><span class="source-label">Case Study</span> "Editorial workflow phases and exit criteria" — 92-message session designing the 15-stage production loop</li>
+      <li><span class="source-label">Foundational</span> "Understanding Netlify fundamentals" — 131-message session where a physician learns deployment from scratch</li>
     </ul>
     <div class="module-nav">
       <a href="m01.html">← Prev: The Dictation Method</a>

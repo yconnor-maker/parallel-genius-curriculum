@@ -4,65 +4,274 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 03: Writing for Machines — Parallel Genius</title>
-<meta name="description" content="The quality of AI output is determined by your task specification. Learn to write for machines. By Dr. Yamicia Connor.">
+<meta name="description" content="The quality of AI output is determined by your task specification. Learn to write for machines — not prompts, but structured instructions that produce reliable, replicable results. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HERO                                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
     <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 1: Foundation</p>
     <p class="module-label" style="color: var(--rose)">Module 03</p>
     <h1>Writing for Machines</h1>
     <p class="module-subtitle">Task Specification as a Teachable Skill</p>
     <div class="module-meta">
-      <span class="meta-item"><strong>Track:</strong> Foundation</span>
+      <span class="meta-item"><strong>Track:</strong> Foundation — "How I Communicate"</span>
       <span class="meta-item"><strong>Duration:</strong> 90 min</span>
       <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 1: CORE THESIS                  -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p>
+    <p class="section-eyebrow">The Argument</p>
     <h2>Core Thesis</h2>
     <div class="prose-block">
       <p>The quality of AI output is entirely determined by the quality of the task specification. Writing a good task spec is a teachable skill that most people skip — and then blame the AI for bad results.</p>
+      <p>This module is not about "prompt engineering." Prompt engineering implies a trick — a magic phrase that unlocks better output. That's a misunderstanding of what's happening. What's happening is <strong>communication</strong>. You are telling a machine what you need, what you know, what you don't know, and what a good result looks like. The more precisely you communicate those things, the more useful the output.</p>
+      <p>Writing for machines is not harder than writing for people. It's different. Machines don't infer. They don't read between the lines. They don't share your background. They will do exactly what you ask — including the parts you didn't think to mention.</p>
     </div>
-    <blockquote class="module-quote">"There is a specific kind of failure that looks like research. It produces data. It generates citations. It has methodology sections and confidence intervals. And it answers the wrong question so precisely that no one notices the wrong question was asked."</blockquote>
+
+    <blockquote class="module-quote">
+      "There is a specific kind of failure that looks like research. It produces data. It generates citations. It has methodology sections and confidence intervals. And it answers the wrong question so precisely that no one notices the wrong question was asked."
+    </blockquote>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 2: THE SPECTRUM OF INPUTS       -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p>
-    <h2>What You'll Learn</h2>
+    <p class="section-eyebrow">The Spectrum</p>
+    <h2>Three Levels of Talking to Machines</h2>
+    <div class="prose-block">
+      <p>Not every interaction with AI needs a formal task specification. What matters is knowing which level you're operating at — and not confusing them.</p>
+    </div>
     <div class="concept-grid">
       <div class="concept-card">
-        <h4>1. The Self-Contained Task File</h4>
-        <p>Every task file must be self-contained. The agent should not need to go find other documents. Every task includes: header, instructions, specified outputs, operating rules, results log, and completion gate.</p>
+        <h4>Level 1: The Conversation</h4>
+        <p>This is what most people do. You open a chat window and talk. You're exploring. You're thinking. You're asking questions you don't have answers to. This is valuable — it's how Yamicia discovered Netlify ("Help me understand Netlify... what can I actually do?"). Conversations are for discovery. Don't try to get production work done in conversation mode.</p>
       </div>
       <div class="concept-card">
-        <h4>2. The Results Log Is the Permanent Record</h4>
-        <p>"Chat dies. Everything must be extracted. Write it like you're briefing someone who wasn't in the room."</p>
+        <h4>Level 2: The Dictation</h4>
+        <p>You already learned this in Module 01. You speak your messy, unstructured thinking into a machine and it structures it for you. The dictation is an input — raw material. It is not a task specification. It is the material <em>from which</em> a task specification might be created.</p>
       </div>
       <div class="concept-card">
-        <h4>3. Precision Framing</h4>
-        <p>Start from what you know, not what you can measure. Name the mechanism, not the correlation. Ask what the question assumes. Every research question has embedded assumptions.</p>
+        <h4>Level 3: The Task Spec</h4>
+        <p>This is formal. This is structured. This is the document you write when you need reliable, replicable output. A task spec says: here is what I need, here is the context, here are the constraints, here is what the output should look like, and here is how I'll know it's done. <strong>This is the skill most people never learn.</strong></p>
       </div>
-      <div class="concept-card">
-        <h4>4. Don't Solve Non-Problems</h4>
-        <p>"Before writing a task, ask: does completing this move the pipeline forward?" Agents that don't know what exists produce work that conflicts with reality.</p>
+    </div>
+    <blockquote class="module-quote" style="margin-top: 32px">"I always want something I can copy and paste. Just assume when I ask you a question, I always want something I can copy and paste."</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 3: ANATOMY OF A TASK SPEC       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">The Structure</p>
+    <h2>Anatomy of a Task Specification</h2>
+    <div class="prose-block">
+      <p>Every task file must be self-contained. The agent should not need to go find other documents. A complete task spec has six sections:</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="overflow-x: auto;">
+        <table style="width:100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 12px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--rose); text-align:left;">
+              <th style="padding: 10px 16px; width: 30%;">Section</th>
+              <th style="padding: 10px 16px;">What It Does</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)">
+              <td style="padding:10px 16px"><strong>1. Header</strong></td>
+              <td style="padding:10px 16px">Task name, owner, date, priority. Scannable metadata so anyone (human or machine) can triage instantly.</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)">
+              <td style="padding:10px 16px"><strong>2. Instructions</strong></td>
+              <td style="padding:10px 16px">What to do, in numbered steps. Be specific enough that a new agent with no prior context could execute it. If you find yourself saying "you know what I mean" — you haven't been specific enough.</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)">
+              <td style="padding:10px 16px"><strong>3. Specified Outputs</strong></td>
+              <td style="padding:10px 16px">What files, documents, or artifacts should be produced, with exact names and formats. "Create a report" is vague. "Create REPORT_EDITORIAL_STATUS_APR29.md" is a task spec.</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)">
+              <td style="padding:10px 16px"><strong>4. Operating Rules</strong></td>
+              <td style="padding:10px 16px">Constraints, don'ts, and boundaries. "Do NOT create new folders." "Do NOT deploy without approval." "Do NOT change content in files you didn't create." These are the guardrails.</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)">
+              <td style="padding:10px 16px"><strong>5. Results Log</strong></td>
+              <td style="padding:10px 16px">A section for the agent to record what it did. "Chat dies. Everything must be extracted. Write it like you're briefing someone who wasn't in the room."</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)">
+              <td style="padding:10px 16px"><strong>6. Completion Gate</strong></td>
+              <td style="padding:10px 16px">How does the human know this task is done? A checklist of verifiable conditions. "Output file exists." "No deployment errors." "QC checklist passed." If the gate is ambiguous, the task will never close cleanly.</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 4: COMMON FAILURES              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">The Failures</p>
+    <h2>Five Ways Your Task Spec Will Fail</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>1. The Blank Check</h4>
+        <p>"Make me a social media plan." There is no specified output, no constraints, no context. The AI will produce <em>something</em> — and you'll spend more time evaluating whether it's useful than you would have spent writing the plan yourself.</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. The Wrong Question</h4>
+        <p>The AI precisely answers a question you didn't actually need answered. This is the most dangerous failure because it <em>looks</em> like success. The output has citations, structure, and confidence. But it addressed a symptom, not the real problem. Always ask: "What does completing this actually move forward?"</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. The Assumption Bomb</h4>
+        <p>You assumed the AI knew something it didn't. You said "update the dashboard" but didn't specify <em>which</em> dashboard. You said "format it correctly" but didn't define what correct looks like. Every word you leave out is a gap the AI will fill with its own assumptions — and its assumptions are often wrong.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. The Missing Context</h4>
+        <p>"Agents don't know what exists unless the task spec tells them." If you ask AI to create something without telling it what already exists, it will produce work that conflicts with reality. The task spec must include the context — or at minimum, tell the agent where to find it.</p>
+      </div>
+      <div class="concept-card">
+        <h4>5. The Non-Problem</h4>
+        <p>"Before writing a task, ask: does completing this move the pipeline forward?" People waste enormous energy having AI produce deliverables that nobody needed. The most important skill in task writing is knowing when <em>not</em> to write a task.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 5: THE REAL CONVERSATION        -->
+<!-- ═══════════════════════════════════════ -->
 <section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Case Study</p>
+    <h2>What Good Task Communication Looks Like</h2>
+    <div class="prose-block">
+      <p>Here is a real exchange between Yamicia and an AI. Watch how she provides context, sets constraints, redirects when the AI goes off track, and demands specific outputs.</p>
+    </div>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Setting Context + Constraints</h4>
+        <p style="font-style: italic; color: var(--text-secondary);">"We are going to be picking up on the coda optimization project. Right now I have limited time and I need to leave this database in usable form within an hour... so those are my practical constraints."</p>
+        <p style="margin-top: 12px;"><strong>What she did:</strong> Named the project. Stated the time constraint. Defined the minimum viable outcome. In three sentences, the AI knows exactly what kind of session this is — practical, not exploratory.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Redirecting Bad Output</h4>
+        <p style="font-style: italic; color: var(--text-secondary);">"What is wrong with you? Just make a table I can copy and paste. Just like your other one. How can I get this to stop? I am becoming so frustrated."</p>
+        <p style="margin-top: 12px;"><strong>What she did:</strong> Direct, unambiguous feedback. The AI was producing a format that wasn't usable. Instead of politely accepting it, she told it exactly what was wrong and what the correct format was. Frustration is feedback. Use it.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Correcting the Framing</h4>
+        <p style="font-style: italic; color: var(--text-secondary);">"These questions are not helping me... I just want to provide clarity around the following things."</p>
+        <p style="margin-top: 12px;"><strong>What she did:</strong> The AI was asking discovery questions that weren't useful. She stopped the line of inquiry and redirected: "Here is what I know. Help me with <em>this</em>." You control the conversation. The AI works for you.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Locking In Rules</h4>
+        <p style="font-style: italic; color: var(--text-secondary);">"Let's lock in a rule. You always ask me what format I want things in. I very rarely want things in PDF. The formats I want are either plain text or fancy markdown. Those are the two outputs that I want."</p>
+        <p style="margin-top: 12px;"><strong>What she did:</strong> Established a persistent rule that prevents a recurring problem. This is the difference between fixing a problem once and fixing it permanently. Good task communication includes rules that outlive the current session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 6: PRECISION FRAMING            -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Advanced Skill</p>
+    <h2>Precision Framing: Asking the Right Question</h2>
+    <div class="prose-block">
+      <p>The most valuable skill in writing for machines is the ability to ask the question that, if answered, actually moves your work forward. Most people ask the question that's easiest to articulate, not the one that matters.</p>
+    </div>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>Start From What You Know</h4>
+        <p>Don't ask "What should I do?" Ask "I know X, Y, and Z. Given those constraints, what are my options for A?" The more you tell the machine what you already know, the less it wastes your time telling you things you don't need.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Name the Mechanism</h4>
+        <p>Don't ask "Why is this happening?" Ask "Is this happening because of A, B, or C?" When you name possible mechanisms, you force the AI to evaluate — not just generate. Evaluation is where AI is actually useful. Generation without constraint is noise.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Ask What the Question Assumes</h4>
+        <p>Every question contains assumptions. "How do I scale my team?" assumes you should scale. "How do I publish more frequently?" assumes frequency is the bottleneck. Before asking AI for answers, interrogate your own questions. The wrong question answered perfectly is still the wrong answer.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Sequence Your Questions</h4>
+        <p>"Let's take this one step at a time." Don't dump 10 questions at once. Sequence them. Let the answer to question 1 inform question 2. This mirrors how you actually solve problems — and it prevents the AI from producing a wall of surface-level responses instead of depth on the thing that matters.</p>
+      </div>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top: 32px">"We don't start from a schedule because we have no basis to make that decision yet. Our assets are the material. The strategy is how we deploy them."</blockquote>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 7: EXERCISES                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Practice Writing for Machines</h2>
+
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: Rewrite a Vague Request</h4>
+        <p>Take this request: "Make me a social media plan." Rewrite it as a self-contained task spec with all six sections (Header, Instructions, Specified Outputs, Operating Rules, Results Log, Completion Gate). The rewrite should be at least 200 words. If it's shorter, you haven't been specific enough.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: The Frustration Test</h4>
+        <p>Find a conversation where AI gave you a bad result. Go back and read your input. Identify: (1) What you assumed the AI knew. (2) What format you expected but didn't specify. (3) What context was missing. Rewrite your input and resubmit. Compare the results.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: Write a Rule</h4>
+        <p>Identify a recurring frustration in your AI interactions — something you have to correct repeatedly. Write it as a persistent rule in the format: "Always [do X]. Never [do Y]. When in doubt, [default behavior]." Add this rule to your AI's system prompt or constitution.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 4: Interrogate Your Question</h4>
+        <p>Before your next AI interaction, write down your question. Then ask yourself: "What does this question assume? What would change if those assumptions were wrong? Is this the question that, if answered, actually moves my work forward — or is it just the easiest question to ask?"</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- SECTION 8: SLIDE DECK + RESOURCES       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
     <p class="section-eyebrow">Slide Deck</p>
     <h2>Module 03 Presentation</h2>
@@ -76,24 +285,16 @@
   </div>
 </section>
 
-<section class="module-section" style="background: var(--surface-warm)">
-  <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p>
-      <h3>Rewrite a Vague Request</h3>
-      <p>Take a vague request ("make me a social media plan") and rewrite it as a self-contained task spec using the CONDUCTOR.md template. Include: instructions, specified outputs with exact file names, operating rules, and a completion gate.</p>
-    </div>
-  </div>
-</section>
-
 <section class="module-section">
   <div class="container">
     <p class="section-eyebrow">Source Readings</p>
     <h2>Go Deeper</h2>
     <ul class="source-list">
-      <li><span class="source-label">Primary</span> INBOX_RULES.md + TASK_TEMPLATE_v3.md</li>
-      <li><span class="source-label">Supporting</span> "How to Ask the Right Question" (YC essay)</li>
+      <li><span class="source-label">Primary</span> INBOX_RULES.md + TASK_TEMPLATE_v3.md — the operational specification format</li>
+      <li><span class="source-label">Essay</span> "How to Ask the Right Question" — YC essay on precision framing</li>
       <li><span class="source-label">Conductor</span> Lesson #34: "Agents don't know what exists unless the task spec tells them."</li>
+      <li><span class="source-label">Case Study</span> "Restructuring Coda database for thematic article tagging" — 185-message session demonstrating iterative task refinement</li>
+      <li><span class="source-label">Case Study</span> "Coda workflow database formatting" — real-time demonstration of context-setting, constraint-naming, and redirect patterns</li>
     </ul>
     <div class="module-nav">
       <a href="m02.html">← Prev: AI Operating System</a>
