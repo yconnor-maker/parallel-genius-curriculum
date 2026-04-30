@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The API Key in the Public Repo — Parallel Genius</title>
+<meta name="description" content="An AI agent wrote working code fast. It also committed a Personal Access Token to a public GitHub repo. Anyone who saw it could read and write your entire database.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, #2d1a1a 0%, var(--bg-dark) 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e74c3c; margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .timeline { margin: 32px 0; }
+  .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-when { font-size: 0.82rem; color: var(--text-light); font-weight: 600; }
+  .timeline-what h4 { margin-bottom: 4px; }
+  .timeline-what p { color: var(--text-muted); font-size: 0.9rem; }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--rose); font-size: 1.1rem; margin-bottom: 8px; }
+  .danger-box { background: #2d1a1a; border: 1px solid #5a2d2d; border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; color: #e8c4c4; }
+  .danger-box h4 { color: #e74c3c; font-size: 1.1rem; margin-bottom: 8px; }
+  @media (max-width: 640px) { .timeline-item { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">⚠️ Security Case Study</span>
+    <h1>The API Key in the Public Repo</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">An AI agent wrote working code. It also committed a Personal Access Token to a public GitHub repo. Anyone who saw it could read and write the entire database.</p>
+    <div class="case-meta">
+      <span>Referenced in: M02, M04</span>
+      <span>Source: PHN Command Center, Apr 27</span>
+      <span>Severity: Critical</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="prose-block">
+      <p>An AI agent was tasked with building a command center dashboard that pulled data from Airtable. The agent needed an API token to authenticate. It did what any fast-moving developer does: it hardcoded the token directly in the JavaScript source file.</p>
+      <p>That file was committed to a public GitHub repository.</p>
+    </div>
+    <div class="danger-box">
+      <h4>The Exposure</h4>
+      <p>The Personal Access Token <code>patywiQ5r7v6g2QgC...</code> was committed in plain text inside <code>phn-core.js</code>. This token had full read/write access to the Airtable base <code>applGxe8BtUlTwdpF</code> — containing the entire operational database. Until revoked, anyone who viewed the repository could read, modify, or delete any record.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Timeline</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-when">Agent builds</div>
+        <div class="timeline-what">
+          <h4>Code is generated</h4>
+          <p>AI agent creates a working Airtable-connected dashboard. The token is placed directly in the fetch headers — <code>Authorization: Bearer patywiQ5r7...</code> — because that's the fastest path to a working demo.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">git push</div>
+        <div class="timeline-what">
+          <h4>Token ships to GitHub</h4>
+          <p>The code is committed and pushed to a public repository. The token is now in the git history — even deleting the file won't remove it from previous commits.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">Discovery</div>
+        <div class="timeline-what">
+          <h4>Human review catches it</h4>
+          <p>A subsequent session reviewing the codebase identifies the hardcoded credential. The finding triggers immediate remediation.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-when">Remediation</div>
+        <div class="timeline-what">
+          <h4>4-step fix</h4>
+          <p>PR #4 removes the token from source. A Netlify serverless proxy function replaces direct API calls. The leaked token is revoked in Airtable. A new, scoped token is issued with minimal permissions.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>Why AI Agents Create This Problem</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid #e74c3c;">
+        <h4>Speed Over Security</h4>
+        <p>AI agents optimize for "make it work." The fastest path to a working API integration is a hardcoded token. The agent doesn't instinctively think about secrets rotation, environment variables, or credential scoping — it thinks about producing a functional result.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid #e74c3c;">
+        <h4>No Sense of "Public"</h4>
+        <p>An AI agent doesn't distinguish between a private scratch file and a public repository. It writes the same code regardless. The concept of "this will be visible to the internet" doesn't factor into its code generation.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid #e74c3c;">
+        <h4>Compound Velocity</h4>
+        <p>In an AI-assisted workflow, code goes from conception to deployment in hours, not days. There's less time for human review. The security review step that a traditional PR process enforces gets compressed or skipped entirely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Fix: Credential Hygiene as Standard Operating Procedure</h2>
+    <div class="lesson-box">
+      <h4>1. Never Hardcode — Use Environment Variables</h4>
+      <p>All API tokens go in environment variables (<code>.env</code> files locally, platform-level env vars in production). The codebase references <code>process.env.AIRTABLE_TOKEN</code>, never the actual token string.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>2. Use a Serverless Proxy</h4>
+      <p>Client-side JavaScript should never contain API credentials. A serverless function (Netlify Functions, Vercel Edge, etc.) sits between the browser and the API. The browser calls your function; the function calls the API with the token stored server-side.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>3. Scope Your Tokens</h4>
+      <p>Never use a full-access token. Create tokens with the minimum permissions needed — read-only if the app only reads, specific-table access if it only needs one table. A leaked read-only token is a problem; a leaked read-write token is a disaster.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>4. Add to .gitignore Immediately</h4>
+      <p>The <code>.env</code> file goes in <code>.gitignore</code> before the first commit. Not after. Before. This must be part of the project initialization checklist, not an afterthought.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>5. Include in Agent Constitution</h4>
+      <p>If you're using AI agents to write code, your Agent Constitution (the rules document every agent reads) must include: "Never hardcode API credentials. All secrets go in environment variables." The agent won't know unless you tell it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <blockquote class="module-quote">"AI agents don't instinctively think about secrets rotation — they optimize for 'make it work.' Credential hygiene must be part of the standard operating procedure, not a post-incident discovery."</blockquote>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="two-agents-one-table.html">← Prev: Two Agents, One Table</a>
+      <a href="../syllabus.html">Back to Syllabus →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

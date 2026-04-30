@@ -30,6 +30,7 @@
 .track-badge-editorial { background: var(--gold); }
 .track-badge-research { background: var(--teal); }
 .track-badge-production { background: var(--plum); }
+.track-badge-prerequisite { background: #5b6e7a; }
 .track-title-row h2 { font-size: 28px; }
 
 /* Module Row */
@@ -94,13 +95,92 @@
     <div class="progress-inner">
       <span class="progress-label">Progress</span>
       <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width: 0%"></div></div>
-      <span class="progress-count" id="progress-count">0 / 10 modules</span>
+      <span class="progress-count" id="progress-count">0 / 15 modules</span>
     </div>
   </div>
 </div>
 
 <section class="section">
   <div class="container">
+
+    <!-- ═══ COURSE 0: AI FOUNDATIONS (PREREQUISITE) ═══ -->
+    <div class="track-section">
+      <div class="track-title-row">
+        <span class="track-badge track-badge-prerequisite">Course 0</span>
+        <h2>AI Foundations — "What This Is"</h2>
+      </div>
+
+      <div class="module-row" data-module="c0m01">
+        <div class="check-circle" onclick="toggleModule('c0m01')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/course0/c0-m01.html">C0-01: What an LLM Actually Is</a></h3>
+          <p class="module-thesis">Before you build workflows, you need to understand what you're working with — a pattern matching engine, not a thinking partner.</p>
+          <div class="module-assets">
+            <a href="modules/course0/c0-m01.html" class="asset-pill">📖 Lesson</a>
+            <span class="asset-pill coming-soon">📽️ Slides</span>
+            <span class="asset-pill coming-soon">📝 Worksheet</span>
+          </div>
+        </div>
+        <div class="module-time">45 min</div>
+      </div>
+
+      <div class="module-row" data-module="c0m02">
+        <div class="check-circle" onclick="toggleModule('c0m02')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/course0/c0-m02.html">C0-02: The Cognitive Overload Problem</a></h3>
+          <p class="module-thesis">AI makes you faster. Speed creates overload. Your team absorbs at 1x while you produce at 10x. This is the problem nobody warned you about.</p>
+          <div class="module-assets">
+            <a href="modules/course0/c0-m02.html" class="asset-pill">📖 Lesson</a>
+            <span class="asset-pill coming-soon">📽️ Slides</span>
+            <span class="asset-pill coming-soon">📝 Worksheet</span>
+          </div>
+        </div>
+        <div class="module-time">45 min</div>
+      </div>
+
+      <div class="module-row" data-module="c0m03">
+        <div class="check-circle" onclick="toggleModule('c0m03')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/course0/c0-m03.html">C0-03: Conversation, Not Commands</a></h3>
+          <p class="module-thesis">Most people type prompts. Power users have conversations. The difference between a search engine and a thinking partner is everything.</p>
+          <div class="module-assets">
+            <a href="modules/course0/c0-m03.html" class="asset-pill">📖 Lesson</a>
+            <span class="asset-pill coming-soon">📽️ Slides</span>
+            <span class="asset-pill coming-soon">📝 Worksheet</span>
+          </div>
+        </div>
+        <div class="module-time">60 min</div>
+      </div>
+
+      <div class="module-row" data-module="c0m04">
+        <div class="check-circle" onclick="toggleModule('c0m04')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/course0/c0-m04.html">C0-04: The Goldfish Problem</a></h3>
+          <p class="module-thesis">AI forgets everything between sessions. Your brilliant employee has amnesia. This module teaches you to build persistence before anything else.</p>
+          <div class="module-assets">
+            <a href="modules/course0/c0-m04.html" class="asset-pill">📖 Lesson</a>
+            <span class="asset-pill coming-soon">📽️ Slides</span>
+            <span class="asset-pill coming-soon">📝 Worksheet</span>
+          </div>
+        </div>
+        <div class="module-time">45 min</div>
+      </div>
+
+      <div class="module-row" data-module="c0m05">
+        <div class="check-circle" onclick="toggleModule('c0m05')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/course0/c0-m05.html">C0-05: What to Build vs. What to Buy</a></h3>
+          <p class="module-thesis">AI companies are building fast. Don't build what they'll ship in 6 months. Build what only you can build — your knowledge, your judgment, your domain.</p>
+          <div class="module-assets">
+            <a href="modules/course0/c0-m05.html" class="asset-pill">📖 Lesson</a>
+            <span class="asset-pill coming-soon">📽️ Slides</span>
+            <span class="asset-pill coming-soon">📝 Worksheet</span>
+          </div>
+        </div>
+        <div class="module-time">45 min</div>
+      </div>
+      <div class="track-divider"></div>
+    </div>
 
     <!-- ═══ TRACK 1: FOUNDATION ═══ -->
     <div class="track-section">
@@ -304,7 +384,7 @@
 
 <script>
 const STORAGE_KEY = 'pg-curriculum-progress';
-const TOTAL = 10;
+const TOTAL = 15;
 
 function getProgress() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } 
