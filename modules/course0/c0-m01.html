@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C0-M01: What an LLM Actually Is — Parallel Genius</title>
+<meta name="description" content="Before you build workflows, you need to understand what you're working with. What a Large Language Model is, how it thinks, and why that matters for everything that follows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../../index.html#tracks">Curriculum</a>
+    <a href="../../syllabus.html">Syllabus</a>
+    <a href="../../index.html#lessons">Lessons</a>
+    <a href="../../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero">
+  <div class="container">
+    <span class="module-label">Course 0: AI Foundations · Module 1</span>
+    <h1 class="module-title">What an LLM Actually Is</h1>
+    <p class="module-subtitle">Before you build workflows, you need to understand what you're working with. Not what it promises. Not what people fear. What it actually does.</p>
+  </div>
+</section>
+
+<!-- CORE THESIS -->
+<section class="module-section">
+  <div class="container">
+    <h2>The Core Thesis</h2>
+    <div class="prose-block">
+      <p>A Large Language Model is a statistical engine trained on text. It predicts the next most likely word in a sequence, billions of times, very fast. That prediction engine — when scaled to hundreds of billions of parameters and trained on enormous datasets — produces behavior that looks like understanding.</p>
+      <p>It is not understanding. But the distinction matters less than you think, and more than you think, in different places.</p>
+    </div>
+    <blockquote class="module-quote">"It's not like you don't work. It's not like you go on vacation and the AI is there generating articles. That's not how it is."</blockquote>
+  </div>
+</section>
+
+<!-- WHAT IT IS -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>What You're Actually Talking To</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>A Pattern Matching Engine</h4>
+        <p>LLMs learn patterns from text — the structure of arguments, the rhythm of professional communication, the shape of code, the format of clinical notes. When you type something, it matches against those patterns and generates what "should come next." This is why it can write a legal brief it's never read — it has absorbed the <em>pattern</em> of legal briefs from millions of examples.</p>
+      </div>
+      <div class="concept-card">
+        <h4>A Context Window</h4>
+        <p>The AI can only "see" a limited amount of text at once — its context window. Early models saw 4,000 tokens (~3,000 words). Modern models see 100,000-200,000 tokens. Everything outside the window doesn't exist. This is why long conversations degrade — the AI literally loses the beginning of the conversation as new content pushes it out.</p>
+      </div>
+      <div class="concept-card">
+        <h4>A Stateless System</h4>
+        <p>Every conversation starts from zero. The AI does not remember your last session. It does not remember your name, your preferences, or your decisions unless you explicitly provide that context. This is the "brilliant employee with amnesia" — <em>Groundhog Day, every day.</em></p>
+      </div>
+      <div class="concept-card">
+        <h4>A Reflection of Your Input</h4>
+        <p>"When you go to a brand new chat, a brand new tool, you realize how much of yourself is reflected in there. Because it just sounds — it's not helpful at all. It's just like, what is this thing I'm talking to?" The quality of the output is directly proportional to the quality — and quantity — of your input.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT'S GOOD AT -->
+<section class="module-section">
+  <div class="container">
+    <h2>Where LLMs Excel</h2>
+    <div class="prose-block">
+      <p>Mapped to the three phases of knowledge work:</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Phase 1: Research & Brainstorming</h4>
+        <p><strong>AI is exceptional here.</strong> It's your thinking partner. You brainstorm, weigh pros and cons, build logic maps, test hypotheses against it. "It's almost like having a conversation with yourself in computer form."</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Phase 2: Structuring & Framework</h4>
+        <p><strong>AI excels at frameworks.</strong> "What AI is really good at is giving me frameworks that would be hard for me to develop fast enough with how busy my schedule is." Taking messy thinking and organizing it into actionable structures.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Phase 3: Execution & Production</h4>
+        <p><strong>This is where the gap lives.</strong> AI can draft, format, and process — but the final mile (deployment, formatting for specific tools, scheduling, publishing) still requires human orchestration or specialized agents. This is the "70/30 gap" — AI gets you 70% there, the last 30% is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IT'S BAD AT -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Where LLMs Fail</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid #c0392b;">
+        <h4>Clinical Judgment</h4>
+        <p>An LLM can write a medical article that looks clinically sound. It cannot make clinical decisions. It doesn't know the difference between "12-24 hours can be safe" and the actual standard of care. Only a domain expert catches that distinction. (See: <a href="../../case-studies/prom-error.html">The PROM Error</a>)</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid #c0392b;">
+        <h4>Self-Awareness of Limitations</h4>
+        <p>"The technology will not announce that it is operating from an impoverished conceptual base." LLMs don't say "I don't know enough about this to give you a reliable answer." They generate confident-sounding text regardless of whether they're right.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid #c0392b;">
+        <h4>Persistence & Memory</h4>
+        <p>Every session starts fresh. Your decisions evaporate. Your context disappears. The AI that knew your entire project yesterday knows nothing today. Solving this is the subject of <a href="../m06.html">Module 6</a> and <a href="../m08.html">Module 8</a>.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid #c0392b;">
+        <h4>Genuine Innovation</h4>
+        <p>"AI couldn't have given me this idea. It just doesn't exist." LLMs recombine existing patterns. They cannot produce truly novel insights. Your ideas are yours. The AI's job is to help you develop, test, and structure them — not to replace the thinking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE REAL SKILL -->
+<section class="module-section">
+  <div class="container">
+    <h2>The Skill That Matters</h2>
+    <div class="prose-block">
+      <p>Understanding what an LLM is doesn't make you better at using it. What makes you better is understanding the <strong>interaction pattern</strong> — that this is a conversation, not a command line.</p>
+    </div>
+    <blockquote class="module-quote">"I don't use prompts. I never write a sentence and expect an output. There's nothing helpful I can get from that sort of output. My work is too complicated. I've always used these through conversation."</blockquote>
+    <div class="prose-block">
+      <p>Most people type short, directive prompts: "Write me an email about X." They get generic output. They either use it as-is or abandon it. They never push back, never refine through conversation, never iterate.</p>
+      <p>The Parallel Genius method is conversation-based, iterative, and context-heavy. That requires understanding what the machine can and cannot do — which is what this module is for.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCISES -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Workshop Exercises</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Exercise 1: The Blank Slate Test</h4>
+        <p>Open a brand new AI chat with no project context, no system prompt, no uploaded files. Ask it to help you with something you're working on. Notice how generic the output is. Write down what's missing. That gap between "useless" and "useful" is the context <em>you</em> provide.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 2: The Confidence Audit</h4>
+        <p>Ask an AI about something in your domain of expertise — something you know deeply. Read the response. Identify where it sounds confident but is wrong, subtly wrong, or misleadingly simplified. Count the errors. This is what the AI does in <em>every</em> domain — you just can't see it when you're not the expert.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 3: Context Window Decay</h4>
+        <p>Have a long conversation (30+ exchanges) with an AI about a complex topic. At the end, ask it to summarize what you discussed at the beginning. Notice what it forgot, what it merged, what it invented. This is the context window in action — and the reason you need external persistence systems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <div class="module-nav">
+      <a href="../../syllabus.html">← Back to Syllabus</a>
+      <a href="c0-m02.html">Next: The Cognitive Overload Problem →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

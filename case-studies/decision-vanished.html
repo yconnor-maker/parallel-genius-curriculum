@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The Decision That Vanished — Parallel Genius</title>
+<meta name="description" content="When 82 HTML files had no save functionality, every decision evaporated on browser close. A case study in decision persistence infrastructure.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2320 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin: 32px 0; }
+  .stat-box { background: var(--bg-dark); color: var(--text-dark); border-radius: var(--radius); padding: 24px; text-align: center; }
+  .stat-box .big { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 700; color: var(--gold); }
+  .stat-box .label { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--rose); font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">Case Study</span>
+    <h1>The Decision That Vanished</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">82 HTML files with comment boxes. Zero save functionality. Every decision evaporated the moment the browser tab closed. The agents kept re-asking questions she had already answered.</p>
+    <div class="case-meta">
+      <span>Referenced in: M06, M08</span>
+      <span>Source: Decision Persistence System session</span>
+      <span>Fix: localStorage retrofit</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Scale of the Problem</h2>
+    <div class="stat-grid">
+      <div class="stat-box"><span class="big">82</span><span class="label">HTML files with textareas</span></div>
+      <div class="stat-box"><span class="big">0</span><span class="label">had save functionality</span></div>
+      <div class="stat-box"><span class="big">14</span><span class="label">still needed YC decisions</span></div>
+      <div class="stat-box"><span class="big">∞</span><span class="label">decisions lost to tab-close</span></div>
+    </div>
+    <div class="prose-block">
+      <p>Yamicia's AI agents delivered work product as HTML dashboards — review decks, signout reports, decision cards. Many included comment boxes where she could type her decisions, feedback, and directions. The dashboards looked professional. The interaction felt natural. Type your decision, move on.</p>
+      <p>There was one problem: <strong>none of them saved.</strong></p>
+      <p>Every comment box was a standard HTML <code>&lt;textarea&gt;</code> with no backend, no localStorage, no persistence mechanism of any kind. Close the tab, lose the work. Restart the browser, start from scratch. The agents would present the same questions in the next session, and she'd answer them again — sometimes differently, because she couldn't remember what she'd decided before.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Why Nobody Caught It</h2>
+    <div class="lesson-box">
+      <h4>The UX Looked Right</h4>
+      <p>The dashboards had textareas. Textareas look like input fields. Input fields imply persistence. No user expects that a form on their screen doesn't save — we've been trained by decades of web apps to assume that typing into a box means the data goes somewhere. The failure was invisible until you tried to retrieve your work.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>The Agents Didn't Know</h4>
+      <p>The AI agents generating these dashboards didn't have a "save user decisions" step in their workflow. They were optimized for <em>presenting</em> information, not <em>capturing</em> responses. The agents treated the HTML as output — a deliverable — not as an interface that needed to function as an input mechanism.</p>
+    </div>
+
+    <blockquote class="module-quote">"The most dangerous UX failure in an AI-human workflow is not a wrong answer — it's a lost answer."</blockquote>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Fix</h2>
+    <div class="prose-block">
+      <p>The master template was retrofitted with:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong>localStorage auto-save</strong> — debounced at 1.5 seconds, so every keystroke persists without performance impact</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong>JSON export</strong> — one-click download of all decisions as structured data</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong>Visual save indicator</strong> — users can see that their input has been persisted</li>
+        <li style="padding: 8px 0;">✦ <strong>Template mandate</strong> — all future agent-generated HTML must use the persistent template</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Lesson</h2>
+    <div class="lesson-box">
+      <h4>Before You Build Sophisticated AI Decision Flows, Verify the Human's Decisions Actually Survive the Session</h4>
+      <p>This is a Course 0 lesson. It's not about prompts or agents or orchestration. It's about the most basic infrastructure question in any AI-human system: <em>when the human makes a decision, where does it go?</em> If the answer is "nowhere," everything downstream is theater.</p>
+    </div>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="prom-error.html">← Prev: The PROM Error</a>
+      <a href="sentinel-stop.html">Next: The Sentinel's Stop →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

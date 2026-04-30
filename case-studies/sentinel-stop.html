@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The Sentinel's Stop — Parallel Genius</title>
+<meta name="description" content="When an AI agent found 44 problems but its threshold was 25. It stopped. That was the right answer. A case study in circuit breakers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, #1a2d1e 0%, var(--bg-dark) 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #27ae60; margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+  @media (max-width: 768px) { .compare-grid { grid-template-columns: 1fr; } }
+  .compare-box { border-radius: var(--radius); padding: 28px 32px; }
+  .compare-bad { background: #2d1a1a; border: 1px solid #5a2d2d; color: #e8c4c4; }
+  .compare-good { background: #1a2d1e; border: 1px solid #2d5a35; color: #c4e8cc; }
+  .compare-box h4 { font-size: 1.1rem; margin-bottom: 12px; }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--rose); font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">✓ Design Pattern Case Study</span>
+    <h1>The Sentinel's Stop</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">When the AI agent found 44 potential fixes but its threshold was 25, it did the most valuable thing an agent can do: it stopped and reported instead of "fixing" everything.</p>
+    <div class="case-meta">
+      <span>Referenced in: M04, M09</span>
+      <span>Source: Daily Digest, April 20</span>
+      <span>Pattern: Circuit breaker</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="prose-block">
+      <p>The Sentinel agent — a specialized AI agent whose job is to scan operational infrastructure for problems — ran its routine audit across 4 workspaces. It found 44 potential fixes needed across the system: broken links, stale references, schema drift, orphaned files.</p>
+      <p>Its configured threshold was 25. If more than 25 issues are found, the agent is not allowed to auto-fix. It must stop and report.</p>
+      <p>44 > 25. The Sentinel stopped.</p>
+    </div>
+    <blockquote class="module-quote">"STOP condition hit: 44 potential hub fixes > 25 threshold → no auto-fixes. D42 gate unchanged → no decision sync."</blockquote>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Why Stopping Was the Right Answer</h2>
+    <div class="compare-grid">
+      <div class="compare-box compare-bad">
+        <h4>❌ What a Script Would Do</h4>
+        <p>Find 44 issues. Fix all 44. Report success. Move on.</p>
+        <p style="margin-top:12px; font-size: 0.85rem; opacity: 0.8;">Problem: When an automated system finds nearly double the expected number of issues, something systemic has likely changed. Fixing individual symptoms could mask the root cause, create cascading side effects, or silently corrupt data that was actually correct.</p>
+      </div>
+      <div class="compare-box compare-good">
+        <h4>✅ What the Sentinel Did</h4>
+        <p>Find 44 issues. Hit threshold. Stop. Report the full list with context. Wait for human review.</p>
+        <p style="margin-top:12px; font-size: 0.85rem; opacity: 0.8;">Result: YC could review the list, identify the root cause (a schema migration had renamed several fields), and fix the underlying problem rather than patching 44 symptoms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Design Pattern: Circuit Breakers</h2>
+    <div class="lesson-box">
+      <h4>What It Is</h4>
+      <p>A circuit breaker is a threshold that causes an automated agent to halt execution when conditions exceed expected parameters. It's borrowed from electrical engineering — when the current is too high, the breaker trips to prevent a fire. In AI systems, when the agent finds more problems than expected, the breaker trips to prevent cascade failures.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>Why Every Agent Needs One</h4>
+      <p>An agent without a circuit breaker will always try to finish. It will "fix" 44 things, or process 700 records, or rewrite 12 files — because that's what it was asked to do. The circuit breaker is what distinguishes an <em>agent</em> from a <em>script</em>. A script executes. An agent knows when to stop.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>Other Examples in This System</h4>
+      <ul style="padding-left: 20px; margin-top: 8px;">
+        <li style="padding: 4px 0;"><strong>Reconciliation-before-bulk-add:</strong> When 1,486 records existed and the prompt asked to add 26 more, the agent audited first instead of blindly inserting (which would have created duplicates).</li>
+        <li style="padding: 4px 0;"><strong>The Janitor's consumption lifecycle:</strong> Files move to <code>_TO_DELETE/</code> but are never actually deleted by the agent. Only the human deletes.</li>
+        <li style="padding: 4px 0;"><strong>Compliance Auditor separation:</strong> The auditor measures and reports. It never remediates. Measurement and remediation are different agents.</li>
+      </ul>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top:32px">"Agents that know when to stop are more valuable than agents that always finish."</blockquote>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Build Your Own Circuit Breaker</h2>
+    <div class="inline-template" style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px;">
+      <h4 style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 12px; color: var(--rose);">Circuit Breaker Template</h4>
+      <p><strong>Agent:</strong> [Which agent gets this breaker]</p>
+      <p><strong>Metric:</strong> [What are you counting — issues found, records modified, files changed]</p>
+      <p><strong>Threshold:</strong> [At what number does the agent stop — start conservative]</p>
+      <p><strong>On Trip:</strong> [What does the agent do when it stops — report, log, alert, freeze state]</p>
+      <p><strong>Resume Condition:</strong> [What must happen before the agent runs again — human review, root cause identified, threshold adjusted]</p>
+    </div>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="decision-vanished.html">← Prev: The Decision That Vanished</a>
+      <a href="../syllabus.html">Back to Syllabus →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>
