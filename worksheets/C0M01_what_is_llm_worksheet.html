@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C0-01 Worksheet — What an LLM Actually Is | The Labora Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg:#faf8f4; --bg-card:#ffffff; --gold:#8b6914; --gold-light:#c9a84c; --gold-bg:rgba(139,105,20,0.06); --text-primary:#1a1612; --text-secondary:#504840; --text-muted:#8a8078; --border:rgba(139,105,20,0.2); --accent-green:#3d6b3d; --green-bg:rgba(61,107,61,0.06); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text-primary); line-height:1.7; }
+        @media print { body { background:white; } .no-print { display:none; } .write-area { min-height:120px; } }
+        .page { max-width:800px; margin:0 auto; padding:60px 40px; }
+        .header { border-bottom:3px solid var(--gold); padding-bottom:24px; margin-bottom:40px; }
+        .header-label { font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+        .header h1 { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; margin-bottom:4px; }
+        .header .subtitle { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--gold-light); font-style:italic; }
+        .header-meta { display:flex; gap:30px; margin-top:16px; font-size:0.8rem; color:var(--text-muted); }
+        .header-meta span { color:var(--gold); font-weight:600; }
+        .section { margin-bottom:40px; }
+        .section-number { font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:3px; margin-bottom:8px; }
+        .section h2 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:12px; }
+        .section p { color:var(--text-secondary); margin-bottom:12px; }
+        .write-area { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:20px; min-height:100px; margin:12px 0; }
+        .write-area .prompt { font-size:0.8rem; color:var(--text-muted); font-style:italic; margin-bottom:8px; }
+        .write-area .lines { background-image:repeating-linear-gradient(transparent,transparent 28px,rgba(139,105,20,0.1) 28px,rgba(139,105,20,0.1) 29px); min-height:80px; }
+        .quote-box { border-left:4px solid var(--gold); padding:16px 20px; margin:16px 0; background:var(--gold-bg); border-radius:0 8px 8px 0; }
+        .quote-box p { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; margin-bottom:4px; }
+        .quote-box .attr { font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--gold); font-style:normal; }
+        .exercise-box { background:var(--green-bg); border:2px solid var(--accent-green); border-radius:12px; padding:28px; margin:20px 0; }
+        .exercise-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--accent-green); margin-bottom:4px; }
+        .exercise-box .timer { display:inline-block; background:rgba(61,107,61,0.15); color:var(--accent-green); padding:2px 12px; border-radius:20px; font-size:0.75rem; font-weight:600; margin-bottom:12px; }
+        .compare-table { width:100%; border-collapse:collapse; margin:16px 0; }
+        .compare-table th { font-size:0.7rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); text-align:left; padding:10px 12px; border-bottom:2px solid var(--border); }
+        .compare-table td { padding:10px 12px; border-bottom:1px solid rgba(0,0,0,0.06); font-size:0.88rem; color:var(--text-secondary); }
+        .checklist { list-style:none; margin:12px 0; }
+        .checklist li { padding:8px 0 8px 32px; position:relative; font-size:0.92rem; color:var(--text-secondary); }
+        .checklist li::before { content:'☐'; position:absolute; left:0; font-size:1.1rem; color:var(--gold); }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+    <div class="header-label">Course 0 · AI Foundations · Worksheet</div>
+    <h1>What an LLM Actually Is</h1>
+    <div class="subtitle">Module C0-01</div>
+    <div class="header-meta">
+        <div><span>Time:</span> 30 minutes</div>
+        <div><span>Format:</span> Individual reflection</div>
+        <div><span>Prerequisite:</span> None</div>
+    </div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+    <div class="section-number">Part I</div>
+    <h2>Baseline Check: What Do You Think AI Is?</h2>
+    <p>Before reading the module, write down your current understanding. Be honest — there are no wrong answers here.</p>
+    <div class="write-area">
+        <div class="prompt">In your own words, what happens when you type something into ChatGPT / Claude / Gemini and hit enter?</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Does it "understand" what you wrote? Why or why not?</div>
+        <div class="lines"></div>
+    </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section">
+    <div class="section-number">Part II</div>
+    <h2>The Four Components</h2>
+    <p>After reading the module, describe each component in your own words. If you can't explain it simply, re-read that section.</p>
+    <table class="compare-table">
+        <tr><th style="width:30%;">Component</th><th>Your Explanation</th><th style="width:25%;">Why It Matters</th></tr>
+        <tr><td>Pattern Matching Engine</td><td style="min-height:40px;"></td><td></td></tr>
+        <tr><td>Context Window</td><td></td><td></td></tr>
+        <tr><td>Stateless System</td><td></td><td></td></tr>
+        <tr><td>Reflection of Your Input</td><td></td><td></td></tr>
+    </table>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section">
+    <div class="section-number">Part III</div>
+    <h2>Strengths vs. Failure Modes</h2>
+    <p>For each phase of knowledge work, rate how well AI performs and where it fails for YOUR specific work:</p>
+    <div class="write-area">
+        <div class="prompt">Phase 1 — Research & Brainstorming: How useful is AI for your research? Give a specific example.</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Phase 2 — Structuring & Framework: When has AI given you a framework that saved time? When has a framework been wrong or misleading?</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Phase 3 — Execution: Where does AI fail in your workflow? What's YOUR "last 30%"?</div>
+        <div class="lines"></div>
+    </div>
+</div>
+
+<!-- SECTION 4 -->
+<div class="section">
+    <div class="section-number">Part IV</div>
+    <h2>The Confidence Audit</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 10 Minutes</span>
+        <h3>Exercise: Find the Errors</h3>
+        <p style="margin:12px 0; color:var(--text-secondary);">Ask an AI a detailed question in your area of expertise. Read the response carefully. Document what you find:</p>
+    </div>
+    <div class="write-area">
+        <div class="prompt">What question did you ask?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">How many things were factually correct?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">How many things sounded correct but were wrong or misleadingly simplified?</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Would a non-expert have caught those errors? Why or why not?</div>
+        <div class="lines"></div>
+    </div>
+</div>
+
+<!-- SECTION 5 -->
+<div class="section">
+    <div class="section-number">Part V</div>
+    <h2>Key Takeaway</h2>
+    <div class="quote-box">
+        <p>"The technology will not announce that it is operating from an impoverished conceptual base."</p>
+        <div class="attr">— From C0-M01</div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">In one sentence, what is the single most important thing you learned from this module?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+</div>
+
+<!-- COMPLETION CHECKLIST -->
+<div class="section">
+    <div class="section-number">Completion</div>
+    <h2>Before Moving to C0-02</h2>
+    <ul class="checklist">
+        <li>I can explain what a Large Language Model does in plain language</li>
+        <li>I understand what a context window is and why long conversations degrade</li>
+        <li>I can name at least 2 things AI is good at and 2 things it fails at</li>
+        <li>I completed the Confidence Audit exercise and found at least 1 error</li>
+        <li>I understand that AI output quality is proportional to input quality</li>
+    </ul>
+</div>
+
+</div>
+</body>
+</html>

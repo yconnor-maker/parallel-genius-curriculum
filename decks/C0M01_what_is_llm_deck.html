@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C0-01: What an LLM Actually Is — Slide Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep:#0d0d0d; --bg-card:#1a1a1a; --gold:#c9a84c; --gold-dim:rgba(201,168,76,0.12); --text-primary:#f0ece2; --text-secondary:#a8a29e; --text-muted:#6b6560; --border:rgba(201,168,76,0.2); --accent-blue:#5b8fb9; --accent-green:#6b9e6b; --accent-coral:#c97b63; --accent-red:#c96363; }
+        * { margin:0; padding:0; box-sizing:border-box; } html { scroll-behavior:smooth; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg-deep); color:var(--text-primary); }
+        .nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(13,13,13,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:12px 32px; }
+        .nav-left { font-size:0.75rem; color:var(--gold); text-transform:uppercase; letter-spacing:3px; }
+        .nav-center { font-family:'Cormorant Garamond',serif; font-size:1.1rem; }
+        .nav-right { display:flex; gap:8px; align-items:center; }
+        .nav-btn { background:var(--bg-card); border:1px solid var(--border); color:var(--text-primary); padding:8px 20px; border-radius:8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.85rem; transition:all 0.2s; }
+        .nav-btn:hover { background:var(--gold-dim); border-color:var(--gold); }
+        .slide-counter { font-size:0.85rem; color:var(--text-muted); min-width:60px; text-align:center; }
+        .slide { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:80px 60px; border-bottom:1px solid rgba(201,168,76,0.08); position:relative; }
+        .slide-inner { max-width:900px; width:100%; }
+        .slide-num { position:absolute; top:80px; right:60px; font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:rgba(201,168,76,0.08); }
+        .slide-label { font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+        .slide h1 { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:600; line-height:1.15; margin-bottom:24px; }
+        .slide h2 { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:600; line-height:1.2; margin-bottom:24px; }
+        .slide p,.slide li { font-size:1.15rem; line-height:1.8; color:var(--text-secondary); }
+        .slide ul { list-style:none; margin:16px 0; }
+        .slide ul li { padding:8px 0 8px 24px; position:relative; }
+        .slide ul li::before { content:''; position:absolute; left:0; top:16px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+        .big-quote { font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; line-height:1.5; border-left:4px solid var(--gold); padding-left:32px; margin:30px 0; }
+        .big-quote .attribution { display:block; font-size:0.9rem; font-style:normal; color:var(--gold); margin-top:16px; font-family:'DM Sans',sans-serif; }
+        .vs-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:30px; align-items:start; margin:30px 0; }
+        .vs-card { padding:28px; border-radius:12px; border:1px solid var(--border); }
+        .vs-card.bad { background:rgba(201,99,99,0.06); border-color:rgba(201,99,99,0.3); }
+        .vs-card.good { background:rgba(107,158,107,0.06); border-color:rgba(107,158,107,0.3); }
+        .vs-card h4 { font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px; }
+        .vs-card.bad h4 { color:var(--accent-red); } .vs-card.good h4 { color:var(--accent-green); }
+        .vs-divider { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--text-muted); align-self:center; }
+        .data-box { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px; margin:24px 0; }
+        .data-box .label { font-size:0.7rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); margin-bottom:12px; }
+        .data-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .data-stat { text-align:center; }
+        .data-stat .number { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:700; color:var(--gold); }
+        .data-stat .desc { font-size:0.8rem; color:var(--text-muted); }
+        .speaker-note { margin-top:40px; padding:16px 20px; background:rgba(91,143,185,0.08); border:1px solid rgba(91,143,185,0.2); border-radius:8px; font-size:0.8rem; color:var(--accent-blue); }
+        .speaker-note::before { content:'🎤 SPEAKER NOTE: '; font-weight:700; }
+        .slide.title-slide { background:linear-gradient(180deg,rgba(201,168,76,0.06) 0%,transparent 60%); }
+        .slide.title-slide h1 { font-size:4rem; }
+        .title-meta { font-size:1rem; color:var(--text-muted); margin-top:20px; }
+        .title-meta span { color:var(--gold); }
+        .step-list { margin:24px 0; }
+        .step-item { display:grid; grid-template-columns:48px 1fr; gap:16px; margin-bottom:20px; align-items:start; }
+        .step-circle { width:48px; height:48px; border-radius:50%; background:var(--gold-dim); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1.2rem; color:var(--gold); }
+        .step-content h4 { font-size:1.05rem; font-weight:600; margin-bottom:4px; }
+        .step-content p { font-size:0.95rem; color:var(--text-secondary); }
+        .exercise-box { background:rgba(107,158,107,0.06); border:2px solid rgba(107,158,107,0.3); border-radius:16px; padding:36px; margin:20px 0; }
+        .exercise-box h3 { color:var(--accent-green); font-family:'Cormorant Garamond',serif; font-size:1.6rem; }
+        .exercise-box .timer { display:inline-block; background:rgba(107,158,107,0.15); color:var(--accent-green); padding:4px 14px; border-radius:20px; font-size:0.8rem; font-weight:600; margin-bottom:16px; }
+        @media (max-width:768px) { .slide { padding:80px 24px; } .slide h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .vs-grid { grid-template-columns:1fr; } .data-stats { grid-template-columns:1fr; } .nav-center { display:none; } }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-left">C0-01</div>
+    <div class="nav-center">What an LLM Actually Is</div>
+    <div class="nav-right">
+        <button class="nav-btn" onclick="prevSlide()">← Prev</button>
+        <span class="slide-counter" id="slideCounter">1 / 12</span>
+        <button class="nav-btn" onclick="nextSlide()">Next →</button>
+    </div>
+</div>
+<div class="slides-container" style="padding-top:60px;">
+
+<!-- SLIDE 1: Title -->
+<div class="slide title-slide" id="slide-1"><div class="slide-inner">
+    <div class="slide-label">Course 0 · AI Foundations · Module 01</div>
+    <h1>What an LLM Actually Is</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">Before You Build, Understand the Machine</h3>
+    <div class="title-meta"><span>Dr. Yamicia Connor, MD, PhD, MPH</span><br>The Labora Collective</div>
+</div><div class="slide-num">01</div></div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide-2"><div class="slide-inner">
+    <div class="slide-label">The Core Concept</div>
+    <h2>A Large Language Model is a statistical prediction engine.</h2>
+    <p style="font-size:1.3rem; margin:24px 0;">It predicts the next most likely word in a sequence, billions of times, very fast. That prediction engine — when scaled — produces behavior that <em>looks like</em> understanding.</p>
+    <p style="font-size:1.2rem; color:var(--gold); margin-top:24px;">It is not understanding. But the distinction matters less than you think — and more than you think — in different places.</p>
+</div><div class="slide-num">02</div>
+<div class="speaker-note">Start here. Don't assume the audience knows this. Many people think they're talking to something that "thinks." Set the foundation: it's pattern matching at enormous scale.</div></div>
+
+<!-- SLIDE 3 -->
+<div class="slide" id="slide-3"><div class="slide-inner">
+    <div class="slide-label">The Four Things It Is</div>
+    <h2>What You're Actually Talking To</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-content"><h4>A Pattern Matching Engine</h4><p>It has absorbed the patterns of legal briefs, clinical notes, code, business plans — from millions of examples. It generates what "should come next."</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-content"><h4>A Context Window</h4><p>It can only "see" a limited amount at once. Everything outside the window doesn't exist. Long conversations degrade because new content pushes out the beginning.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-content"><h4>A Stateless System</h4><p>Every conversation starts from zero. It does not remember your last session. Groundhog Day, every day.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-content"><h4>A Reflection of Your Input</h4><p>Quality out = quality in. Always.</p></div></div>
+    </div>
+</div><div class="slide-num">03</div></div>
+
+<!-- SLIDE 4 -->
+<div class="slide" id="slide-4"><div class="slide-inner">
+    <div class="slide-label">Key Quote</div>
+    <div class="big-quote">"When you go to a brand new chat, a brand new tool, you realize how much of yourself is reflected in there. Because it just sounds — it's not helpful at all. It's just like, what is this thing I'm talking to?"
+        <span class="attribution">— Dr. Yamicia Connor</span>
+    </div>
+    <p style="margin-top:24px;">The "empty chat" experience is the proof. Without your context, the AI is generic and useless. With your context, it's transformational. The difference is you.</p>
+</div><div class="slide-num">04</div></div>
+
+<!-- SLIDE 5 -->
+<div class="slide" id="slide-5"><div class="slide-inner">
+    <div class="slide-label">Framework</div>
+    <h2>Three Phases of Knowledge Work</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">1</div><div class="step-content"><h4>Research & Brainstorming</h4><p>AI is exceptional here. Thinking partner. Brainstorm, weigh pros/cons, test hypotheses. "Almost like having a conversation with yourself in computer form."</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(91,143,185,0.15); border-color:var(--accent-blue); color:var(--accent-blue);">2</div><div class="step-content"><h4>Structuring & Framework</h4><p>AI excels at frameworks. "What AI is really good at is giving me frameworks that would be hard for me to develop fast enough."</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,123,99,0.15); border-color:var(--accent-coral); color:var(--accent-coral);">3</div><div class="step-content"><h4>Execution & Production</h4><p>This is where the gap lives. The "70/30 gap" — AI gets you 70% there, the last 30% is yours.</p></div></div>
+    </div>
+</div><div class="slide-num">05</div></div>
+
+<!-- SLIDE 6 -->
+<div class="slide" id="slide-6"><div class="slide-inner">
+    <div class="slide-label">Where It Fails</div>
+    <h2>Four Critical Failure Modes</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">!</div><div class="step-content"><h4>Clinical / Domain Judgment</h4><p>It can write a medical article that looks sound. It cannot make clinical decisions. Only a domain expert catches the distinction.</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">!</div><div class="step-content"><h4>Self-Awareness of Limitations</h4><p>"The technology will not announce that it is operating from an impoverished conceptual base." It generates confident text regardless of accuracy.</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">!</div><div class="step-content"><h4>Persistence & Memory</h4><p>Decisions evaporate. Context disappears. The AI that knew your project yesterday knows nothing today.</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">!</div><div class="step-content"><h4>Genuine Innovation</h4><p>"AI couldn't have given me this idea. It just doesn't exist." LLMs recombine — they don't invent.</p></div></div>
+    </div>
+</div><div class="slide-num">06</div></div>
+
+<!-- SLIDE 7 -->
+<div class="slide" id="slide-7"><div class="slide-inner">
+    <div class="slide-label">Case Study</div>
+    <h2>The PROM Error</h2>
+    <p style="margin-bottom:24px;">AI generated a clinical article about premature rupture of membranes. It stated "12-24 hours can be safe" for expectant management.</p>
+    <div class="data-box" style="border-color:rgba(201,99,99,0.4);">
+        <div class="label" style="color:var(--accent-red);">The Problem</div>
+        <p style="color:var(--text-secondary);">The standard of care is immediate induction within hours at term. "12-24 hours" is a nuance only a clinician would catch — the kind of subtle error that sounds correct to a layperson but could harm a patient.</p>
+    </div>
+    <p style="color:var(--gold); font-weight:600; margin-top:16px;">Lesson: AI doesn't know what it doesn't know. Domain expertise is the verification layer.</p>
+</div><div class="slide-num">07</div>
+<div class="speaker-note">This is the slide that lands hardest with clinical audiences. For non-clinical: substitute your own domain. Ask: "What's the PROM error in your field?"</div></div>
+
+<!-- SLIDE 8 -->
+<div class="slide" id="slide-8"><div class="slide-inner">
+    <div class="slide-label">Key Distinction</div>
+    <h2>Prompting vs. Conversation</h2>
+    <div class="vs-grid">
+        <div class="vs-card bad">
+            <h4>❌ Prompting</h4>
+            <ul style="list-style:none; padding:0;"><li style="padding-left:0;">One-shot input → output</li><li style="padding-left:0;">Generic results</li><li style="padding-left:0;">No pushback or refinement</li><li style="padding-left:0;">AI's voice, not yours</li></ul>
+        </div>
+        <div class="vs-divider">vs.</div>
+        <div class="vs-card good">
+            <h4>✅ Conversation</h4>
+            <ul style="list-style:none; padding:0;"><li style="padding-left:0;">30+ exchange dialogue</li><li style="padding-left:0;">Context accumulates</li><li style="padding-left:0;">Correction is calibration</li><li style="padding-left:0;">Your voice stays in</li></ul>
+        </div>
+    </div>
+    <div class="big-quote" style="font-size:1.5rem;">"I don't use prompts. I never write a sentence and expect an output. My work is too complicated. I've always used these through conversation."<span class="attribution">— Dr. Yamicia Connor</span></div>
+</div><div class="slide-num">08</div></div>
+
+<!-- SLIDE 9 -->
+<div class="slide" id="slide-9"><div class="slide-inner">
+    <div class="slide-label">Evidence</div>
+    <h2>The Data</h2>
+    <div class="data-box">
+        <div class="label">This Curriculum Was Built From</div>
+        <div class="data-stats">
+            <div class="data-stat"><div class="number">1,947</div><div class="desc">AI conversations archived</div></div>
+            <div class="data-stat"><div class="number">46,558</div><div class="desc">messages exchanged</div></div>
+            <div class="data-stat"><div class="number">762 MB</div><div class="desc">of raw conversation data</div></div>
+        </div>
+    </div>
+    <p style="margin-top:16px; text-align:center; color:var(--gold);">Every lesson in this curriculum was mined from real conversations — not invented.</p>
+</div><div class="slide-num">09</div></div>
+
+<!-- SLIDE 10: Exercise -->
+<div class="slide" id="slide-10"><div class="slide-inner">
+    <div class="slide-label">Workshop</div>
+    <h2>Try It Right Now</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 5 Minutes</span>
+        <h3>Exercise: The Confidence Audit</h3>
+        <div class="step-list">
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">1</div><div class="step-content"><h4>Pick your domain</h4><p>Something you know deeply — your profession, your craft, your expertise.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">2</div><div class="step-content"><h4>Ask an AI about it</h4><p>Ask a detailed question in your area of expertise. Read the answer carefully.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">3</div><div class="step-content"><h4>Count the errors</h4><p>How many things sound confident but are wrong, subtly wrong, or misleadingly simplified?</p></div></div>
+        </div>
+        <p style="margin-top:16px; color:var(--accent-green); font-weight:600;">This is what AI does in every domain — you just can't see it when you're not the expert.</p>
+    </div>
+</div><div class="slide-num">10</div></div>
+
+<!-- SLIDE 11 -->
+<div class="slide" id="slide-11"><div class="slide-inner">
+    <div class="slide-label">Takeaway</div>
+    <h2>The One Thing to Remember</h2>
+    <div class="big-quote" style="font-size:2.2rem;">"It's not like you don't work. It's not like you go on vacation and the AI is there generating articles. That's not how it is."<span class="attribution">— Dr. Yamicia Connor</span></div>
+    <p style="margin-top:24px; font-size:1.2rem;">AI is a tool. A powerful, fast, sometimes brilliant tool. But it requires you — your thinking, your judgment, your domain knowledge — to produce anything worth using.</p>
+</div><div class="slide-num">11</div></div>
+
+<!-- SLIDE 12: Next -->
+<div class="slide title-slide" id="slide-12"><div class="slide-inner">
+    <div class="slide-label">Up Next</div>
+    <h1>The Cognitive Overload Problem</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">C0-02: AI Makes You Faster. Speed Creates Overload.</h3>
+    <div class="title-meta" style="margin-top:40px;">
+        <span>📝 Worksheet:</span> Complete the C0-01 worksheet before C0-02<br>
+        <span>📖 Reading:</span> C0-01 lesson page (full text)
+    </div>
+</div><div class="slide-num">12</div></div>
+
+</div>
+<script>
+    let currentSlide = 1; const totalSlides = 12;
+    function updateCounter() { document.getElementById('slideCounter').textContent = currentSlide + ' / ' + totalSlides; }
+    function goToSlide(n) { currentSlide = Math.max(1, Math.min(n, totalSlides)); document.getElementById('slide-' + currentSlide).scrollIntoView({ behavior: 'smooth' }); updateCounter(); }
+    function nextSlide() { goToSlide(currentSlide + 1); }
+    function prevSlide() { goToSlide(currentSlide - 1); }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); prevSlide(); }
+    });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const num = parseInt(entry.target.id.replace('slide-', '')); if (num) { currentSlide = num; updateCounter(); } } }); }, { threshold: 0.5 });
+    document.querySelectorAll('.slide').forEach(slide => observer.observe(slide));
+</script>
+</body>
+</html>
