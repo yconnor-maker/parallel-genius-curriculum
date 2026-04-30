@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator Guide — Parallel Genius Curriculum</title>
+<meta name="description" content="Cohort facilitation guide for delivering the Parallel Genius curriculum. Timing, discussion prompts, and delivery formats for all 15 modules.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .guide-hero { padding: 140px 0 60px; background: linear-gradient(135deg, var(--bg-dark) 0%, #1d2028 100%); color: var(--text-dark); }
+  .guide-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .guide-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .format-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin: 32px 0; }
+  .format-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+  .format-card h4 { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 8px; }
+  .format-card .meta { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px; }
+  .session-block { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 20px 0; }
+  .session-block h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 4px; }
+  .session-block .timing { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+  .session-block .activity { margin: 12px 0; padding: 12px 16px; background: rgba(201,168,76,0.04); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; }
+  .session-block .activity h5 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin-bottom: 4px; }
+  .session-block .activity p { font-size: 0.9rem; color: var(--text-body); }
+  .discussion-prompt { background: rgba(107,158,107,0.06); border: 1px solid rgba(107,158,107,0.3); border-radius: 8px; padding: 16px 20px; margin: 8px 0; font-size: 0.9rem; color: var(--text-body); }
+  .discussion-prompt::before { content: '💬 '; }
+  .facilitator-tip { background: rgba(91,143,185,0.06); border: 1px solid rgba(91,143,185,0.2); border-radius: 8px; padding: 16px 20px; margin: 12px 0; font-size: 0.85rem; color: #5b8fb9; }
+  .facilitator-tip::before { content: '🎯 FACILITATOR TIP: '; font-weight: 700; }
+  .week-header { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; margin: 48px 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+  .week-header span { font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="index.html#tracks">Curriculum</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="guide-hero">
+  <div class="container">
+    <span class="guide-label">Facilitator Resource</span>
+    <h1>Cohort Facilitator Guide</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">Everything you need to deliver the Parallel Genius curriculum as a live cohort experience. Timing guides, discussion prompts, and delivery formats for all 15 modules.</p>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>Delivery Formats</h2>
+    <p class="module-intro">The curriculum supports three delivery formats. Choose based on your audience and time constraints.</p>
+    <div class="format-grid">
+      <div class="format-card">
+        <h4>Sprint (5 Days)</h4>
+        <div class="meta">Full-time intensive · 6 hrs/day</div>
+        <p>Mon: Course 0 (all 5 modules). Tue: M01-M03. Wed: M04-M06. Thu: M07-M09. Fri: M10 + capstone project.</p>
+      </div>
+      <div class="format-card">
+        <h4>Cohort (5 Weeks)</h4>
+        <div class="meta">1 session/week · 90 min each</div>
+        <p>Wk 1: C0 + M01. Wk 2: M02-M04. Wk 3: M05-M07. Wk 4: M08-M09. Wk 5: M10 + showcase.</p>
+      </div>
+      <div class="format-card">
+        <h4>Self-Paced</h4>
+        <div class="meta">Individual · ~15 hours total</div>
+        <p>Students work through modules sequentially. Facilitator hosts office hours weekly. Async discussion board for peer support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Session Plans</h2>
+
+    <div class="week-header"><span>Prerequisite Track</span>Course 0: AI Foundations</div>
+
+    <div class="session-block">
+      <h3>C0-M01 to C0-M05 (Bundled Session)</h3>
+      <div class="timing">⏱ 2.5 hours total (30 min each) · or split across 2 sessions</div>
+      <div class="activity"><h5>Opening (10 min)</h5><p>Ask: "How many of you have had an AI give you a confidently wrong answer?" Let hands go up. This sets the tone for the entire course — we're here to understand the tool, not worship it.</p></div>
+      <div class="activity"><h5>C0-M01: Confidence Audit Exercise (15 min)</h5><p>Students ask AI a detailed question in their domain, then count the errors. Share findings with a partner. This is the "aha moment" for most participants.</p></div>
+      <div class="activity"><h5>C0-M02: Overload Inventory (10 min)</h5><p>Individual exercise. Students list every AI-assisted project. The number always surprises them.</p></div>
+      <div class="activity"><h5>C0-M03: 10-Exchange Test (15 min)</h5><p>Live exercise. Students pick a real problem and go 10 exchanges. Compare exchange 1 vs exchange 10.</p></div>
+      <div class="activity"><h5>C0-M04: Context File Draft (15 min)</h5><p>Students begin drafting their PROJECT_CONTEXT.md. This is homework that carries through the rest of the course.</p></div>
+      <div class="activity"><h5>C0-M05: Build/Buy Discussion (10 min)</h5><p>Group discussion: "What have you built that the market will replace in 6 months?"</p></div>
+      <div class="discussion-prompt">What's the most expensive mistake you've made by trusting AI output without verifying it?</div>
+      <div class="discussion-prompt">How many projects are you currently managing with AI? Does that number feel sustainable?</div>
+      <div class="facilitator-tip">Course 0 is designed to be humbling. Participants who think they already know AI will discover blind spots. Don't rush the Confidence Audit — it's the most impactful exercise in the entire curriculum.</div>
+    </div>
+
+    <div class="week-header"><span>Track 1</span>Foundations: M01 — M05</div>
+
+    <div class="session-block">
+      <h3>M01: The Dictation Method</h3>
+      <div class="timing">⏱ 60 minutes</div>
+      <div class="activity"><h5>Teach (15 min)</h5><p>Walk through the dictation pipeline: speak → transcribe → process → output → refine. Use the operative report analogy for clinical audiences.</p></div>
+      <div class="activity"><h5>Practice (20 min)</h5><p>Students dictate a work problem out loud (or type stream-of-consciousness) for 3 minutes. Then feed it to AI and see what comes back.</p></div>
+      <div class="activity"><h5>Debrief (10 min)</h5><p>Compare dictation output to typical prompt output. Which feels more like the student's authentic voice?</p></div>
+      <div class="discussion-prompt">What feels uncomfortable about speaking unfinished thoughts to a machine?</div>
+      <div class="facilitator-tip">Some students will resist the vulnerability of thinking out loud. Normalize it: "Surgeons have done this for decades. You're learning a clinical skill."</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M02: Your AI Operating System</h3>
+      <div class="timing">⏱ 45 minutes</div>
+      <div class="activity"><h5>Teach (15 min)</h5><p>Present the Starter Kit concept: a standardized package of context files that any AI reads at session start.</p></div>
+      <div class="activity"><h5>Build (20 min)</h5><p>Students expand their C0-M04 context file into a full Starter Kit: project context + brand voice + decision log + anti-patterns.</p></div>
+      <div class="discussion-prompt">If you had to onboard a new employee in 5 minutes, what would you tell them? That's your Starter Kit.</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M03: Writing for Machines</h3>
+      <div class="timing">⏱ 45 minutes</div>
+      <div class="activity"><h5>Teach (15 min)</h5><p>Task specification format: Context → Objective → Constraints → Output Format → Quality Criteria.</p></div>
+      <div class="activity"><h5>Practice (20 min)</h5><p>Students rewrite a vague request ("make me a website") into a full task specification. Compare AI output from both.</p></div>
+      <div class="discussion-prompt">What's the difference between "write me an article" and a task specification? How much time does the specification save downstream?</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M04: Multi-Agent Orchestration</h3>
+      <div class="timing">⏱ 60 minutes</div>
+      <div class="activity"><h5>Case Study (15 min)</h5><p>Present "Two Agents, One Table." Walk through alphabetical partitioning as zero-infrastructure concurrency.</p></div>
+      <div class="activity"><h5>Case Study (10 min)</h5><p>Present "The Sentinel's Stop." Discuss circuit breaker patterns and when agents should stop and ask.</p></div>
+      <div class="activity"><h5>Design Exercise (20 min)</h5><p>Students sketch a multi-agent workflow for their own project. Where do agents collide? Where do they need circuit breakers?</p></div>
+      <div class="discussion-prompt">If you had 3 AI agents working for you simultaneously, what would each one do? How would they avoid stepping on each other?</div>
+      <div class="facilitator-tip">This module is the hardest for beginners. Use the case studies heavily — they make abstract concepts concrete.</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M05: Visual-First Communication</h3>
+      <div class="timing">⏱ 45 minutes</div>
+      <div class="activity"><h5>Teach (15 min)</h5><p>Show the spectrum: raw data → table → chart → dashboard → scrollytelling essay. Each step up trades detail for impact.</p></div>
+      <div class="activity"><h5>Create (20 min)</h5><p>Students take a data set or report from their work and ask AI to create a visual summary. Critique the output together.</p></div>
+      <div class="discussion-prompt">When was the last time a spreadsheet changed someone's mind? When was the last time a visual did?</div>
+    </div>
+
+    <div class="week-header"><span>Track 2</span>Architecture: M06 — M08</div>
+
+    <div class="session-block">
+      <h3>M06: Knowledge Extraction</h3>
+      <div class="timing">⏱ 60 minutes</div>
+      <div class="activity"><h5>Case Study (15 min)</h5><p>Present "Schema Drift" and "The Reconciliation Tax." Both demonstrate what happens when knowledge isn't properly extracted and stored.</p></div>
+      <div class="activity"><h5>Practice (25 min)</h5><p>Students extract 3 reusable lessons from their most recent AI conversation. Format them as knowledge items with title, context, and application.</p></div>
+      <div class="discussion-prompt">What decisions have you made in AI conversations that are now lost? How much did it cost to re-discover them?</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M07: The Production Loop + M08: The AI Brain</h3>
+      <div class="timing">⏱ 90 minutes (combined)</div>
+      <div class="activity"><h5>Teach M07 (20 min)</h5><p>The production loop: Draft → QC → Revise → Deploy → Monitor. Show how each stage can be AI-assisted but human-verified.</p></div>
+      <div class="activity"><h5>Teach M08 (20 min)</h5><p>The AI Brain: knowledge items, conversation logs, decision registries. Show how context compounds across sessions.</p></div>
+      <div class="activity"><h5>Architecture Exercise (30 min)</h5><p>Students design their personal knowledge system: what tools, what format, what persistence layer. Present to the group.</p></div>
+      <div class="facilitator-tip">Combine M07 and M08 — they're deeply linked. The production loop creates knowledge; the AI brain stores it.</div>
+    </div>
+
+    <div class="week-header"><span>Track 3</span>Operations: M09 — M10</div>
+
+    <div class="session-block">
+      <h3>M09: Protecting the Human</h3>
+      <div class="timing">⏱ 60 minutes</div>
+      <div class="activity"><h5>Read Aloud (10 min)</h5><p>Read the "I worked and worked and worked" quote. Let it sit. Then ask: "How many of you feel this?"</p></div>
+      <div class="activity"><h5>Boundary Exercise (20 min)</h5><p>Students define their personal AI boundaries: hours, scope, delegation limits, quality thresholds.</p></div>
+      <div class="activity"><h5>Case Study (15 min)</h5><p>Present "The Decision That Vanished." Discuss persistence as a protection mechanism.</p></div>
+      <div class="discussion-prompt">What is the most important decision you need to make right now that you've been avoiding by staying productive?</div>
+      <div class="facilitator-tip">This is the most emotionally loaded module. Give space. Some participants will recognize themselves in the overload patterns.</div>
+    </div>
+
+    <div class="session-block">
+      <h3>M10: Durable Skills + Capstone</h3>
+      <div class="timing">⏱ 90 minutes</div>
+      <div class="activity"><h5>Teach (20 min)</h5><p>The 5 durable skills: domain expertise, editorial judgment, systems thinking, delegation architecture, quality verification. These are the skills that survive every AI upgrade.</p></div>
+      <div class="activity"><h5>Capstone Presentations (50 min)</h5><p>Each student presents their personal AI system: their Starter Kit, their production loop, their knowledge architecture, and their boundaries. 5 minutes each.</p></div>
+      <div class="activity"><h5>Closing (15 min)</h5><p>Return to the opening question from C0-M01: "What happens when you type something into an AI?" Compare their answer now to their answer from week 1.</p></div>
+      <div class="discussion-prompt">What is the one thing you know now that you wish you'd known before this course?</div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>Materials Checklist</h2>
+    <div class="prose-block">
+      <p>For each session, ensure students have access to:</p>
+      <ul style="margin:16px 0; padding-left:20px;">
+        <li>The module lesson page (online or printed)</li>
+        <li>The corresponding slide deck (for facilitator presentation)</li>
+        <li>The worksheet (printed or digital — students write during exercises)</li>
+        <li>Access to at least one AI tool (ChatGPT, Claude, or Gemini)</li>
+        <li>Their Starter Kit file (begun in C0-M04, expanded throughout)</li>
+      </ul>
+      <p style="margin-top:16px;"><strong>Facilitator-only resources:</strong> This guide + the slide decks (which include speaker notes visible only to the presenter).</p>
+    </div>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="syllabus.html">← Full Syllabus</a>
+      <a href="case-studies.html">Case Study Library →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

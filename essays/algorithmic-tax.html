@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>"The Algorithmic Tax" — Visual Essay | Parallel Genius</title>
+<meta name="description" content="AI makes you 10x faster. But nobody warned you about the tax: cognitive overload, team bottlenecks, and the illusion of infinite capacity.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root { --bg:#0d0d0d; --bg2:#141416; --bg3:#1a1a1e; --gold:#c9a84c; --gold-dim:rgba(201,168,76,0.12); --text:#f0ece2; --text2:#a8a29e; --text3:#6b6560; --border:rgba(201,168,76,0.15); --green:#6b9e6b; --red:#c96363; --blue:#5b8fb9; --coral:#c97b63; }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); overflow-x:hidden; }
+.essay-nav { position:fixed; top:0; left:0; right:0; z-index:100; padding:16px 32px; display:flex; justify-content:space-between; align-items:center; background:rgba(13,13,13,0.9); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); }
+.essay-nav a { color:var(--gold); text-decoration:none; font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; }
+.progress-bar { position:fixed; top:0; left:0; height:3px; background:var(--coral); z-index:200; transition:width 0.1s; width:0%; }
+.essay-section { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:100px 40px; position:relative; }
+.essay-section .inner { max-width:720px; width:100%; }
+.title-section { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; background:radial-gradient(ellipse at center, rgba(201,123,99,0.08) 0%, transparent 70%); }
+.title-section h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(3rem,8vw,5.5rem); font-weight:700; line-height:1.05; margin-bottom:24px; }
+.title-section h1 em { color:var(--coral); font-style:italic; }
+.scroll-hint { position:absolute; bottom:40px; left:50%; transform:translateX(-50%); font-size:0.75rem; color:var(--text3); letter-spacing:3px; text-transform:uppercase; animation:pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+.essay-quote { font-family:'Cormorant Garamond',serif; font-size:clamp(1.6rem,3.5vw,2.8rem); font-style:italic; line-height:1.4; }
+.essay-quote .attr { display:block; font-size:0.9rem; font-style:normal; color:var(--coral); margin-top:20px; font-family:'DM Sans',sans-serif; }
+.essay-prose { font-size:1.15rem; line-height:2; color:var(--text2); }
+.essay-prose strong { color:var(--text); font-weight:600; }
+.essay-prose em.hi { color:var(--coral); font-style:normal; font-weight:600; }
+.essay-divider { text-align:center; padding:60px 0; }
+.essay-divider span { display:inline-block; width:60px; height:1px; background:var(--coral); }
+.counter-section { text-align:center; }
+.counter-num { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,10vw,8rem); font-weight:700; color:var(--coral); line-height:1; }
+.counter-label { font-size:1rem; color:var(--text3); margin-top:8px; letter-spacing:2px; text-transform:uppercase; }
+.counter-context { font-size:1.1rem; color:var(--text2); margin-top:24px; max-width:500px; display:inline-block; }
+.tax-card { background:var(--bg3); border:1px solid var(--border); border-radius:12px; padding:32px; margin:20px 0; }
+.tax-card h3 { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--coral); margin-bottom:8px; }
+.tax-card p { font-size:0.95rem; color:var(--text2); line-height:1.7; }
+.fade-in { opacity:0; transform:translateY(30px); transition:opacity 0.8s ease, transform 0.8s ease; }
+.fade-in.visible { opacity:1; transform:translateY(0); }
+.final-section { background:radial-gradient(ellipse at center, rgba(201,123,99,0.08) 0%, transparent 70%); text-align:center; }
+.final-section h2 { font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,5vw,3.5rem); margin-bottom:24px; }
+.final-cta { display:inline-block; padding:16px 40px; background:var(--coral); color:#1a1612; font-weight:700; text-decoration:none; border-radius:8px; font-size:1rem; margin-top:24px; transition:all 0.3s; }
+.final-cta:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(201,123,99,0.3); }
+@media(max-width:768px) { .essay-section { padding:80px 24px; } }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+<nav class="essay-nav">
+  <a href="index.html">← Parallel Genius</a>
+  <a href="syllabus.html">Full Curriculum →</a>
+</nav>
+
+<!-- 1: TITLE -->
+<section class="title-section">
+  <h1>The <em>Algorithmic</em> Tax</h1>
+  <p style="font-size:1.2rem; color:var(--text2); max-width:520px;">AI makes you 10× faster. Nobody warned you about the tax.</p>
+  <div style="font-size:0.9rem; color:var(--text3); margin-top:16px;"><span style="color:var(--coral);">Dr. Yamicia Connor</span> · Parallel Genius</div>
+  <div class="scroll-hint">scroll ↓</div>
+</section>
+
+<!-- 2 -->
+<section class="essay-section"><div class="inner fade-in">
+  <div class="essay-quote">"I worked and worked and worked and worked and worked and worked and worked, and then I'm still working."<span class="attr">— Dr. Yamicia Connor</span></div>
+</div></section>
+
+<!-- 3 -->
+<section class="essay-section" style="background:var(--bg2);"><div class="inner fade-in">
+  <p class="essay-prose">Here is what the AI productivity narrative promises:<br><br><strong>You will produce more, faster, with less effort.</strong><br><br>Here is what actually happens:<br><br>You produce more. You produce faster. <em class="hi">But you don't produce with less effort.</em> You produce with <em>different</em> effort. And that different effort has a tax that nobody told you about.</p>
+</div></section>
+
+<!-- 4 -->
+<div class="essay-divider"><span></span></div>
+
+<!-- 5: Counter -->
+<section class="essay-section"><div class="inner fade-in counter-section">
+  <div class="counter-num">70</div>
+  <div class="counter-label">articles in 2 afternoons</div>
+  <p class="counter-context">Production speed: unprecedented. Team absorption speed: unchanged. The gap between those two numbers is the algorithmic tax.</p>
+</div></section>
+
+<!-- 6 -->
+<section class="essay-section" style="background:var(--bg2);"><div class="inner fade-in">
+  <p class="essay-prose" style="text-align:center; font-size:1.3rem;">The tax has three components.<br><br>You pay all three.<br>Every time.<br>Whether you know it or not.</p>
+</div></section>
+
+<!-- 7: Three taxes -->
+<section class="essay-section"><div class="inner fade-in">
+  <div class="tax-card">
+    <h3>Tax #1: The Production Tax</h3>
+    <p>You produce faster than anyone can review, approve, or deploy. Articles pile up. Dashboards go unread. Curriculum modules sit in queues. You've created a production machine with no matching absorption machine.</p>
+    <p style="margin-top:12px; color:var(--coral); font-weight:600;">The cost: wasted production. Work that exists but doesn't move.</p>
+  </div>
+  <div class="tax-card">
+    <h3>Tax #2: The Context Tax</h3>
+    <p>YOU become the central nervous system. The AI doesn't remember across sessions. Your team doesn't have your full picture. Every dependency, every decision, every connection lives in your head. You are the single point of failure.</p>
+    <p style="margin-top:12px; color:var(--coral); font-weight:600;">The cost: cognitive load that scales with every project you add.</p>
+  </div>
+  <div class="tax-card">
+    <h3>Tax #3: The Identity Tax</h3>
+    <p>When AI produces text that sounds like you, only you can verify the voice. Is this your judgment or the AI's approximation? Only you know. You become the quality bottleneck because authenticity can't be delegated.</p>
+    <p style="margin-top:12px; color:var(--coral); font-weight:600;">The cost: you can never fully step away from QC.</p>
+  </div>
+</div></section>
+
+<!-- 8 -->
+<section class="essay-section" style="background:var(--bg3);"><div class="inner fade-in">
+  <div class="essay-quote">"If you don't have a whole team who can take the output at the same pace as you produce it, then it actually just creates a lot of confusion."<span class="attr">— Dr. Yamicia Connor</span></div>
+</div></section>
+
+<!-- 9 -->
+<div class="essay-divider"><span></span></div>
+
+<section class="essay-section"><div class="inner fade-in">
+  <p class="essay-prose">The Harvard Business Review confirmed it in February 2026. A study of 200 knowledge workers over 8 months found that AI adoption led to:<br><br><strong>Faster pace. Broader scope. Extended hours.</strong><br><br>Not less work. <em class="hi">More work, distributed differently.</em><br><br>The tool didn't create boundaries. It removed them. And without boundaries, ambitious people fill every available space with production — until there's no room left for thinking.</p>
+</div></section>
+
+<!-- 10: The Paradox -->
+<section class="essay-section" style="background:var(--bg2);"><div class="inner fade-in counter-section">
+  <p style="font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--coral); margin-bottom:16px;">The Super Productivity Paradox</p>
+  <p class="essay-prose" style="text-align:center; font-size:1.3rem;">The better you get at using AI,<br>the more cognitive load you accumulate.<br><br><strong style="font-size:1.5rem;">Skill and overload scale together.</strong><br><br>A beginner: one task, low load.<br>An expert: 8 agents, 12 projects, zero margin.<br><br><em class="hi">The expert is 10× more productive —<br>and 10× more loaded.</em></p>
+</div></section>
+
+<!-- 11 -->
+<div class="essay-divider"><span></span></div>
+
+<section class="essay-section"><div class="inner fade-in">
+  <p class="essay-prose">So what do you do?<br><br>You don't stop using AI. That's not the answer.<br><br>You <em class="hi">build the infrastructure</em> that absorbs the tax. Persistence layers that remember decisions. Knowledge systems that hold context. Production loops that batch output into reviewable chunks. Delegation frameworks that let your team absorb at their pace.<br><br><strong>This curriculum teaches you how to build that infrastructure.</strong><br><br>Not because AI is bad. Because AI is powerful — and power without structure creates chaos.</p>
+</div></section>
+
+<!-- 12: FINAL -->
+<section class="essay-section final-section"><div class="inner fade-in">
+  <h2>The tax is real.<br>The infrastructure to <em style="color:var(--coral);">manage it</em> is teachable.</h2>
+  <p style="color:var(--text2); font-size:1.1rem;">15 modules. From foundations to operations.</p>
+  <a href="syllabus.html" class="final-cta">Start the Curriculum →</a>
+</div></section>
+
+<footer style="text-align:center; padding:40px; font-size:0.8rem; color:var(--text3); border-top:1px solid var(--border);">
+  © 2026 Dr. Yamicia Connor · Labora Collective · Built with parallel genius.
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const h = document.documentElement.scrollHeight - window.innerHeight;
+  document.getElementById('progressBar').style.width = (window.scrollY / h * 100) + '%';
+});
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
