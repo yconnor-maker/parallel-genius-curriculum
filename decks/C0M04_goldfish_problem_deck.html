@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C0-04: The Goldfish Problem — Slide Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep:#0d0d0d; --bg-card:#1a1a1a; --gold:#c9a84c; --gold-dim:rgba(201,168,76,0.12); --text-primary:#f0ece2; --text-secondary:#a8a29e; --text-muted:#6b6560; --border:rgba(201,168,76,0.2); --accent-blue:#5b8fb9; --accent-green:#6b9e6b; --accent-coral:#c97b63; --accent-red:#c96363; }
+        * { margin:0; padding:0; box-sizing:border-box; } html { scroll-behavior:smooth; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg-deep); color:var(--text-primary); }
+        .nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(13,13,13,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:12px 32px; }
+        .nav-left { font-size:0.75rem; color:var(--gold); text-transform:uppercase; letter-spacing:3px; }
+        .nav-center { font-family:'Cormorant Garamond',serif; font-size:1.1rem; }
+        .nav-right { display:flex; gap:8px; align-items:center; }
+        .nav-btn { background:var(--bg-card); border:1px solid var(--border); color:var(--text-primary); padding:8px 20px; border-radius:8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.85rem; transition:all 0.2s; }
+        .nav-btn:hover { background:var(--gold-dim); border-color:var(--gold); }
+        .slide-counter { font-size:0.85rem; color:var(--text-muted); min-width:60px; text-align:center; }
+        .slide { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:80px 60px; border-bottom:1px solid rgba(201,168,76,0.08); position:relative; }
+        .slide-inner { max-width:900px; width:100%; }
+        .slide-num { position:absolute; top:80px; right:60px; font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:rgba(201,168,76,0.08); }
+        .slide-label { font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+        .slide h1 { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:600; line-height:1.15; margin-bottom:24px; }
+        .slide h2 { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:600; line-height:1.2; margin-bottom:24px; }
+        .slide p,.slide li { font-size:1.15rem; line-height:1.8; color:var(--text-secondary); }
+        .slide ul { list-style:none; margin:16px 0; } .slide ul li { padding:8px 0 8px 24px; position:relative; }
+        .slide ul li::before { content:''; position:absolute; left:0; top:16px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+        .big-quote { font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; line-height:1.5; border-left:4px solid var(--gold); padding-left:32px; margin:30px 0; }
+        .big-quote .attribution { display:block; font-size:0.9rem; font-style:normal; color:var(--gold); margin-top:16px; font-family:'DM Sans',sans-serif; }
+        .data-box { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px; margin:24px 0; }
+        .data-box .label { font-size:0.7rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); margin-bottom:12px; }
+        .data-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+        .data-stat { text-align:center; } .data-stat .number { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:700; color:var(--gold); } .data-stat .desc { font-size:0.8rem; color:var(--text-muted); }
+        .step-list { margin:24px 0; } .step-item { display:grid; grid-template-columns:48px 1fr; gap:16px; margin-bottom:20px; align-items:start; }
+        .step-circle { width:48px; height:48px; border-radius:50%; background:var(--gold-dim); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1.2rem; color:var(--gold); }
+        .step-content h4 { font-size:1.05rem; font-weight:600; margin-bottom:4px; } .step-content p { font-size:0.95rem; color:var(--text-secondary); }
+        .speaker-note { margin-top:40px; padding:16px 20px; background:rgba(91,143,185,0.08); border:1px solid rgba(91,143,185,0.2); border-radius:8px; font-size:0.8rem; color:var(--accent-blue); }
+        .speaker-note::before { content:'🎤 SPEAKER NOTE: '; font-weight:700; }
+        .slide.title-slide { background:linear-gradient(180deg,rgba(201,168,76,0.06) 0%,transparent 60%); }
+        .slide.title-slide h1 { font-size:4rem; }
+        .title-meta { font-size:1rem; color:var(--text-muted); margin-top:20px; } .title-meta span { color:var(--gold); }
+        .exercise-box { background:rgba(107,158,107,0.06); border:2px solid rgba(107,158,107,0.3); border-radius:16px; padding:36px; margin:20px 0; }
+        .exercise-box h3 { color:var(--accent-green); font-family:'Cormorant Garamond',serif; font-size:1.6rem; }
+        .exercise-box .timer { display:inline-block; background:rgba(107,158,107,0.15); color:var(--accent-green); padding:4px 14px; border-radius:20px; font-size:0.8rem; font-weight:600; margin-bottom:16px; }
+        @media (max-width:768px) { .slide { padding:80px 24px; } .slide h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .data-stats { grid-template-columns:1fr; } .nav-center { display:none; } }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-left">C0-04</div>
+    <div class="nav-center">The Goldfish Problem</div>
+    <div class="nav-right"><button class="nav-btn" onclick="prevSlide()">← Prev</button><span class="slide-counter" id="slideCounter">1 / 10</span><button class="nav-btn" onclick="nextSlide()">Next →</button></div>
+</div>
+<div style="padding-top:60px;">
+
+<div class="slide title-slide" id="slide-1"><div class="slide-inner">
+    <div class="slide-label">Course 0 · AI Foundations · Module 04</div>
+    <h1>The Goldfish Problem</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">Your Brilliant Employee Has Amnesia</h3>
+    <div class="title-meta"><span>Dr. Yamicia Connor, MD, PhD, MPH</span><br>The Labora Collective</div>
+</div><div class="slide-num">01</div></div>
+
+<div class="slide" id="slide-2"><div class="slide-inner">
+    <div class="slide-label">The Problem</div>
+    <h2>AI forgets everything between sessions.</h2>
+    <p style="font-size:1.3rem; margin:24px 0;">You spend 45 minutes teaching the AI your project, your preferences, your constraints. You close the tab. Tomorrow you start from zero.</p>
+    <div class="big-quote" style="font-size:1.8rem;">"When you go to a brand new chat, a brand new tool, you realize how much of yourself is reflected in there. Because it just sounds — it's not helpful at all."<span class="attribution">— Dr. Yamicia Connor</span></div>
+</div><div class="slide-num">02</div>
+<div class="speaker-note">Ask the audience: "Who has had the experience of starting a new chat and being frustrated at how generic the AI suddenly sounds?" Everyone will raise their hand.</div></div>
+
+<div class="slide" id="slide-3"><div class="slide-inner">
+    <div class="slide-label">Case Study</div>
+    <h2>The Decision That Vanished</h2>
+    <div class="data-box" style="border-color:rgba(201,99,99,0.4);">
+        <div class="label" style="color:var(--accent-red);">Real Failure</div>
+        <p style="color:var(--text-secondary);">Review dashboards across the system had comment boxes — places where the human made decisions. But none of those comment boxes had save functionality. Every time the browser tab closed, all decisions disappeared.</p>
+        <p style="color:var(--text-secondary); margin-top:12px;">82 HTML files with textareas. 14 still needed decisions. The AI kept re-asking questions that had already been answered.</p>
+    </div>
+    <p style="color:var(--gold); font-weight:600; margin-top:16px;">The most dangerous UX failure in an AI-human workflow is not a wrong answer — it's a lost answer.</p>
+</div><div class="slide-num">03</div></div>
+
+<div class="slide" id="slide-4"><div class="slide-inner">
+    <div class="slide-label">Framework</div>
+    <h2>The Persistence Stack</h2>
+    <p style="margin-bottom:24px;">Before you build anything sophisticated with AI, build the layer that makes decisions survive:</p>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-content"><h4>Session Persistence</h4><p><code>localStorage</code>, auto-save, debounced writes. The minimum: your decisions survive a page refresh.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-content"><h4>Project Context Files</h4><p>A <code>CLAUDE.md</code>, a project constitution, a knowledge base file. Information the AI reads at the start of every session.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-content"><h4>Structured Memory Systems</h4><p>Knowledge items, conversation logs, decision registries. Systems that accumulate context over weeks and months.</p></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-content"><h4>Cross-Agent State</h4><p>Dashboards, Airtable, signout files. Multiple agents share state through a single source of truth.</p></div></div>
+    </div>
+</div><div class="slide-num">04</div></div>
+
+<div class="slide" id="slide-5"><div class="slide-inner">
+    <div class="slide-label">Key Insight</div>
+    <h2>Persistence First. Everything Else Second.</h2>
+    <div class="big-quote" style="font-size:2rem;">"Before building sophisticated AI decision flows, verify the human's decisions actually survive the session. The fix wasn't more AI — it was localStorage.setItem()."</div>
+    <p style="margin-top:24px;">The most impactful infrastructure you can build is often the simplest: make sure decisions persist. Then make sure context persists. Then worry about intelligence.</p>
+</div><div class="slide-num">05</div></div>
+
+<div class="slide" id="slide-6"><div class="slide-inner">
+    <div class="slide-label">Evidence</div>
+    <h2>What Persistence Enables</h2>
+    <div class="data-box">
+        <div class="label">Real System Architecture</div>
+        <div class="data-stats">
+            <div class="data-stat"><div class="number">8+</div><div class="desc">AI agents running in parallel</div></div>
+            <div class="data-stat"><div class="number">1</div><div class="desc">central dashboard (YC Ops Hub)</div></div>
+            <div class="data-stat"><div class="number">0</div><div class="desc">decisions lost between sessions</div></div>
+        </div>
+    </div>
+    <p style="margin-top:16px;">This system runs because persistence was built first. Every agent writes state to a shared source of truth. Every decision is captured. Every handoff is logged.</p>
+</div><div class="slide-num">06</div></div>
+
+<div class="slide" id="slide-7"><div class="slide-inner">
+    <div class="slide-label">Warning</div>
+    <h2>The Compounding Cost of Amnesia</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">1</div><div class="step-content"><h4>Re-explaining Costs Time</h4><p>Every new session, you spend 10-15 minutes re-establishing context that the previous session already had.</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">2</div><div class="step-content"><h4>Forgotten Decisions Get Re-made</h4><p>Without persistence, you make the same decision twice. Or worse — you make contradictory decisions because you forgot the first one.</p></div></div>
+        <div class="step-item"><div class="step-circle" style="background:rgba(201,99,99,0.15); border-color:var(--accent-red); color:var(--accent-red);">3</div><div class="step-content"><h4>Agents Inherit Wrong Assumptions</h4><p>When Agent B doesn't know what Agent A decided, it makes its own assumptions. Those assumptions cascade through downstream work.</p></div></div>
+    </div>
+</div><div class="slide-num">07</div></div>
+
+<div class="slide" id="slide-8"><div class="slide-inner">
+    <div class="slide-label">Workshop</div>
+    <h2>Build Your First Persistence Layer</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 15 Minutes</span>
+        <h3>Exercise: The Context File</h3>
+        <div class="step-list">
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">1</div><div class="step-content"><h4>Create a project file</h4><p>For your main project, write a markdown file called PROJECT_CONTEXT.md (or CLAUDE.md)</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">2</div><div class="step-content"><h4>Include: who you are, what you're building, what you've decided</h4><p>Brand voice, technical stack, key decisions already made, things to never do.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">3</div><div class="step-content"><h4>Feed it to a fresh AI session</h4><p>Start a new chat. Paste the file. Ask a project-specific question. Compare to a cold start.</p></div></div>
+        </div>
+    </div>
+</div><div class="slide-num">08</div></div>
+
+<div class="slide" id="slide-9"><div class="slide-inner">
+    <div class="slide-label">Takeaway</div>
+    <h2>The One Thing to Remember</h2>
+    <div class="big-quote" style="font-size:2.2rem;">"The first infrastructure you build is not an AI agent. It's a system that remembers what you decided."<span class="attribution">— Dr. Yamicia Connor</span></div>
+</div><div class="slide-num">09</div></div>
+
+<div class="slide title-slide" id="slide-10"><div class="slide-inner">
+    <div class="slide-label">Up Next</div>
+    <h1>What to Build vs. What to Buy</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">C0-05: Build What Only You Can Build</h3>
+    <div class="title-meta" style="margin-top:40px;"><span>📝 Worksheet:</span> Complete the C0-04 worksheet<br><span>📖 Reading:</span> Case Study — The Decision That Vanished</div>
+</div><div class="slide-num">10</div></div>
+
+</div>
+<script>
+    let currentSlide=1; const totalSlides=10;
+    function updateCounter(){document.getElementById('slideCounter').textContent=currentSlide+' / '+totalSlides;}
+    function goToSlide(n){currentSlide=Math.max(1,Math.min(n,totalSlides)); document.getElementById('slide-'+currentSlide).scrollIntoView({behavior:'smooth'}); updateCounter();}
+    function nextSlide(){goToSlide(currentSlide+1);} function prevSlide(){goToSlide(currentSlide-1);}
+    document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nextSlide();}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide();}});
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const num=parseInt(entry.target.id.replace('slide-',''));if(num){currentSlide=num;updateCounter();}}});},{threshold:0.5});
+    document.querySelectorAll('.slide').forEach(slide=>observer.observe(slide));
+</script>
+</body>
+</html>

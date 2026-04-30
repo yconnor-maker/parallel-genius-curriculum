@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C0-04 Worksheet — The Goldfish Problem | The Labora Collective</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg:#faf8f4; --bg-card:#fff; --gold:#8b6914; --gold-light:#c9a84c; --gold-bg:rgba(139,105,20,0.06); --text-primary:#1a1612; --text-secondary:#504840; --text-muted:#8a8078; --border:rgba(139,105,20,0.2); --accent-green:#3d6b3d; --green-bg:rgba(61,107,61,0.06); }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text-primary); line-height:1.7; }
+        @media print { body { background:white; } .no-print { display:none; } .write-area { min-height:120px; } }
+        .page { max-width:800px; margin:0 auto; padding:60px 40px; }
+        .header { border-bottom:3px solid var(--gold); padding-bottom:24px; margin-bottom:40px; }
+        .header-label { font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+        .header h1 { font-family:'Cormorant Garamond',serif; font-size:2.2rem; font-weight:600; margin-bottom:4px; }
+        .header .subtitle { font-family:'Cormorant Garamond',serif; font-size:1.3rem; color:var(--gold-light); font-style:italic; }
+        .header-meta { display:flex; gap:30px; margin-top:16px; font-size:0.8rem; color:var(--text-muted); } .header-meta span { color:var(--gold); font-weight:600; }
+        .section { margin-bottom:40px; }
+        .section-number { font-family:'Cormorant Garamond',serif; font-size:0.85rem; font-weight:700; color:var(--gold); text-transform:uppercase; letter-spacing:3px; margin-bottom:8px; }
+        .section h2 { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:600; margin-bottom:12px; }
+        .section p { color:var(--text-secondary); margin-bottom:12px; }
+        .write-area { background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:20px; min-height:100px; margin:12px 0; }
+        .write-area .prompt { font-size:0.8rem; color:var(--text-muted); font-style:italic; margin-bottom:8px; }
+        .write-area .lines { background-image:repeating-linear-gradient(transparent,transparent 28px,rgba(139,105,20,0.1) 28px,rgba(139,105,20,0.1) 29px); min-height:80px; }
+        .quote-box { border-left:4px solid var(--gold); padding:16px 20px; margin:16px 0; background:var(--gold-bg); border-radius:0 8px 8px 0; }
+        .quote-box p { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-style:italic; margin-bottom:4px; }
+        .quote-box .attr { font-family:'DM Sans',sans-serif; font-size:0.75rem; color:var(--gold); font-style:normal; }
+        .exercise-box { background:var(--green-bg); border:2px solid var(--accent-green); border-radius:12px; padding:28px; margin:20px 0; }
+        .exercise-box h3 { font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--accent-green); margin-bottom:4px; }
+        .exercise-box .timer { display:inline-block; background:rgba(61,107,61,0.15); color:var(--accent-green); padding:2px 12px; border-radius:20px; font-size:0.75rem; font-weight:600; margin-bottom:12px; }
+        .checklist { list-style:none; margin:12px 0; }
+        .checklist li { padding:8px 0 8px 32px; position:relative; font-size:0.92rem; color:var(--text-secondary); }
+        .checklist li::before { content:'☐'; position:absolute; left:0; font-size:1.1rem; color:var(--gold); }
+    </style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+    <div class="header-label">Course 0 · AI Foundations · Worksheet</div>
+    <h1>The Goldfish Problem</h1>
+    <div class="subtitle">Module C0-04</div>
+    <div class="header-meta">
+        <div><span>Time:</span> 30 minutes</div>
+        <div><span>Format:</span> Individual + practical</div>
+        <div><span>Prerequisite:</span> C0-03</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-number">Part I</div>
+    <h2>The Amnesia Audit</h2>
+    <p>Think about the last 5 AI sessions you had. For each one, answer:</p>
+    <div class="write-area">
+        <div class="prompt">How much time did you spend re-explaining context that a previous session already knew?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Were there any decisions from a past session that you forgot and had to re-make?</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">How many of your AI sessions start with "Here's what we discussed last time..." or similar re-briefing?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-number">Part II</div>
+    <h2>Build Your Context File</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 15 Minutes</span>
+        <h3>Exercise: Create PROJECT_CONTEXT.md</h3>
+        <p style="margin:12px 0; color:var(--text-secondary);">For your primary project, write a markdown file that an AI can read to instantly understand your work. Include:</p>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Project Name & One-Line Description:</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Who am I? (Role, expertise, what makes your perspective unique)</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Key decisions already made (things that are LOCKED and shouldn't be revisited):</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Brand voice / tone rules (how should AI-generated text sound?):</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Things to NEVER do (mistakes, anti-patterns, forbidden approaches):</div>
+        <div class="lines"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Current status (what's done, what's in progress, what's blocked):</div>
+        <div class="lines"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-number">Part III</div>
+    <h2>The Cold Start Test</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 5 Minutes</span>
+        <h3>Exercise: Before vs. After</h3>
+        <p style="margin:12px 0; color:var(--text-secondary);">Open a fresh AI chat. Ask a project-specific question WITHOUT your context file. Then start a new chat, paste your context file, and ask the same question.</p>
+    </div>
+    <div class="write-area">
+        <div class="prompt">The question you asked:</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Quality of the answer WITHOUT the context file (1-10):</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Quality of the answer WITH the context file (1-10):</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">What was different? What did the context file enable?</div>
+        <div class="lines"></div>
+    </div>
+    <div class="quote-box">
+        <p>"The first infrastructure you build is not an AI agent. It's a system that remembers what you decided."</p>
+        <div class="attr">— From C0-M04</div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-number">Part IV</div>
+    <h2>Persistence Stack Assessment</h2>
+    <p>Rate your current setup for each layer of the persistence stack:</p>
+    <div class="write-area">
+        <div class="prompt">Layer 1 — Session Persistence (auto-save, localStorage): Do you have this? Y/N. Describe:</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Layer 2 — Project Context Files: Do you have one? Is it current? When was it last updated?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Layer 3 — Structured Memory: Do you have a decision registry, knowledge base, or conversation logs?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+    <div class="write-area">
+        <div class="prompt">Layer 4 — Cross-Agent State: If you use multiple AI tools, do they share context? How?</div>
+        <div class="lines" style="min-height:40px;"></div>
+    </div>
+</div>
+
+<div class="section">
+    <div class="section-number">Completion</div>
+    <h2>Before Moving to C0-05</h2>
+    <ul class="checklist">
+        <li>I completed my Amnesia Audit and know how much time I waste re-explaining</li>
+        <li>I created a PROJECT_CONTEXT.md for my primary project</li>
+        <li>I completed the Cold Start Test and measured the difference</li>
+        <li>I can name the 4 layers of the Persistence Stack</li>
+        <li>I understand that persistence is the FIRST infrastructure to build</li>
+    </ul>
+</div>
+
+</div>
+</body>
+</html>
