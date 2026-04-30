@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C0-M04: The Goldfish Problem — Parallel Genius</title>
+<meta name="description" content="AI forgets everything between sessions. Your brilliant employee has amnesia. This module teaches you how to build persistence before you build anything else.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../../index.html#tracks">Curriculum</a>
+    <a href="../../syllabus.html">Syllabus</a>
+    <a href="../../index.html#lessons">Lessons</a>
+    <a href="../../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero">
+  <div class="container">
+    <span class="module-label">Course 0: AI Foundations · Module 4</span>
+    <h1 class="module-title">The Goldfish Problem</h1>
+    <p class="module-subtitle">AI forgets everything between sessions. Your brilliant employee has amnesia. This is the single most expensive problem in AI-augmented workflows — and the one you must solve before anything else scales.</p>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section class="module-section">
+  <div class="container">
+    <h2>The Brilliant Employee With Amnesia</h2>
+    <blockquote class="module-quote">"It's like a brilliant employee with amnesia. Groundhog Day, every day. It's maddening. The software can't read parts of itself."</blockquote>
+    <div class="prose-block">
+      <p>Every AI conversation starts from zero. The AI that helped you build a complete strategic framework yesterday knows nothing about it today. The agent that processed 100 records in a triage session can't tell the next agent what it did. The decisions you made — where to put files, what naming conventions to use, which approach to take — all evaporate when the session ends.</p>
+      <p>This isn't a bug that will be fixed next quarter. It's a fundamental architectural constraint of how LLMs work. And while AI companies are building persistence features, the problem is deeper than they realize:</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Session Amnesia</h4>
+        <p>Each conversation is a silo. The AI doesn't carry context from one conversation to the next. You re-explain your project, your preferences, your constraints — every time.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Cross-Agent Blindness</h4>
+        <p>If you use multiple AI tools (Claude, ChatGPT, Gemini, Cowork agents), they can't see each other's work. Each one operates in isolation. The correct repo for a project was found on April 7 — and had to be re-discovered on April 27 because the second agent never read the first agent's signout.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <h4>Output Scatter</h4>
+        <p>Work products — documents, frameworks, analysis — get generated inside conversations and then vanish. "There's just so much stuff generated. If you want to come back and get it later, that's not sustainable." The AI can't find its own previous work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE RE-DISCOVERY TAX -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Re-Discovery Tax</h2>
+    <div class="prose-block">
+      <p>When AI forgets, you pay the tax in time. This pattern emerged across dozens of sessions:</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>The Pattern</h4>
+        <p>Multiple sessions in April spent time re-discovering facts that were already known. The correct deployment repo was found on April 7 and re-found on April 27. A database ID was confirmed once and had to be re-confirmed. A decision was made, then re-made because the record of it had vanished.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Cost</h4>
+        <p>Each re-discovery takes 10-30 minutes. Over a month of daily AI use, this compounds to hours of wasted time — not doing new work, but <em>re-establishing context that should have persisted.</em> Knowledge decays faster than work accumulates.</p>
+      </div>
+    </div>
+    <blockquote class="module-quote">"The system had the answer — it just couldn't surface it to the next agent. This is the argument for a structured system-of-record, not just narrative signouts."</blockquote>
+  </div>
+</section>
+
+<!-- SHOULD YOU BUILD OR WAIT -->
+<section class="module-section">
+  <div class="container">
+    <h2>Should You Build or Wait?</h2>
+    <div class="prose-block">
+      <p>A critical question YC asked during the foundational AI Essays conversation:</p>
+    </div>
+    <blockquote class="module-quote">"If the AI companies are gonna build it, I don't want to spend time finding a solution to a problem that is going to be solved in 6 months. We need to work on the problems that have no solution down the pipeline."</blockquote>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>What AI Companies ARE Fixing</h4>
+        <p><strong>Don't invest here:</strong></p>
+        <ul style="padding-left: 16px; font-size: 0.88rem;">
+          <li>Memory across conversations (all major companies working on this)</li>
+          <li>Log generation and retrieval (obvious infrastructure gap)</li>
+          <li>Slack/notification integration (coming fast)</li>
+        </ul>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>What Only YOU Can Build</h4>
+        <p><strong>Invest here:</strong></p>
+        <ul style="padding-left: 16px; font-size: 0.88rem;">
+          <li>Your domain-specific knowledge architecture</li>
+          <li>Your decision log and decision authority</li>
+          <li>Your agent coordination protocols</li>
+          <li>Your session close-down discipline</li>
+        </ul>
+      </div>
+    </div>
+    <div class="prose-block" style="margin-top: 24px;">
+      <p>The answer is: <strong>build the discipline, not the infrastructure.</strong> AI companies will build better memory features. They will not build your habit of extracting knowledge at the end of every session. They will not build your decision log. They will not build the sync state between your agents. That's yours to build — and it's what the <a href="../../resources/starter-kit.html">System Architecture Starter Kit</a> gives you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE FIVE PERSISTENCE MECHANISMS -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Five Persistence Mechanisms You Need</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>1. Session Close-Down</h4>
+        <p>The 7-point checklist you run before ending every AI session. What was decided? What was created? What's pending? What should the next session start with? Takes 3 minutes. Saves hours. (Template in the <a href="../../resources/starter-kit.html">Starter Kit</a>)</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. AGENT_SYNC_STATE</h4>
+        <p>A single file that every agent reads at session start and updates at session end. It answers: what happened last, what's active, what's blocked, what comes next. This is the bridge between sessions. (Template in the <a href="../../resources/starter-kit.html">Starter Kit</a>)</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. Decision Log</h4>
+        <p>A structured record of every important decision: what was decided, why, what alternatives were rejected, who decided, and whether it's still active. When two agents disagree about approach, the decision log is the authority.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. Knowledge Items</h4>
+        <p>Curated, distilled knowledge about specific topics — extracted from conversations and stored as persistent artifacts. Not raw transcripts, but refined insights with metadata about when they were created and what they reference.</p>
+      </div>
+      <div class="concept-card">
+        <h4>5. The Log Channel</h4>
+        <p>"I create logs. I share the projects. We send it to a chatbot channel that just has infinite number of things hanging out there." A dedicated channel (Slack, Teams, wherever) where session summaries land immediately so the team — and future agents — can find them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCISES -->
+<section class="module-section">
+  <div class="container">
+    <h2>Workshop Exercises</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Exercise 1: The Re-Discovery Audit</h4>
+        <p>Over the next week, keep a log of every time you have to re-explain something to an AI that you've told it before. Include: what you had to re-explain, how long it took, and what would have prevented it. At the end of the week, calculate your total re-discovery tax in minutes.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 2: First Close-Down</h4>
+        <p>At the end of your very next AI session, run the 7-point close-down from the Starter Kit. Save the output as a file. In your next session, start by having the AI read that file. Notice the difference in how quickly you reach productive work.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 3: The Decision That Survived</h4>
+        <p>Start a decision log. Make one entry today — any decision you made during an AI session. Tomorrow, check: can you find it? Did you remember it correctly? If you'd lost it, how long would it have taken to re-make? This is the value of persistence, measured in one decision.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <div class="module-nav">
+      <a href="c0-m03.html">← Prev: Conversation, Not Commands</a>
+      <a href="c0-m05.html">Next: What to Build vs. What to Buy →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

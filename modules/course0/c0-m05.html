@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C0-M05: What to Build vs. What to Buy — Parallel Genius</title>
+<meta name="description" content="AI companies are building fast. You shouldn't build what they'll ship in 6 months. But there are things only you can build. Here's how to tell the difference.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../../index.html#tracks">Curriculum</a>
+    <a href="../../syllabus.html">Syllabus</a>
+    <a href="../../index.html#lessons">Lessons</a>
+    <a href="../../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero">
+  <div class="container">
+    <span class="module-label">Course 0: AI Foundations · Module 5</span>
+    <h1 class="module-title">What to Build vs. What to Buy</h1>
+    <p class="module-subtitle">AI tools change every 90 days. Before you invest time building a workflow, ask: will this exist as a feature next quarter? If yes, don't build it. If no, build it today — because that's your competitive advantage.</p>
+  </div>
+</section>
+
+<!-- THE QUESTION -->
+<section class="module-section">
+  <div class="container">
+    <h2>The Strategic Question</h2>
+    <blockquote class="module-quote">"If the AI companies are gonna build it, I don't want to spend time finding a solution to a problem that is going to be solved in 6 months. We need to work on the problems that have no solution down the pipeline. If something can be bought more easily than I can pay someone to do it — we buy it."</blockquote>
+    <div class="prose-block">
+      <p>This is the most important strategic question for any small organization using AI. You have limited time, limited budget, and a landscape that changes faster than you can build. Every hour you spend building a workaround is an hour you're betting won't be wasted when the platform ships the feature natively.</p>
+      <p>The framework is simple: <strong>build what they can't, buy what they will.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- THE FRAMEWORK -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Build / Buy / Wait Framework</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid #c0392b;">
+        <h4>🛑 Don't Build: Platform Infrastructure</h4>
+        <p>These are the things AI companies are actively racing to ship. Building your own version is waste.</p>
+        <ul style="padding-left: 16px; font-size: 0.88rem; margin-top: 8px;">
+          <li><strong>Persistent memory across sessions</strong> — Anthropic, OpenAI, Google all actively working on this. Months away, not years.</li>
+          <li><strong>Tool orchestration / browser agents</strong> — computer use agents already exist. Cowork, Manus (acquired for $2B). Getting smoother fast.</li>
+          <li><strong>Log generation and retrieval</strong> — auto-summaries, session continuity — obvious gap every company sees.</li>
+          <li><strong>End-to-end content production</strong> — from draft to formatted final asset. Platform-native soon.</li>
+        </ul>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>✅ Build Now: Your Competitive Advantage</h4>
+        <p>These require your domain knowledge, your judgment, your organizational context. No AI company will build them for you.</p>
+        <ul style="padding-left: 16px; font-size: 0.88rem; margin-top: 8px;">
+          <li><strong>Domain-specific verification workflows</strong> — clinical accuracy checking, regulatory compliance, industry-specific QA</li>
+          <li><strong>Your voice and brand architecture</strong> — system prompts, style guides, editorial standards that encode your specific identity</li>
+          <li><strong>Organizational knowledge architecture</strong> — the structure of how your team's knowledge connects</li>
+          <li><strong>Cross-agent coordination protocols</strong> — how your specific agents hand off to each other</li>
+          <li><strong>Decision authority and escalation paths</strong> — when does the AI decide, when does the human decide, when does it escalate</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL EXAMPLES -->
+<section class="module-section">
+  <div class="container">
+    <h2>Real Examples From This Organization</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Built: The CONDUCTOR.md</h4>
+        <p>A master operating document that gives every AI agent the context it needs to do its job. No AI company will ship your CONDUCTOR. It encodes your team structure, your naming conventions, your deployment targets, your editorial standards. This is yours to build. (Template in the <a href="../../resources/starter-kit.html">Starter Kit</a>)</p>
+      </div>
+      <div class="concept-card">
+        <h4>Should Not Have Built: CODA/Gamma API Integration</h4>
+        <p>"Our tech people are trying to build integrations through CODA's API, and Gamma's API, and it's taken them a long time. It hasn't been smooth. It's actually quite cumbersome." Meanwhile, browser-based agents that literally click the buttons for you — like Cowork + Chrome — shipped natively. The API integration was a build that should have been a wait.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Built: The Compliance Auditor Pattern</h4>
+        <p>An agent that scans operational infrastructure and measures health metrics. This isn't a generic tool — it's calibrated to this organization's specific schema, naming conventions, and quality thresholds. No platform will ship your auditor.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Correctly Waited: Content Scheduling</h4>
+        <p>Rather than building a custom scheduling system, the team uses existing tools (RightStack) and will integrate through browser agents when that capability matures. The scheduling problem is being solved by the market.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE TOOL CONNECTION ENGINEER -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Role Nobody Hired: Tool Connection Engineer</h2>
+    <blockquote class="module-quote">"Before adopting any of these tools, you need an engineer whose sole job is tool connection. Because that becomes the big issue. You can do one part, then another part in a separate machine, but if someone's not actively always connecting the tools—"</blockquote>
+    <div class="prose-block">
+      <p>This is a role that emerged from practice, not from a job description. The most common failure pattern in AI adoption is not "the tool doesn't work." It's "the tools don't talk to each other."</p>
+      <p>You adopt Claude for writing, Gamma for design, RightStack for scheduling, Airtable for data, Slack for communication. Each tool works. None of them are connected. And the person connecting them is usually the CEO — by hand — because nobody else understands the full picture.</p>
+      <p>The Tool Connection Engineer is the person (or the process) that ensures outputs from one system become inputs to the next. In a small organization, this might be a workflow rather than a person. But the function must exist or everything stays siloed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE SINGLE FRONT DOOR -->
+<section class="module-section">
+  <div class="container">
+    <h2>The Single Front Door Principle</h2>
+    <blockquote class="module-quote">"I want one front door. I don't want to have to interact with 20 different AI tools. That is tedious in itself. I want essentially a person. A person would do it. I want the computer to click the buttons."</blockquote>
+    <div class="prose-block">
+      <p>The ideal state is not 20 specialized tools. It's one orchestrator that talks to 20 tools behind the scenes. You give it a brief, it produces the final output. The architecture:</p>
+      <ul style="padding-left: 20px;">
+        <li><strong>Front door:</strong> One AI you talk to (your orchestrator)</li>
+        <li><strong>Middle layer:</strong> The orchestrator delegates to specialized tools</li>
+        <li><strong>Back end:</strong> The tools execute and return results</li>
+      </ul>
+      <p>This is where the industry is heading. Computer use agents — AI that literally opens browsers, clicks buttons, fills forms — are the bridge. You don't need API integrations if you have an AI that can use the same interface you use.</p>
+      <p>For now, the practical version: <strong>minimize the number of tools you interact with directly. Consolidate where you can. Wait for orchestration where you can't.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCISES -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Workshop Exercises</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>Exercise 1: The Tool Inventory</h4>
+        <p>List every AI and AI-adjacent tool your organization uses. For each one, note: (a) what it does, (b) what it connects to, (c) who connects it, (d) what data gets lost between it and the next tool. The gaps between tools are where your productivity leaks.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 2: The Build/Wait Decision</h4>
+        <p>For each custom workflow or integration your team has built (or is planning to build), apply the framework: Is this domain-specific knowledge that no platform will ship? Or is this a general capability that AI companies are actively building? Be honest. Kill the builds that should be waits.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Exercise 3: The 90-Day Forecast</h4>
+        <p>Write down three things you wish your AI tools could do. Research whether any major AI company has announced progress on them. For each one, estimate: will this exist as a feature within 90 days? If yes, don't build around it. If no, it's safe to invest in a custom solution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <div class="module-nav">
+      <a href="c0-m04.html">← Prev: The Goldfish Problem</a>
+      <a href="../../syllabus.html">Back to Syllabus →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>
