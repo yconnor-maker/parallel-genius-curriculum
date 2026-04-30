@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The PROM Error — Parallel Genius</title>
+<meta name="description" content="When AI generated a dangerous clinical recommendation and only the physician caught it. A case study in why human verification is non-negotiable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, #3a1520 0%, var(--bg-dark) 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #e74c3c; margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .danger-box { background: #2d1a1a; border: 1px solid #5a2d2d; border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; color: #e8c4c4; }
+  .danger-box h4 { color: #e74c3c; font-size: 1.1rem; margin-bottom: 8px; }
+  .safe-box { background: #1a2d1e; border: 1px solid #2d5a35; border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; color: #c4e8cc; }
+  .safe-box h4 { color: #27ae60; font-size: 1.1rem; margin-bottom: 8px; }
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+  @media (max-width: 768px) { .compare-grid { grid-template-columns: 1fr; } }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--rose); font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">⚠️ Critical Case Study</span>
+    <h1>The PROM Error</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">When AI generated a clinical recommendation that could have endangered patients — and only the physician caught it. Why human verification is not optional.</p>
+    <div class="case-meta">
+      <span>Referenced in: M07, M09</span>
+      <span>Domain: Clinical publishing</span>
+      <span>Severity: Patient safety</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Context</h2>
+    <div class="prose-block">
+      <p>Yamicia was building the Labora Collective's first full-pipeline article — a clinical education piece about <strong>PROM (Prelabor Rupture of Membranes)</strong>, a condition where a pregnant person's water breaks before labor begins. The article was being produced through the editorial workflow: AI-assisted research, drafting, image generation, audio recording, and formatting.</p>
+      <p>The production system was working beautifully. Research was thorough. The draft was well-structured. Images were generated. The audio script was prepared. Everything looked professional and complete.</p>
+      <p>Then Yamicia read the clinical timeline.</p>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>What the AI Wrote vs. What the Doctor Knew</h2>
+    <div class="compare-grid">
+      <div class="danger-box">
+        <h4>❌ What AI Generated</h4>
+        <p>"Waiting 12–24 hours can be safe if you and baby are doing well."</p>
+        <p style="margin-top:12px; font-size:0.85rem; opacity:0.8">This implies that waiting at home for up to 24 hours after your water breaks is a reasonable clinical option.</p>
+      </div>
+      <div class="safe-box">
+        <h4>✅ What the Physician Actually Counsels</h4>
+        <p>"I would like you to come into the hospital. That's my recommendation. If you want to stay at home for a couple hours, that's not unreasonable. However, the longer you're at home — you increase your risk of infection, and that could affect both you and baby."</p>
+        <p style="margin-top:12px; font-size:0.85rem; opacity:0.8">"24 hours is way long. As a physician, I would start nervously pacing around 12 hours. Asking the nurses — where is she? Can we get her on the phone?"</p>
+      </div>
+    </div>
+    <blockquote class="module-quote">"In my counseling, I never said that waiting up to 12 to 24 hours is a reasonable option. Because that's not a reasonable option. Where did you get that phrasing? That's why I want you to use my counseling. Because I have to stand by this."</blockquote>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>Why This Is Terrifying</h2>
+    <div class="lesson-box">
+      <h4>The Content Looked Perfect</h4>
+      <p>The article was well-researched. The citations were real. The language was professional. The clinical framework was sound. A non-physician reviewer would have approved it. A non-physician editor would have published it. The error wasn't obvious — it was buried in the nuance of clinical judgment.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>The Error Was Dangerous</h4>
+      <p>A pregnant person reading this article might decide to wait 24 hours at home after their water breaks, believing it's clinically safe. It isn't. Prolonged rupture increases the risk of infection — chorioamnionitis, sepsis, NICU admission. This recommendation could lead to real harm.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>The AI Was Confident</h4>
+      <p>The AI didn't flag uncertainty. It didn't say "this recommendation may vary by clinical context." It presented the 12-24 hour window as established guidance. This is the confidence problem from Module 10: <em>"The technology will not announce that it is operating from an impoverished conceptual base."</em></p>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top:32px">"If I wasn't the one doing it — I mean, it looks good enough. No one else would've caught that."</blockquote>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Lessons</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>1. Domain expertise is the QC layer</h4>
+        <p>AI can draft. AI can research. AI cannot make clinical judgments. The human in the loop needs to be the domain expert — not a general reviewer, but someone who knows the difference between "12-24 hours can be safe" and the actual clinical standard of care.</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. Use <em>your</em> voice, not AI's</h4>
+        <p>After catching this error, YC mandated: "Use my counseling. My actual words." AI should structure and format — but the clinical content must come from verified human input, not AI-generated approximations of what a doctor might say.</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. Verification must be structural</h4>
+        <p>This wasn't caught by a QC checklist. It was caught because the right person happened to read the draft carefully. A production system can't rely on "happened to." Verification must be a required gate in the pipeline — not an optional step.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. Scientific images have the same problem</h4>
+        <p>"These should not be that detailed. If I wasn't the one doing it, no one else would've caught that." AI-generated medical diagrams contained inaccuracies in the same article. The visual content needed the same expert review as the text.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Changed After</h2>
+    <div class="prose-block">
+      <p>This case study established three permanent rules in YC's production system:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong>Clinical content must use verified human input.</strong> AI can format and structure — but the medical recommendations come from YC's actual counseling language, not AI paraphrase.</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong>Domain expert review is a pipeline gate.</strong> No clinical article publishes without physician review. This is structural, not optional.</li>
+        <li style="padding: 8px 0;">✦ <strong>Scientific images require the same scrutiny.</strong> AI-generated medical visuals are treated as drafts that require expert validation, not finished assets.</li>
+      </ul>
+    </div>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="70-article-sprint.html">← Prev: The 70-Article Sprint</a>
+      <a href="../syllabus.html">Back to Syllabus →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Architecture Starter Kit — Parallel Genius</title>
+<meta name="description" content="Everything you need to build your own AI operating system. Folder structures, agent constitutions, sync states, and pipeline templates. By Dr. Yamicia Connor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .kit-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2320 100%); color: var(--text-dark); text-align: center; }
+  .kit-hero h1 { font-size: clamp(2.4rem, 5vw, 3.6rem); margin-bottom: 16px; }
+  .kit-hero .subtitle { font-size: 1.15rem; color: var(--text-light); max-width: 640px; margin: 0 auto 32px; }
+  .kit-badge { display: inline-block; background: var(--rose); color: #fff; font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 24px; }
+
+  .template-section { padding: 64px 0; }
+  .template-section:nth-child(even) { background: var(--surface-warm); }
+  .template-header { margin-bottom: 40px; }
+  .template-header h2 { font-size: 2rem; margin-bottom: 8px; }
+  .template-header p { color: var(--text-muted); font-size: 0.95rem; max-width: 680px; }
+  .template-number { font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rose); margin-bottom: 8px; }
+
+  .code-block { background: var(--bg-dark); color: #e0d8cf; border-radius: var(--radius); padding: 28px 32px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; line-height: 1.8; overflow-x: auto; margin: 24px 0; position: relative; }
+  .code-block .comment { color: #6a6259; }
+  .code-block .folder { color: var(--gold); }
+  .code-block .file { color: #c4c0ba; }
+  .code-block .highlight { color: var(--rose); font-weight: 600; }
+
+  .copy-btn { position: absolute; top: 12px; right: 12px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: var(--text-light); font-size: 0.72rem; padding: 6px 14px; border-radius: 6px; cursor: pointer; transition: var(--transition); font-family: 'DM Sans', sans-serif; }
+  .copy-btn:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  .template-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 24px; }
+  .template-card h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .template-card .card-desc { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+
+  .field-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  .field-table th { text-align: left; padding: 10px 16px; border-bottom: 2px solid var(--rose); font-weight: 600; }
+  .field-table td { padding: 10px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .field-table tr:nth-child(even) { background: rgba(0,0,0,0.015); }
+
+  .inline-template { background: var(--surface-warm); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 20px 0; font-size: 0.88rem; line-height: 1.9; }
+  .inline-template h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 12px; color: var(--rose); }
+
+  .checklist { list-style: none; padding: 0; }
+  .checklist li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.9rem; }
+  .checklist li::before { content: "☐ "; color: var(--rose); font-weight: 700; }
+
+  .kit-cta { text-align: center; padding: 80px 0; background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2320 100%); color: var(--text-dark); }
+  .kit-cta h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .kit-cta p { color: var(--text-light); max-width: 560px; margin: 0 auto 32px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="kit-hero">
+  <div class="container">
+    <span class="kit-badge">⭐ Crown Jewel Resource</span>
+    <h1>System Architecture Starter Kit</h1>
+    <p class="subtitle">Everything you need to build your own AI operating system — not in theory, but in practice. Folder structures, agent constitutions, sync states, and pipeline templates you can copy today.</p>
+    <p style="font-size:0.85rem; color:var(--text-light); font-style:italic;">"We cannot move forward until we have a source of truth in one place."</p>
+  </div>
+</section>
+
+<!-- 1. FOLDER STRUCTURE -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 1 of 6</p>
+      <h2>The Folder Structure</h2>
+      <p>Your AI system starts with a folder. Not a tool, not a subscription, not a framework — a folder with a clear hierarchy that every agent can navigate.</p>
+    </div>
+
+    <div class="code-block" id="folder-structure">
+      <button class="copy-btn" onclick="copyBlock('folder-structure')">Copy</button>
+<span class="comment"># YOUR AI OPERATING SYSTEM — Root Folder Structure</span>
+<span class="comment"># Copy this. Adapt it. Deploy it.</span>
+
+<span class="folder">📁 AI_SYSTEM/</span>
+├── <span class="folder">📁 _SYSTEM/</span>                    <span class="comment"># Operating rules — agents read this at boot</span>
+│   ├── <span class="file">CONDUCTOR.md</span>              <span class="comment"># Master operating document</span>
+│   ├── <span class="file">AGENT_SYNC_STATE.md</span>       <span class="comment"># Cross-agent coordination</span>
+│   ├── <span class="file">INBOX_RULES.md</span>            <span class="comment"># How inputs get processed</span>
+│   └── <span class="file">DECISION_LOG.md</span>           <span class="comment"># What was decided and why</span>
+│
+├── <span class="folder">📁 _INBOX/</span>                     <span class="comment"># Raw inputs land here — dictations, notes, ideas</span>
+│   ├── <span class="folder">📁 dictations/</span>            <span class="comment"># Voice memos, transcriptions</span>
+│   ├── <span class="folder">📁 brain-dumps/</span>           <span class="comment"># Rapid-fire idea captures</span>
+│   └── <span class="folder">📁 external/</span>              <span class="comment"># Emails, messages, forwarded content</span>
+│
+├── <span class="folder">📁 _PIPELINE/</span>                  <span class="comment"># Work moves through these stages</span>
+│   ├── <span class="folder">📁 00_triage/</span>             <span class="comment"># Needs classification</span>
+│   ├── <span class="folder">📁 01_research/</span>           <span class="comment"># Being researched</span>
+│   ├── <span class="folder">📁 02_drafting/</span>           <span class="comment"># Being written</span>
+│   ├── <span class="folder">📁 03_review/</span>             <span class="comment"># Waiting for human review</span>
+│   ├── <span class="folder">📁 04_revision/</span>           <span class="comment"># Being revised after feedback</span>
+│   ├── <span class="folder">📁 05_final/</span>              <span class="comment"># Approved, ready to deploy</span>
+│   └── <span class="folder">📁 06_published/</span>          <span class="comment"># Live — deployed or delivered</span>
+│
+├── <span class="folder">📁 _PROJECTS/</span>                  <span class="comment"># One folder per active project</span>
+│   ├── <span class="folder">📁 project-alpha/</span>
+│   │   ├── <span class="file">BRIEF.md</span>              <span class="comment"># What, why, who, when</span>
+│   │   ├── <span class="folder">📁 assets/</span>
+│   │   └── <span class="folder">📁 drafts/</span>
+│   └── <span class="folder">📁 project-beta/</span>
+│
+├── <span class="folder">📁 _KNOWLEDGE/</span>                 <span class="comment"># Persistent memory — your AI Brain</span>
+│   ├── <span class="folder">📁 knowledge-items/</span>       <span class="comment"># Curated insights with metadata</span>
+│   ├── <span class="folder">📁 source-inventory/</span>      <span class="comment"># What content exists and where</span>
+│   └── <span class="folder">📁 templates/</span>             <span class="comment"># Reusable document templates</span>
+│
+└── <span class="folder">📁 _ARCHIVE/</span>                   <span class="comment"># Completed work — extracted, then moved here</span>
+    ├── <span class="folder">📁 2026-Q1/</span>
+    └── <span class="folder">📁 2026-Q2/</span>
+    </div>
+
+    <div class="inline-template">
+      <h4>Why This Structure Works</h4>
+      <p>The underscore prefix (<code>_SYSTEM</code>, <code>_INBOX</code>) sorts system folders to the top. The pipeline stages are numbered so work flows in one direction. Projects are self-contained. Knowledge persists. Archives prevent clutter without losing history.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. CONDUCTOR.md -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 2 of 6</p>
+      <h2>CONDUCTOR.md — Your Master Operating Document</h2>
+      <p>This is the single most important file in your system. Every AI session starts by reading it. It defines how your system works.</p>
+    </div>
+
+    <div class="code-block" id="conductor-template">
+      <button class="copy-btn" onclick="copyBlock('conductor-template')">Copy</button>
+<span class="comment"># CONDUCTOR.md — [Your Name]'s AI Operating System</span>
+<span class="comment"># Last Updated: [DATE]</span>
+<span class="comment"># Every AI session must read this file at boot.</span>
+
+<span class="highlight">## Identity</span>
+- <span class="file">Owner:</span> [Your name]
+- <span class="file">Domain:</span> [Your field — e.g., "Clinical medicine + health publishing"]
+- <span class="file">Primary Input Method:</span> [e.g., "Voice dictation via Plaud Note"]
+- <span class="file">Operating Hours:</span> [When you work with AI]
+
+<span class="highlight">## Agent Roster</span>
+<span class="comment"># List every AI agent/tool you use and what it does</span>
+
+| Agent | Platform | Role | Scope |
+|-------|----------|------|-------|
+| [Name] | [Claude/GPT/etc] | [One-sentence role] | [What it can/cannot do] |
+| [Name] | [Platform] | [Role] | [Scope] |
+
+<span class="highlight">## Pipeline Stages</span>
+<span class="comment"># How work moves through your system</span>
+
+| Stage | Folder | Exit Criteria |
+|-------|--------|---------------|
+| 0. Triage | _PIPELINE/00_triage/ | Classified + assigned |
+| 1. Research | _PIPELINE/01_research/ | Evidence gathered |
+| 2. Drafting | _PIPELINE/02_drafting/ | First draft complete |
+| 3. Review | _PIPELINE/03_review/ | Human has reviewed |
+| 4. Revision | _PIPELINE/04_revision/ | Feedback incorporated |
+| 5. Final | _PIPELINE/05_final/ | QC passed |
+| 6. Published | _PIPELINE/06_published/ | Live + documented |
+
+<span class="highlight">## Boot Sequence</span>
+<span class="comment"># What the AI does at the start of every session</span>
+
+1. Read this file (CONDUCTOR.md)
+2. Read AGENT_SYNC_STATE.md
+3. Scan _INBOX/ for new inputs
+4. Scan _PIPELINE/ for stuck items
+5. Check DECISION_LOG.md for recent decisions
+6. Ask: "What should we work on today?"
+
+<span class="highlight">## Rules</span>
+- Never delete without extracting knowledge first
+- Always ask what format I want output in
+- Ask probing questions before building
+- Update AGENT_SYNC_STATE at session close
+- [Add your own rules here]
+    </div>
+  </div>
+</section>
+
+<!-- 3. AGENT SYNC STATE -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 3 of 6</p>
+      <h2>AGENT_SYNC_STATE.md — Cross-Agent Memory</h2>
+      <p>The file that solves the zero-memory problem. Updated at the end of every session. Read at the start of every session.</p>
+    </div>
+
+    <div class="code-block" id="sync-state-template">
+      <button class="copy-btn" onclick="copyBlock('sync-state-template')">Copy</button>
+<span class="highlight"># AGENT_SYNC_STATE</span>
+<span class="comment"># Updated: [DATE] [TIME]</span>
+<span class="comment"># Updated by: [Which agent/session]</span>
+
+<span class="highlight">## Last Session Summary</span>
+- <span class="file">Date:</span> [When]
+- <span class="file">Agent:</span> [Which AI]
+- <span class="file">Duration:</span> [How long]
+- <span class="file">What was accomplished:</span>
+  - [Concrete deliverable 1]
+  - [Concrete deliverable 2]
+  - [Concrete deliverable 3]
+
+<span class="highlight">## Active Projects</span>
+| Project | Status | Next Step | Blocked By |
+|---------|--------|-----------|------------|
+| [Name] | [In Progress/Paused/Blocked] | [Specific action] | [Nothing/Dependency] |
+
+<span class="highlight">## Pending Decisions</span>
+- [ ] [Decision that needs human input]
+- [ ] [Decision that needs human input]
+
+<span class="highlight">## Files Created/Modified This Session</span>
+- [path/to/file.md] — [what changed]
+- [path/to/file.md] — [what changed]
+
+<span class="highlight">## Known Issues</span>
+- [Issue description + impact]
+
+<span class="highlight">## Next Session Should</span>
+1. [Most important thing]
+2. [Second priority]
+3. [Third priority]
+    </div>
+  </div>
+</section>
+
+<!-- 4. AGENT CONSTITUTION -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 4 of 6</p>
+      <h2>Agent Constitution — Define Each Agent's Boundaries</h2>
+      <p>Every agent needs a one-page constitution. This goes in the system prompt, custom instructions, or project description for that agent.</p>
+    </div>
+
+    <div class="template-card">
+      <h3>Agent Constitution Template</h3>
+      <p class="card-desc">Fill this out for every AI agent in your roster.</p>
+
+      <div class="inline-template">
+        <h4>[Agent Name] — Constitution</h4>
+        <p><strong>Role:</strong> [One sentence — what this agent does]</p>
+        <p><strong>Scope:</strong> [What domains/projects this agent handles]</p>
+        <p><strong>Inputs:</strong> [What this agent receives — files, dictations, data]</p>
+        <p><strong>Outputs:</strong> [What this agent produces — drafts, reports, code]</p>
+        <p><strong>Cannot:</strong> [What this agent is NOT allowed to do]</p>
+        <p><strong>Format Rules:</strong> [How this agent should deliver output]</p>
+        <p><strong>Quality Gates:</strong> [What must be true before output is accepted]</p>
+        <p><strong>Sync Protocol:</strong> [How this agent reports what it did — updates SYNC_STATE, writes to log, etc.]</p>
+      </div>
+    </div>
+
+    <div class="template-card">
+      <h3>Example: The Conductor</h3>
+      <p class="card-desc">YC's primary orchestration agent.</p>
+
+      <div class="inline-template">
+        <h4>The Conductor — Constitution</h4>
+        <p><strong>Role:</strong> Master orchestrator. Routes tasks, maintains system state, manages agent roster.</p>
+        <p><strong>Scope:</strong> All projects, all agents, system-wide coordination.</p>
+        <p><strong>Inputs:</strong> Dictations, brain dumps, agent sync states, pipeline scans.</p>
+        <p><strong>Outputs:</strong> Task assignments, pipeline updates, decision logs, session summaries.</p>
+        <p><strong>Cannot:</strong> Write final content. Make clinical decisions. Deploy to production.</p>
+        <p><strong>Format Rules:</strong> All output to YC must be HTML or slide deck. Markdown only for agent-to-agent communication.</p>
+        <p><strong>Quality Gates:</strong> Every task assignment must include: objective, constraints, deliverable format, and completion criteria.</p>
+        <p><strong>Sync Protocol:</strong> Update AGENT_SYNC_STATE.md at session close. Write breadcrumbs for next session.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. DECISION LOG -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 5 of 6</p>
+      <h2>Decision Log — Prevent the Decision That Vanished</h2>
+      <p>Every decision that matters gets logged. When two agents disagree, this is the authority.</p>
+    </div>
+
+    <div class="template-card">
+      <h3>Decision Log Format</h3>
+      <table class="field-table">
+        <thead>
+          <tr><th>Field</th><th>Description</th><th>Example</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>ID</strong></td><td>Sequential number</td><td>DEC-014</td></tr>
+          <tr><td><strong>Date</strong></td><td>When decided</td><td>2026-04-29</td></tr>
+          <tr><td><strong>Decision</strong></td><td>What was decided (one sentence)</td><td>"All editorial content publishes silently to LC. Newsletters surface it."</td></tr>
+          <tr><td><strong>Rationale</strong></td><td>Why this was chosen over alternatives</td><td>"Prevents email spam. Lets us control cadence."</td></tr>
+          <tr><td><strong>Alternatives Rejected</strong></td><td>What else was considered</td><td>"Direct email per article — too many emails."</td></tr>
+          <tr><td><strong>Decided By</strong></td><td>Who made the call</td><td>"YC"</td></tr>
+          <tr><td><strong>Status</strong></td><td>Active / Superseded / Reversed</td><td>"Active"</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 6. SESSION CLOSE-DOWN -->
+<section class="template-section">
+  <div class="container">
+    <div class="template-header">
+      <p class="template-number">Template 6 of 6</p>
+      <h2>Session Close-Down Checklist</h2>
+      <p>Run this before ending every AI session. Takes 3-5 minutes. Saves hours of reconstruction.</p>
+    </div>
+
+    <div class="template-card">
+      <h3>The 7-Point Close-Down</h3>
+      <ul class="checklist">
+        <li>What was decided this session? (Log decisions in DECISION_LOG.md)</li>
+        <li>What was created? (List files with paths)</li>
+        <li>What was modified? (Note what changed and why)</li>
+        <li>What's still pending? (Incomplete tasks, waiting on input)</li>
+        <li>What's blocked? (Dependencies, missing information, access issues)</li>
+        <li>What should the next session start with? (Top 3 priorities)</li>
+        <li>Update AGENT_SYNC_STATE.md with all of the above</li>
+      </ul>
+    </div>
+
+    <div class="inline-template">
+      <h4>Why This Matters</h4>
+      <p>Without a close-down, your next session starts from zero. You'll spend 15 minutes re-establishing context. You'll forget what was decided. You'll redo work that's already done. The close-down is the extraction mechanism that turns a temporary conversation into persistent institutional knowledge.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="kit-cta">
+  <div class="container">
+    <h2>Start Building Today</h2>
+    <p>You don't need permission. You don't need a subscription. Create a folder, copy these templates, and start your next AI session with a system instead of a blank chat.</p>
+    <a href="../syllabus.html" class="deck-btn deck-btn-primary" style="font-size:1rem; padding: 14px 32px;">Return to Curriculum →</a>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+
+<script>
+function copyBlock(id) {
+  const block = document.getElementById(id);
+  const text = block.innerText.replace('Copy', '').trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = block.querySelector('.copy-btn');
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 2000);
+  });
+}
+</script>
+</body>
+</html>

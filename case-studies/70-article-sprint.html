@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The 70-Article Sprint — Parallel Genius</title>
+<meta name="description" content="How one physician completed 70 articles in two afternoons — and why her team couldn't absorb it. A case study in AI super-productivity and its human cost.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #2a2320 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .timeline { border-left: 3px solid var(--rose); padding-left: 32px; margin: 40px 0; }
+  .timeline-event { margin-bottom: 32px; position: relative; }
+  .timeline-event::before { content: ''; position: absolute; left: -39px; top: 6px; width: 12px; height: 12px; border-radius: 50%; background: var(--rose); }
+  .timeline-event h4 { font-size: 1.05rem; margin-bottom: 4px; }
+  .timeline-event p { color: var(--text-muted); font-size: 0.9rem; }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--rose); font-size: 1.1rem; margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">Case Study</span>
+    <h1>The 70-Article Sprint</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">How one physician completed 70 articles in two afternoons — and why her team couldn't absorb them. A case study in AI super-productivity and the bottleneck nobody warned her about.</p>
+    <div class="case-meta">
+      <span>Referenced in: M07, M09</span>
+      <span>Source: Claude Cowork session</span>
+      <span>Outcome: Production loop redesign</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="timeline">
+      <div class="timeline-event">
+        <h4>The Setup</h4>
+        <p>Yamicia had been building an editorial pipeline for the Labora Collective — a health publishing platform with hundreds of articles in various stages of completion. The backlog was enormous. Articles sitting in drafts, research half-done, outlines never finished.</p>
+      </div>
+      <div class="timeline-event">
+        <h4>The Sprint</h4>
+        <p>Using Claude's Cowork feature (which allows the AI to work autonomously on file-based tasks), she processed articles through the pipeline — researching, drafting, editing, and formatting them in rapid succession. In two afternoons, 70 articles reached completion.</p>
+      </div>
+      <div class="timeline-event">
+        <h4>The Problem</h4>
+        <p>"My team couldn't absorb it. They're still working through the backlog." The articles were done, but they needed human review — clinical accuracy checks, voice consistency, formatting verification, image creation, and publication decisions. The team could process maybe 5 per day. The backlog would take weeks to clear.</p>
+      </div>
+      <div class="timeline-event">
+        <h4>The Realization</h4>
+        <p>The bottleneck had moved. Before AI, the constraint was production speed. Now the constraint was human absorption capacity. Producing faster didn't solve the problem — it moved it downstream.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Lessons</h2>
+    <div class="lesson-box">
+      <h4>Lesson 1: Production Speed ≠ Delivery Speed</h4>
+      <p>AI can draft at 10x speed. But the draft isn't the deliverable. The deliverable is the published, reviewed, verified output. If your review capacity is 5/day, producing 70 in two days just creates a 14-day backlog.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>Lesson 2: The Team Must Scale With the System</h4>
+      <p>This sprint revealed that the team's workflows were designed for pre-AI production speeds. The solution wasn't to slow down production — it was to build batch-processing systems for review, template the QC steps, and automate the formatting pipeline.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>Lesson 3: Batch Production Requires Batch Review</h4>
+      <p>If you're going to produce in batches, you need to review in batches. That means standardized QC checklists, templated review flows, and — critically — the human reviewer needs to be freed from everything except the judgment calls.</p>
+    </div>
+
+    <blockquote class="module-quote" style="margin-top:32px">"For me to realistically be able to do this, we're gonna have to automate more of this. Unless I'm gonna have to hire someone whose full time job is putting these articles together."</blockquote>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Changed After</h2>
+    <div class="prose-block">
+      <p>This case study directly led to three curriculum modules:</p>
+      <ul style="list-style: none; padding: 0;">
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong><a href="../modules/m07.html">Module 07: The Production Loop</a></strong> — the INGEST → COMPLETE → DISTRIBUTE framework that prevents 70%-done pileups</li>
+        <li style="padding: 8px 0; border-bottom: 1px solid var(--border);">✦ <strong><a href="../modules/m09.html">Module 09: Protecting the Human</a></strong> — the Super Productivity Paradox and absorption capacity</li>
+        <li style="padding: 8px 0;">✦ <strong><a href="../modules/m05.html">Module 05: Visual-First Communication</a></strong> — format as a solution to the review bottleneck</li>
+      </ul>
+    </div>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="../syllabus.html">← Back to Syllabus</a>
+      <a href="prom-error.html">Next Case Study: The PROM Error →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>
