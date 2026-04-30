@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study Library — Parallel Genius</title>
+<meta name="description" content="9 real infrastructure case studies from building with AI agents. Each one is a lesson that can't be Googled — it had to be lived.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .library-hero { padding: 140px 0 60px; background: linear-gradient(180deg, var(--bg-dark) 0%, #141618 100%); color: var(--text-dark); text-align: center; }
+  .library-hero h1 { font-size: clamp(2.4rem, 5vw, 3.5rem); margin-bottom: 16px; }
+  .library-hero p { max-width: 600px; margin: 0 auto; color: var(--text-light); font-size: 1.1rem; }
+  .library-stat { display: flex; justify-content: center; gap: 48px; margin-top: 32px; }
+  .library-stat .stat { text-align: center; }
+  .library-stat .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: var(--gold); }
+  .library-stat .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-light); }
+  .case-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 24px; margin: 48px 0; }
+  .case-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; text-decoration: none; color: inherit; transition: var(--transition); position: relative; overflow: hidden; }
+  .case-card:hover { border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+  .case-card .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .case-card .tag.security { background: rgba(231,76,60,0.1); color: #e74c3c; }
+  .case-card .tag.infra { background: rgba(201,168,76,0.12); color: var(--gold); }
+  .case-card .tag.design { background: rgba(52,152,219,0.1); color: #3498db; }
+  .case-card .tag.ops { background: rgba(107,158,107,0.12); color: #6b9e6b; }
+  .case-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 8px; }
+  .case-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .case-card .modules { margin-top: 16px; font-size: 0.75rem; color: var(--gold); font-weight: 600; }
+  .filter-bar { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; }
+  .filter-btn { background: var(--surface); border: 1px solid var(--border); padding: 8px 20px; border-radius: 24px; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; cursor: pointer; transition: var(--transition); color: var(--text-body); }
+  .filter-btn:hover, .filter-btn.active { background: var(--gold); border-color: var(--gold); color: #1a1612; }
+  @media(max-width:768px) { .case-grid { grid-template-columns: 1fr; } .library-stat { gap: 24px; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="index.html#tracks">Curriculum</a>
+    <a href="syllabus.html">Syllabus</a>
+    <a href="case-studies.html" style="color:var(--gold);">Case Studies</a>
+    <a href="index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="library-hero">
+  <div class="container">
+    <p style="font-size:0.72rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px;">Case Study Library</p>
+    <h1>Lessons That Can't Be Googled</h1>
+    <p>Every case study in this library comes from a real failure, a real fix, and a real system. These are the lessons that emerge only from building — not from tutorials.</p>
+    <div class="library-stat">
+      <div class="stat"><div class="stat-num">9</div><div class="stat-label">Case Studies</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">Categories</div></div>
+      <div class="stat"><div class="stat-num">15</div><div class="stat-label">Module References</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="filterCards('all')">All</button>
+      <button class="filter-btn" onclick="filterCards('security')">Security</button>
+      <button class="filter-btn" onclick="filterCards('infra')">Infrastructure</button>
+      <button class="filter-btn" onclick="filterCards('design')">Design Pattern</button>
+      <button class="filter-btn" onclick="filterCards('ops')">Operations</button>
+    </div>
+
+    <div class="case-grid" id="caseGrid">
+
+      <a href="case-studies/api-key-leak.html" class="case-card" data-category="security">
+        <span class="tag security">⚠️ Security</span>
+        <h3>The API Key in the Public Repo</h3>
+        <p>AI wrote working code — and committed your database credentials to a public repository. The 5-step remediation protocol.</p>
+        <div class="modules">Referenced in: C0-M01, M03, M09</div>
+      </a>
+
+      <a href="case-studies/prom-error.html" class="case-card" data-category="ops">
+        <span class="tag ops">Operations</span>
+        <h3>The PROM Error</h3>
+        <p>AI generated a clinical article stating "12-24 hours can be safe" for premature rupture of membranes. Only a clinician caught the error.</p>
+        <div class="modules">Referenced in: C0-M01, M06</div>
+      </a>
+
+      <a href="case-studies/70-article-sprint.html" class="case-card" data-category="ops">
+        <span class="tag ops">Operations</span>
+        <h3>The 70-Article Sprint</h3>
+        <p>70 articles produced in 2 afternoons. The team couldn't absorb them. The bottleneck was never production — it was absorption.</p>
+        <div class="modules">Referenced in: C0-M02, M07</div>
+      </a>
+
+      <a href="case-studies/two-agents-one-table.html" class="case-card" data-category="design">
+        <span class="tag design">Design Pattern</span>
+        <h3>Two Agents, One Table</h3>
+        <p>697 records. Agent A starts at A, Agent Z starts at Z. Zero-infrastructure concurrency through alphabetical partitioning.</p>
+        <div class="modules">Referenced in: M04, M08</div>
+      </a>
+
+      <a href="case-studies/sentinel-stop.html" class="case-card" data-category="design">
+        <span class="tag design">Design Pattern</span>
+        <h3>The Sentinel's Stop</h3>
+        <p>44 problems found, threshold was 25. The agent stopped and asked — and that was the right answer. Circuit breaker patterns for agent autonomy.</p>
+        <div class="modules">Referenced in: M04, M09</div>
+      </a>
+
+      <a href="case-studies/decision-vanished.html" class="case-card" data-category="infra">
+        <span class="tag infra">Infrastructure</span>
+        <h3>The Decision That Vanished</h3>
+        <p>82 HTML files with textareas. Zero save functionality. Every browser tab close destroyed human decisions. The fix: localStorage.</p>
+        <div class="modules">Referenced in: C0-M04, M08</div>
+      </a>
+
+      <a href="case-studies/schema-drift.html" class="case-card" data-category="infra">
+        <span class="tag infra">Infrastructure</span>
+        <h3>Schema Drift</h3>
+        <p>The code said "Timeline Check." The database said "Timeline/Continuity Check." A field renamed in the UI broke every downstream agent.</p>
+        <div class="modules">Referenced in: M06, M08</div>
+      </a>
+
+      <a href="case-studies/repo-identity-crisis.html" class="case-card" data-category="infra">
+        <span class="tag infra">Infrastructure</span>
+        <h3>The Repo Identity Crisis</h3>
+        <p>Two repos. Same purpose. Different names. When agents create freely, naming conventions become collision prevention infrastructure.</p>
+        <div class="modules">Referenced in: M04, M08</div>
+      </a>
+
+      <a href="case-studies/reconciliation-tax.html" class="case-card" data-category="ops">
+        <span class="tag ops">Operations</span>
+        <h3>The Reconciliation Tax</h3>
+        <p>A 3-minute bulk add created 2,800 stub records. It took 3 days to clean up. Always reconcile before you add.</p>
+        <div class="modules">Referenced in: M06, M07</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+
+<script>
+function filterCards(category) {
+  document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.case-card').forEach(card => {
+    if (category === 'all' || card.dataset.category === category) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
