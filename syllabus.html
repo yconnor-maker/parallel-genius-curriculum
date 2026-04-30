@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syllabus & Progress — Parallel Genius</title>
+<meta name="description" content="Track your progress through the 10-module Parallel Genius AI Curriculum. Mark modules complete, view your learning path, and download your certificate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── SYLLABUS PAGE ── */
+.syllabus-hero { background: var(--bg-dark); padding: 140px 0 60px; }
+.syllabus-hero h1 { font-size: clamp(2.5rem, 6vw, 3.5rem); color: var(--text-dark); margin-bottom: 12px; }
+.syllabus-hero p { color: rgba(240,235,228,0.6); font-size: 18px; max-width: 600px; }
+
+/* Progress Bar */
+.progress-bar-wrap { background: var(--bg-dark-alt); padding: 32px 0; position: sticky; top: 60px; z-index: 50; border-bottom: 1px solid rgba(200,169,110,0.1); }
+.progress-inner { display: flex; align-items: center; gap: 20px; }
+.progress-label { font-size: 14px; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.progress-track { flex: 1; height: 8px; background: rgba(200,169,110,0.1); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, var(--rose), var(--gold)); border-radius: 4px; transition: width 0.5s ease; }
+.progress-count { font-size: 14px; color: rgba(240,235,228,0.5); white-space: nowrap; }
+
+/* Track Section */
+.track-section { padding: 64px 0 0; }
+.track-title-row { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+.track-badge { padding: 6px 16px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: #fff; }
+.track-badge-foundation { background: var(--rose); }
+.track-badge-editorial { background: var(--gold); }
+.track-badge-research { background: var(--teal); }
+.track-badge-production { background: var(--plum); }
+.track-title-row h2 { font-size: 28px; }
+
+/* Module Row */
+.module-row { display: grid; grid-template-columns: 48px 1fr auto; gap: 20px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--border); }
+.module-row:last-child { border-bottom: none; }
+
+.check-circle { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition); font-size: 18px; color: transparent; flex-shrink: 0; margin-top: 4px; }
+.check-circle:hover { border-color: var(--rose); }
+.check-circle.done { background: var(--rose); border-color: var(--rose); color: #fff; }
+
+.module-info h3 { font-size: 20px; margin-bottom: 4px; }
+.module-info h3 a { color: var(--text); }
+.module-info h3 a:hover { color: var(--rose); }
+.module-thesis { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.6; }
+
+.module-assets { display: flex; gap: 8px; flex-wrap: wrap; }
+.asset-pill { font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 16px; border: 1px solid var(--border); color: var(--text-muted); transition: var(--transition); text-decoration: none; }
+.asset-pill:hover { border-color: var(--rose); color: var(--rose); }
+.asset-pill.has-video { border-color: var(--gold); color: var(--gold); }
+.asset-pill.coming-soon { opacity: 0.4; pointer-events: none; }
+
+.module-time { font-size: 13px; color: var(--text-light); text-align: right; white-space: nowrap; margin-top: 8px; }
+
+/* Divider */
+.track-divider { height: 1px; background: var(--border); margin: 16px 0 0; }
+
+/* Reset Button */
+.reset-bar { text-align: center; padding: 48px 0; }
+.reset-btn { background: none; border: 1px solid var(--border); color: var(--text-muted); padding: 10px 24px; border-radius: 8px; font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: var(--transition); }
+.reset-btn:hover { border-color: var(--rose); color: var(--rose); }
+
+@media (max-width: 640px) {
+  .module-row { grid-template-columns: 40px 1fr; }
+  .module-time { grid-column: 2; text-align: left; margin-top: 0; }
+  .progress-inner { flex-wrap: wrap; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="index.html#tracks">Curriculum</a>
+    <a href="syllabus.html" style="color: var(--rose)">Syllabus</a>
+    <a href="index.html#lessons">Lessons</a>
+    <a href="index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="syllabus-hero">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--gold)">Your Learning Path</p>
+    <h1>Course Syllabus</h1>
+    <p>The complete outline of the Parallel Genius AI Curriculum. Mark each module as you complete it — your progress saves automatically.</p>
+  </div>
+</section>
+
+<div class="progress-bar-wrap">
+  <div class="container">
+    <div class="progress-inner">
+      <span class="progress-label">Progress</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width: 0%"></div></div>
+      <span class="progress-count" id="progress-count">0 / 10 modules</span>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- ═══ TRACK 1: FOUNDATION ═══ -->
+    <div class="track-section">
+      <div class="track-title-row">
+        <span class="track-badge track-badge-foundation">Track 1</span>
+        <h2>Foundation — "How I Think"</h2>
+      </div>
+
+      <div class="module-row" data-module="m01">
+        <div class="check-circle" onclick="toggleModule('m01')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m01.html">Module 01: The Dictation Method</a></h3>
+          <p class="module-thesis">The most important AI skill isn't writing prompts — it's the ability to think out loud into a machine and have your thinking reflected back in structured form.</p>
+          <div class="module-assets">
+            <a href="modules/m01.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M01_dictation_method_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M01_dictation_method_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+            <span class="asset-pill coming-soon">🎧 Audio</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m02">
+        <div class="check-circle" onclick="toggleModule('m02')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m02.html">Module 02: AI Operating System</a></h3>
+          <p class="module-thesis">AI tools without architecture produce chaos. The difference between "using AI" and running an AI-powered operation is a persistent system design.</p>
+          <div class="module-assets">
+            <a href="modules/m02.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M02_ai_operating_system_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M02_ai_operating_system_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m03">
+        <div class="check-circle" onclick="toggleModule('m03')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m03.html">Module 03: Writing for Machines</a></h3>
+          <p class="module-thesis">The quality of AI output is entirely determined by the quality of the task specification — a teachable skill most people skip.</p>
+          <div class="module-assets">
+            <a href="modules/m03.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M03_task_specification_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M03_task_specification_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+      <div class="track-divider"></div>
+    </div>
+
+    <!-- ═══ TRACK 2: EDITORIAL ═══ -->
+    <div class="track-section">
+      <div class="track-title-row">
+        <span class="track-badge track-badge-editorial">Track 2</span>
+        <h2>Editorial — "How I Build"</h2>
+      </div>
+
+      <div class="module-row" data-module="m04">
+        <div class="check-circle" onclick="toggleModule('m04')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m04.html">Module 04: Multi-Agent Orchestration</a></h3>
+          <p class="module-thesis">A system of agents working in parallel is transformational — but only if you have an orchestration layer preventing collisions.</p>
+          <div class="module-assets">
+            <a href="modules/m04.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M04_multi_agent_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M04_multi_agent_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m05">
+        <div class="check-circle" onclick="toggleModule('m05')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m05.html">Module 05: Visual-First Communication</a></h3>
+          <p class="module-thesis">Reading is slow. Default to visual formats. If someone can't absorb your output mid-workday, the output failed.</p>
+          <div class="module-assets">
+            <a href="modules/m05.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M05_visual_first_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M05_visual_first_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">60 min</div>
+      </div>
+      <div class="track-divider"></div>
+    </div>
+
+    <!-- ═══ TRACK 3: RESEARCH ═══ -->
+    <div class="track-section">
+      <div class="track-title-row">
+        <span class="track-badge track-badge-research">Track 3</span>
+        <h2>Research — "How I Know"</h2>
+      </div>
+
+      <div class="module-row" data-module="m06">
+        <div class="check-circle" onclick="toggleModule('m06')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m06.html">Module 06: Knowledge Extraction</a></h3>
+          <p class="module-thesis">AI has zero persistent memory. If you don't extract knowledge before the session ends, it's gone forever.</p>
+          <div class="module-assets">
+            <a href="modules/m06.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M06_knowledge_extraction_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M06_knowledge_extraction_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m07">
+        <div class="check-circle" onclick="toggleModule('m07')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m07.html">Module 07: The Production Loop</a></h3>
+          <p class="module-thesis">AI gets you 70% of the way there. The last 30% — where drafts become finished products — is where the real work lives.</p>
+          <div class="module-assets">
+            <a href="modules/m07.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M07_production_loop_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M07_production_loop_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+      <div class="track-divider"></div>
+    </div>
+
+    <!-- ═══ TRACK 4: PRODUCTION ═══ -->
+    <div class="track-section">
+      <div class="track-title-row">
+        <span class="track-badge track-badge-production">Track 4</span>
+        <h2>Production — "How I Scale"</h2>
+      </div>
+
+      <div class="module-row" data-module="m08">
+        <div class="check-circle" onclick="toggleModule('m08')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m08.html">Module 08: Building Your AI Brain</a></h3>
+          <p class="module-thesis">Your AI is only as good as the knowledge system it can access. Build a persistent AI brain that outlives any session.</p>
+          <div class="module-assets">
+            <a href="modules/m08.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M08_ai_brain_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M08_ai_brain_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m09">
+        <div class="check-circle" onclick="toggleModule('m09')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m09.html">Module 09: Protecting the Human</a></h3>
+          <p class="module-thesis">AI doesn't reduce work — it intensifies it. Protecting the human in the loop is a design problem, not a willpower problem.</p>
+          <div class="module-assets">
+            <a href="modules/m09.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M09_cognitive_load_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M09_cognitive_load_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+
+      <div class="module-row" data-module="m10">
+        <div class="check-circle" onclick="toggleModule('m10')" title="Mark complete">✓</div>
+        <div class="module-info">
+          <h3><a href="modules/m10.html">Module 10: Durable Skills vs. Workarounds</a></h3>
+          <p class="module-thesis">Most "AI skills" are workarounds. The durable skills — dictation, architecture, orchestration — survive every tool change.</p>
+          <div class="module-assets">
+            <a href="modules/m10.html" class="asset-pill">📖 Lesson</a>
+            <a href="decks/M10_durable_skills_deck.html" class="asset-pill" target="_blank">📽️ Slides</a>
+            <a href="worksheets/M10_durable_skills_worksheet.html" class="asset-pill" target="_blank">📝 Worksheet</a>
+            <span class="asset-pill coming-soon">🎬 Video</span>
+          </div>
+        </div>
+        <div class="module-time">90 min</div>
+      </div>
+    </div>
+
+    <div class="reset-bar">
+      <button class="reset-btn" onclick="resetProgress()">Reset All Progress</button>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>© 2026 Dr. Yamicia Connor · Labora Collective</p>
+    <p class="footer-sub">Built with parallel genius.</p>
+  </div>
+</footer>
+
+<script>
+const STORAGE_KEY = 'pg-curriculum-progress';
+const TOTAL = 10;
+
+function getProgress() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } 
+  catch { return {}; }
+}
+
+function saveProgress(data) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+}
+
+function toggleModule(id) {
+  const data = getProgress();
+  data[id] = !data[id];
+  saveProgress(data);
+  render();
+}
+
+function resetProgress() {
+  if (confirm('Reset all progress? This cannot be undone.')) {
+    localStorage.removeItem(STORAGE_KEY);
+    render();
+  }
+}
+
+function render() {
+  const data = getProgress();
+  const done = Object.values(data).filter(Boolean).length;
+  const pct = Math.round((done / TOTAL) * 100);
+
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-count').textContent = done + ' / ' + TOTAL + ' modules';
+
+  document.querySelectorAll('.module-row').forEach(row => {
+    const id = row.dataset.module;
+    const circle = row.querySelector('.check-circle');
+    if (data[id]) {
+      circle.classList.add('done');
+      row.style.opacity = '0.6';
+    } else {
+      circle.classList.remove('done');
+      row.style.opacity = '1';
+    }
+  });
+}
+
+render();
+</script>
+</body>
+</html>
