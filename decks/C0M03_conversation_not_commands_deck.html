@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C0-03: Conversation, Not Commands — Slide Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-deep:#0d0d0d; --bg-card:#1a1a1a; --gold:#c9a84c; --gold-dim:rgba(201,168,76,0.12); --text-primary:#f0ece2; --text-secondary:#a8a29e; --text-muted:#6b6560; --border:rgba(201,168,76,0.2); --accent-blue:#5b8fb9; --accent-green:#6b9e6b; --accent-coral:#c97b63; --accent-red:#c96363; }
+        * { margin:0; padding:0; box-sizing:border-box; } html { scroll-behavior:smooth; }
+        body { font-family:'DM Sans',sans-serif; background:var(--bg-deep); color:var(--text-primary); }
+        .nav { position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(13,13,13,0.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; padding:12px 32px; }
+        .nav-left { font-size:0.75rem; color:var(--gold); text-transform:uppercase; letter-spacing:3px; }
+        .nav-center { font-family:'Cormorant Garamond',serif; font-size:1.1rem; }
+        .nav-right { display:flex; gap:8px; align-items:center; }
+        .nav-btn { background:var(--bg-card); border:1px solid var(--border); color:var(--text-primary); padding:8px 20px; border-radius:8px; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.85rem; transition:all 0.2s; }
+        .nav-btn:hover { background:var(--gold-dim); border-color:var(--gold); }
+        .slide-counter { font-size:0.85rem; color:var(--text-muted); min-width:60px; text-align:center; }
+        .slide { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:80px 60px; border-bottom:1px solid rgba(201,168,76,0.08); position:relative; }
+        .slide-inner { max-width:900px; width:100%; }
+        .slide-num { position:absolute; top:80px; right:60px; font-family:'Cormorant Garamond',serif; font-size:4rem; font-weight:700; color:rgba(201,168,76,0.08); }
+        .slide-label { font-size:0.7rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+        .slide h1 { font-family:'Cormorant Garamond',serif; font-size:3.5rem; font-weight:600; line-height:1.15; margin-bottom:24px; }
+        .slide h2 { font-family:'Cormorant Garamond',serif; font-size:2.4rem; font-weight:600; line-height:1.2; margin-bottom:24px; }
+        .slide p,.slide li { font-size:1.15rem; line-height:1.8; color:var(--text-secondary); }
+        .slide ul { list-style:none; margin:16px 0; } .slide ul li { padding:8px 0 8px 24px; position:relative; }
+        .slide ul li::before { content:''; position:absolute; left:0; top:16px; width:8px; height:8px; border-radius:50%; background:var(--gold); }
+        .big-quote { font-family:'Cormorant Garamond',serif; font-size:2rem; font-style:italic; line-height:1.5; border-left:4px solid var(--gold); padding-left:32px; margin:30px 0; }
+        .big-quote .attribution { display:block; font-size:0.9rem; font-style:normal; color:var(--gold); margin-top:16px; font-family:'DM Sans',sans-serif; }
+        .vs-grid { display:grid; grid-template-columns:1fr auto 1fr; gap:30px; align-items:start; margin:30px 0; }
+        .vs-card { padding:28px; border-radius:12px; border:1px solid var(--border); }
+        .vs-card.bad { background:rgba(201,99,99,0.06); border-color:rgba(201,99,99,0.3); } .vs-card.good { background:rgba(107,158,107,0.06); border-color:rgba(107,158,107,0.3); }
+        .vs-card h4 { font-size:0.8rem; text-transform:uppercase; letter-spacing:2px; margin-bottom:16px; }
+        .vs-card.bad h4 { color:var(--accent-red); } .vs-card.good h4 { color:var(--accent-green); }
+        .vs-divider { font-family:'Cormorant Garamond',serif; font-size:2rem; color:var(--text-muted); align-self:center; }
+        .data-box { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:28px; margin:24px 0; }
+        .data-box .label { font-size:0.7rem; text-transform:uppercase; letter-spacing:3px; color:var(--gold); margin-bottom:12px; }
+        .step-list { margin:24px 0; } .step-item { display:grid; grid-template-columns:48px 1fr; gap:16px; margin-bottom:20px; align-items:start; }
+        .step-circle { width:48px; height:48px; border-radius:50%; background:var(--gold-dim); border:2px solid var(--gold); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; font-size:1.2rem; color:var(--gold); }
+        .step-content h4 { font-size:1.05rem; font-weight:600; margin-bottom:4px; } .step-content p { font-size:0.95rem; color:var(--text-secondary); }
+        .speaker-note { margin-top:40px; padding:16px 20px; background:rgba(91,143,185,0.08); border:1px solid rgba(91,143,185,0.2); border-radius:8px; font-size:0.8rem; color:var(--accent-blue); }
+        .speaker-note::before { content:'🎤 SPEAKER NOTE: '; font-weight:700; }
+        .slide.title-slide { background:linear-gradient(180deg,rgba(201,168,76,0.06) 0%,transparent 60%); }
+        .slide.title-slide h1 { font-size:4rem; }
+        .title-meta { font-size:1rem; color:var(--text-muted); margin-top:20px; } .title-meta span { color:var(--gold); }
+        .exercise-box { background:rgba(107,158,107,0.06); border:2px solid rgba(107,158,107,0.3); border-radius:16px; padding:36px; margin:20px 0; }
+        .exercise-box h3 { color:var(--accent-green); font-family:'Cormorant Garamond',serif; font-size:1.6rem; }
+        .exercise-box .timer { display:inline-block; background:rgba(107,158,107,0.15); color:var(--accent-green); padding:4px 14px; border-radius:20px; font-size:0.8rem; font-weight:600; margin-bottom:16px; }
+        .pipeline { display:flex; align-items:center; justify-content:center; gap:0; margin:30px 0; flex-wrap:wrap; }
+        .pipe-step { text-align:center; padding:20px 16px; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; min-width:130px; }
+        .pipe-step .emoji { font-size:1.5rem; margin-bottom:6px; }
+        .pipe-step .pipe-label { font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; }
+        .pipe-step .pipe-desc { font-size:0.7rem; color:var(--text-muted); margin-top:4px; }
+        .pipe-arrow { font-size:1.5rem; color:var(--gold); padding:0 8px; }
+        @media (max-width:768px) { .slide { padding:80px 24px; } .slide h1 { font-size:2.2rem; } .slide h2 { font-size:1.6rem; } .vs-grid { grid-template-columns:1fr; } .nav-center { display:none; } }
+    </style>
+</head>
+<body>
+<div class="nav">
+    <div class="nav-left">C0-03</div>
+    <div class="nav-center">Conversation, Not Commands</div>
+    <div class="nav-right"><button class="nav-btn" onclick="prevSlide()">← Prev</button><span class="slide-counter" id="slideCounter">1 / 11</span><button class="nav-btn" onclick="nextSlide()">Next →</button></div>
+</div>
+<div style="padding-top:60px;">
+
+<div class="slide title-slide" id="slide-1"><div class="slide-inner">
+    <div class="slide-label">Course 0 · AI Foundations · Module 03</div>
+    <h1>Conversation, Not Commands</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">The Difference Between a Search Engine and a Thinking Partner</h3>
+    <div class="title-meta"><span>Dr. Yamicia Connor, MD, PhD, MPH</span><br>The Labora Collective</div>
+</div><div class="slide-num">01</div></div>
+
+<div class="slide" id="slide-2"><div class="slide-inner">
+    <div class="slide-label">The Problem</div>
+    <h2>Most people use AI like a search engine.</h2>
+    <p style="font-size:1.3rem; margin:24px 0;">Type a question. Get an answer. Close the tab. That's a search engine.</p>
+    <p style="font-size:1.3rem;">The power users who get 10× results? They have 30-minute conversations. They argue. They correct. They push back. They contradict themselves and then resolve the contradiction.</p>
+    <p style="font-size:1.2rem; color:var(--gold); margin-top:24px; font-weight:600;">The difference is not the tool. It's the interaction pattern.</p>
+</div><div class="slide-num">02</div></div>
+
+<div class="slide" id="slide-3"><div class="slide-inner">
+    <div class="slide-label">Key Quote</div>
+    <div class="big-quote" style="font-size:2.2rem;">"I don't use prompts. I talk to the AI the way I talk to a colleague. I explain what I'm trying to do. I think out loud. I contradict myself. I explore tangents. I come back to the main thread."<span class="attribution">— Dr. Yamicia Connor</span></div>
+</div><div class="slide-num">03</div></div>
+
+<div class="slide" id="slide-4"><div class="slide-inner">
+    <div class="slide-label">Key Distinction</div>
+    <h2>Prompting vs. Conversation</h2>
+    <div class="vs-grid">
+        <div class="vs-card bad"><h4>❌ Prompting</h4><ul style="list-style:none; padding:0;">
+            <li style="padding-left:0;">Single input → single output</li>
+            <li style="padding-left:0;">Polished, pre-constructed</li>
+            <li style="padding-left:0;">Answer-seeking</li>
+            <li style="padding-left:0;">Optimized for the machine</li>
+            <li style="padding-left:0;">"Give me a business plan"</li>
+        </ul></div>
+        <div class="vs-divider">vs.</div>
+        <div class="vs-card good"><h4>✅ Conversation</h4><ul style="list-style:none; padding:0;">
+            <li style="padding-left:0;">30+ exchange dialogue</li>
+            <li style="padding-left:0;">Messy, half-formed, honest</li>
+            <li style="padding-left:0;">Understanding-seeking</li>
+            <li style="padding-left:0;">Optimized for human thinking</li>
+            <li style="padding-left:0;">"I'm trying to figure out whether..."</li>
+        </ul></div>
+    </div>
+</div><div class="slide-num">04</div></div>
+
+<div class="slide" id="slide-5"><div class="slide-inner">
+    <div class="slide-label">The Method</div>
+    <h2>The Dictation Method</h2>
+    <p style="margin-bottom:24px;">Surgeons dictate operative reports — thinking out loud into machines with precision. This same skill is the most transferable AI capability that exists.</p>
+    <div class="pipeline">
+        <div class="pipe-step"><div class="emoji">🎙️</div><div class="pipe-label">Dictate</div><div class="pipe-desc">Speak your thinking</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><div class="emoji">📝</div><div class="pipe-label">Transcribe</div><div class="pipe-desc">Auto-transcription</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><div class="emoji">🤖</div><div class="pipe-label">Process</div><div class="pipe-desc">AI organizes</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><div class="emoji">📋</div><div class="pipe-label">Output</div><div class="pipe-desc">Structured result</div></div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><div class="emoji">🔄</div><div class="pipe-label">Refine</div><div class="pipe-desc">Continue the conversation</div></div>
+    </div>
+</div><div class="slide-num">05</div>
+<div class="speaker-note">Emphasize: the dictation method doesn't require a recording device. Speaking to the AI chat box counts. The key is thinking out loud vs. writing polished prompts.</div></div>
+
+<div class="slide" id="slide-6"><div class="slide-inner">
+    <div class="slide-label">Why It Works</div>
+    <h2>Three Reasons Conversation Beats Prompts</h2>
+    <div class="step-list">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-content"><h4>Context Accumulation</h4><p>In a 30-exchange conversation, the AI has your goals, constraints, preferences, and corrections. In a prompt, it has one sentence.</p></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-content"><h4>Error Correction is Calibration</h4><p>When you tell the AI "no, that's wrong because..." it recalibrates. Each correction makes the next output better. Prompts don't have this loop.</p></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-content"><h4>Your Voice Stays In</h4><p>After 20 exchanges where you push back on generic language, the AI learns your register. It starts sounding like you — not like a template.</p></div></div>
+    </div>
+</div><div class="slide-num">06</div></div>
+
+<div class="slide" id="slide-7"><div class="slide-inner">
+    <div class="slide-label">The Barrier</div>
+    <h2>Vulnerability is the feature, not the bug.</h2>
+    <div class="big-quote" style="font-size:1.8rem;">"The idea of speaking your unfinished thoughts into a system and having them organized, challenged, and refined feels alien. It feels vulnerable. It feels like you're exposing incomplete thinking."</div>
+    <p style="margin-top:24px; font-size:1.2rem; color:var(--gold);">But that's exactly the point.</p>
+    <p style="margin-top:12px;">AI is most useful when you give it your incomplete thinking and let it help you complete it. Not your polished prompt. Your messy, contradictory, half-formed ideas.</p>
+</div><div class="slide-num">07</div></div>
+
+<div class="slide" id="slide-8"><div class="slide-inner">
+    <div class="slide-label">Evidence</div>
+    <h2>The Proof of Concept</h2>
+    <div class="big-quote" style="font-size:1.6rem;">"This article was dictated while managing three children, preparing dinner, and navigating an interruption involving hot milk."</div>
+    <p style="margin-top:24px; color:var(--gold); font-weight:600;">That's not a humble brag. That's an engineering specification.</p>
+    <p style="margin-top:12px;">If the method works while managing chaos, it works. If it requires quiet focus and an hour of prep time, it's a tool for people who already have time to think.</p>
+</div><div class="slide-num">08</div></div>
+
+<div class="slide" id="slide-9"><div class="slide-inner">
+    <div class="slide-label">Workshop</div>
+    <h2>Your First Real Conversation</h2>
+    <div class="exercise-box">
+        <span class="timer">⏱ 10 Minutes</span>
+        <h3>Exercise: The 10-Exchange Test</h3>
+        <div class="step-list">
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">1</div><div class="step-content"><h4>Pick a real problem</h4><p>Something messy and unresolved from your actual work.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">2</div><div class="step-content"><h4>Start talking — don't prompt</h4><p>Explain what you're trying to do, why it's hard, what you've tried. Use "I'm thinking about..." not "Give me a..."</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">3</div><div class="step-content"><h4>Go 10 exchanges minimum</h4><p>Push back on generic answers. Correct it. Tell it what it got wrong. Ask it to go deeper.</p></div></div>
+            <div class="step-item"><div class="step-circle" style="background:rgba(107,158,107,0.15); border-color:var(--accent-green); color:var(--accent-green);">4</div><div class="step-content"><h4>Compare exchange 1 vs. exchange 10</h4><p>Notice the difference in quality, specificity, and relevance.</p></div></div>
+        </div>
+    </div>
+</div><div class="slide-num">09</div></div>
+
+<div class="slide" id="slide-10"><div class="slide-inner">
+    <div class="slide-label">Takeaway</div>
+    <h2>The One Thing to Remember</h2>
+    <div class="big-quote" style="font-size:2.2rem;">"The quality of AI output is proportional to the quality of thinking you put in — not the quality of your prompt."<span class="attribution">— Dr. Yamicia Connor</span></div>
+</div><div class="slide-num">10</div></div>
+
+<div class="slide title-slide" id="slide-11"><div class="slide-inner">
+    <div class="slide-label">Up Next</div>
+    <h1>The Goldfish Problem</h1>
+    <h3 style="color:var(--gold); font-weight:400; font-style:italic;">C0-04: AI Forgets Everything Between Sessions</h3>
+    <div class="title-meta" style="margin-top:40px;"><span>📝 Worksheet:</span> Complete the C0-03 worksheet<br><span>📖 Reading:</span> C0-03 lesson page</div>
+</div><div class="slide-num">11</div></div>
+
+</div>
+<script>
+    let currentSlide=1; const totalSlides=11;
+    function updateCounter(){document.getElementById('slideCounter').textContent=currentSlide+' / '+totalSlides;}
+    function goToSlide(n){currentSlide=Math.max(1,Math.min(n,totalSlides)); document.getElementById('slide-'+currentSlide).scrollIntoView({behavior:'smooth'}); updateCounter();}
+    function nextSlide(){goToSlide(currentSlide+1);} function prevSlide(){goToSlide(currentSlide-1);}
+    document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();nextSlide();}else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevSlide();}});
+    const observer=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){const num=parseInt(entry.target.id.replace('slide-',''));if(num){currentSlide=num;updateCounter();}}});},{threshold:0.5});
+    document.querySelectorAll('.slide').forEach(slide=>observer.observe(slide));
+</script>
+</body>
+</html>
