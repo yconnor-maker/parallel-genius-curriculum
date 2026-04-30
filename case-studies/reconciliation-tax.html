@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The Reconciliation Tax — Parallel Genius</title>
+<meta name="description" content="Before you bulk-add 400 records, reconcile what's already there. The tax you pay for skipping this step compounds with every record.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #1d2028 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--gold); font-size: 1.1rem; margin-bottom: 8px; }
+  .tax-timeline { position: relative; padding-left: 40px; margin: 32px 0; }
+  .tax-timeline::before { content:''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .tax-event { position: relative; margin-bottom: 32px; }
+  .tax-event::before { content: ''; position: absolute; left: -33px; top: 4px; width: 12px; height: 12px; border-radius: 50%; border: 2px solid var(--gold); background: var(--bg-warm); }
+  .tax-event h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+  .tax-event .time { font-size: 0.75rem; color: var(--gold); font-weight: 600; margin-bottom: 8px; }
+  .tax-event p { font-size: 0.9rem; color: var(--text-body); }
+  .cost-box { background: rgba(201,99,99,0.06); border: 2px solid rgba(201,99,99,0.3); border-radius: 12px; padding: 24px 28px; text-align: center; margin: 24px 0; }
+  .cost-box .number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 700; color: #c96363; }
+  .cost-box .desc { font-size: 0.85rem; color: var(--text-body); }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">Operational Case Study</span>
+    <h1>The Reconciliation Tax</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">Before you bulk-add 400 records, reconcile what's already there. The tax you pay for skipping this step compounds with every record.</p>
+    <div class="case-meta">
+      <span>Referenced in: M06, M07</span>
+      <span>Source: Editorial Pipeline Triage, Apr 2026</span>
+      <span>Pattern: Reconciliation before bulk operations</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="prose-block">
+      <p>The Editorial Dashboard contained ~650 articles in an Airtable base. The team wanted to add ~400 more from a content migration. An agent was tasked with bulk-adding the new records.</p>
+      <p>The agent did what agents do: it added all 400 records. Fast. Clean. No errors.</p>
+      <p>The problem was that ~180 of the new records were duplicates of existing records — same article, different titles, different metadata formatting. And ~120 of the existing records were stubs — empty rows with only a title, created during a previous planning session that was never cleaned up.</p>
+    </div>
+    <div class="cost-box">
+      <div class="number">2,800</div>
+      <div class="desc">stub records that had to be manually triaged after the merge</div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>The Timeline of Escalation</h2>
+    <div class="tax-timeline">
+      <div class="tax-event">
+        <div class="time">Day 1 — The Bulk Add</div>
+        <h4>400 records added in 3 minutes</h4>
+        <p>The agent runs the CSV import. Fast and clean. The Airtable base goes from 650 to 1,050 records. Everyone celebrates.</p>
+      </div>
+      <div class="tax-event">
+        <div class="time">Day 3 — The First Duplicate Found</div>
+        <h4>"Wait, this article already exists"</h4>
+        <p>A human reviewer finds an article with two records — one from the original base, one from the import. Different titles, same content. They merge manually.</p>
+      </div>
+      <div class="tax-event">
+        <div class="time">Day 7 — The Scale of the Problem Emerges</div>
+        <h4>180 duplicates confirmed across the base</h4>
+        <p>A dedup query reveals the scope. 180 records need manual review because the titles don't match exactly but the content is the same. No automated fix is safe.</p>
+      </div>
+      <div class="tax-event">
+        <div class="time">Day 14 — The Stub Discovery</div>
+        <h4>2,800 empty rows found</h4>
+        <p>A deeper audit reveals that hundreds of stubs — rows with only a title — were created across multiple planning sessions. They were never cleaned up. They now pollute every query, filter, and report.</p>
+      </div>
+      <div class="tax-event">
+        <div class="time">Day 21 — The Full Reconciliation</div>
+        <h4>3 full days of human triage</h4>
+        <p>A human reads every record, one by one, deciding: keep, merge, or delete. The 3-minute bulk add required 3 days of cleanup.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Fix: Reconcile Before Bulk Operations</h2>
+    <div class="lesson-box">
+      <h4>1. Audit First, Add Second</h4>
+      <p>Before ANY bulk operation, run a dedup query. Compare the incoming data against existing records by title, slug, or content hash. Surface conflicts before creating them.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>2. Stub Hygiene is Non-Negotiable</h4>
+      <p>Empty planning rows must be either filled or deleted within 48 hours. Stubs that persist become permanent pollution. Add a rule to your Agent Constitution: "No stub rows older than 48 hours."</p>
+    </div>
+    <div class="lesson-box">
+      <h4>3. Upsert, Don't Insert</h4>
+      <p>Use upsert operations (update if exists, insert if new) instead of blind inserts. Define a key column — typically title or slug — that prevents duplicate creation.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>4. Batch Verification Checkpoints</h4>
+      <p>After every 100 records, pause and verify. Show the human a sample of 5 records and ask: "Do these look correct?" This catches drift before it scales.</p>
+    </div>
+    <blockquote class="module-quote">"The cost of reconciliation increases exponentially with every record you add without reconciling first. A 3-minute bulk add can cost 3 days of cleanup. Always reconcile before you add."</blockquote>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="repo-identity-crisis.html">← Prev: The Repo Identity Crisis</a>
+      <a href="prom-error.html">Next: The PROM Error →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

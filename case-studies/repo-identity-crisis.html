@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: The Repo Identity Crisis — Parallel Genius</title>
+<meta name="description" content="Two repos. Same content. Different names. One lives, one dies. How naming conventions become existential infrastructure decisions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #1d2028 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--gold); font-size: 1.1rem; margin-bottom: 8px; }
+  .repo-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 24px 0; }
+  .repo-card { padding: 28px; border-radius: 12px; border: 1px solid var(--border); }
+  .repo-card.dead { background: rgba(201,99,99,0.06); border-color: rgba(201,99,99,0.3); }
+  .repo-card.alive { background: rgba(107,158,107,0.06); border-color: rgba(107,158,107,0.3); }
+  .repo-card h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  .repo-card.dead h4 { color: #c96363; }
+  .repo-card.alive h4 { color: #6b9e6b; }
+  .repo-card code { display: block; font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+  @media(max-width:768px) { .repo-compare { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">Infrastructure Case Study</span>
+    <h1>The Repo Identity Crisis</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">Two repositories. Same purpose. Different names. One gets built out, one doesn't. Six months later, nobody remembers which is canonical.</p>
+    <div class="case-meta">
+      <span>Referenced in: M04, M08</span>
+      <span>Source: YC Ops Hub Refactor, Apr 2026</span>
+      <span>Pattern: Naming as infrastructure</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="prose-block">
+      <p>An AI agent created a repository called <code>yc-ops-hub</code> for the operational dashboard. A different session — different agent, different day — created <code>labora-ops-hub</code> for the same purpose with slightly different content.</p>
+      <p>Both repos accumulated commits. Both had READMEs. Both were linked from different documents. When the human came back to consolidate, neither was clearly canonical. Decisions had been split across both.</p>
+    </div>
+    <div class="repo-compare">
+      <div class="repo-card dead">
+        <h4>❌ Deprecated</h4>
+        <code>labora-ops-hub</code>
+        <p>Created by Agent A on April 12. 14 commits. Linked from Coda task board. Contains early dashboard prototypes and some live pages.</p>
+      </div>
+      <div class="repo-card alive">
+        <h4>✅ Canonical</h4>
+        <code>yc-ops-hub</code>
+        <p>Created by Agent B on April 15. 47 commits. Linked from curriculum syllabus. Contains production deployment, all current pages, and the Netlify config.</p>
+      </div>
+    </div>
+    <p>The human had to manually trace every link, every Netlify deploy, and every reference to determine which was the living system. Then migrate the 3 useful pages from the dead repo into the live one.</p>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Why This Happens in Multi-Agent Systems</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>No Shared Registry</h4>
+        <p>Each agent session operates independently. Agent B didn't know Agent A had already created a repo for this purpose. There was no central registry of "repos that exist and what they're for."</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Naming Isn't Trivial</h4>
+        <p><code>yc-ops-hub</code> vs <code>labora-ops-hub</code> — both are reasonable names. But when you have 12 repos and 4 agents, naming becomes infrastructure. A naming convention prevents collision; ad hoc naming guarantees it.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Proliferation Is the Default</h4>
+        <p>AI agents default to creating new things. They rarely check whether the thing already exists. Without an explicit instruction to "check first," every new session is an opportunity for duplication.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Fix: Naming as Infrastructure</h2>
+    <div class="lesson-box">
+      <h4>1. Naming Convention in the Agent Constitution</h4>
+      <p>Define the pattern: <code>{org}-{project}-{function}</code>. All agents read this before creating anything. If the agent needs a new repo, it checks the existing list first.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>2. Registry Before Creation</h4>
+      <p>Maintain a living document (in Coda, Airtable, or a markdown file) that lists every repo, its purpose, and its canonical status. Before creating a new repo, the agent must check the registry.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>3. Archive, Don't Delete</h4>
+      <p>When you identify a duplicate, archive the dead repo (rename it with a <code>DEPRECATED-</code> prefix) rather than deleting it. Some decisions may live only in its commit history.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>4. One Source of Truth Rule</h4>
+      <p>For any given function (curriculum, ops hub, fiction production), there is exactly ONE canonical repository. This is documented, linked, and enforced. Duplicates are merged within 48 hours.</p>
+    </div>
+    <blockquote class="module-quote">"In a system where agents create repos freely, naming conventions aren't style guides — they're collision prevention infrastructure."</blockquote>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="schema-drift.html">← Prev: Schema Drift</a>
+      <a href="reconciliation-tax.html">Next: The Reconciliation Tax →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>

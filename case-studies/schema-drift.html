@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study: Schema Drift — Parallel Genius</title>
+<meta name="description" content="The code said Timeline Check. The database said Timeline/Continuity Check. A field renamed in the UI broke every downstream agent. This is schema drift.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .case-hero { padding: 140px 0 80px; background: linear-gradient(135deg, var(--bg-dark) 0%, #1d2028 100%); color: var(--text-dark); }
+  .case-hero h1 { font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 16px; }
+  .case-label { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .case-meta { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 20px; font-size: 0.85rem; color: var(--text-light); }
+  .lesson-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 32px; margin: 24px 0; }
+  .lesson-box h4 { color: var(--gold); font-size: 1.1rem; margin-bottom: 8px; }
+  .drift-table { width: 100%; border-collapse: collapse; margin: 24px 0; }
+  .drift-table th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gold); text-align: left; padding: 12px 16px; border-bottom: 2px solid var(--border); }
+  .drift-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+  .drift-table .old { color: #c96363; text-decoration: line-through; }
+  .drift-table .new { color: #6b9e6b; }
+  .drift-table .ghost { color: #c96363; font-style: italic; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="case-hero">
+  <div class="container">
+    <span class="case-label">Infrastructure Case Study</span>
+    <h1>Schema Drift</h1>
+    <p style="color: var(--text-light); max-width: 640px; font-size: 1.05rem;">The code said <code>Timeline Check</code>. The database said <code>Timeline/Continuity Check</code>. A field renamed in the UI broke every downstream agent that referenced it.</p>
+    <div class="case-meta">
+      <span>Referenced in: M06, M08</span>
+      <span>Source: PHN Command Center Fix, Apr 27</span>
+      <span>Pattern: Rename tolerance</span>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>What Happened</h2>
+    <div class="prose-block">
+      <p>The PHN Command Center dashboard was built to pull QC (quality control) data from an Airtable base and display completion status for each scene in a fiction catalog. The code referenced specific field names to calculate progress.</p>
+      <p>Weeks later, a human — working through the Airtable UI — renamed several fields to be more descriptive. The UI updated. The database updated. The code did not.</p>
+    </div>
+    <table class="drift-table">
+      <tr><th>Code Referenced</th><th>Database Now Says</th><th>Status</th></tr>
+      <tr><td class="old">Timeline Check</td><td class="new">Timeline/Continuity Check</td><td>Renamed — silent failure</td></tr>
+      <tr><td class="old">Sensitivity Pass</td><td class="new">Sensitivity/Consent/Trigger Pass</td><td>Renamed — silent failure</td></tr>
+      <tr><td class="old">Gold Lines Preserved</td><td class="ghost">Does not exist</td><td>Ghost field — never created</td></tr>
+      <tr><td class="old">TBL_TAGS (table constant)</td><td class="ghost">Table never created</td><td>Ghost table — code reference to nothing</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <h2>Why This Happens in AI-Assisted Systems</h2>
+    <div class="concept-grid">
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Two Interfaces, No Sync</h4>
+        <p>Humans rename fields through a GUI. Agents read field names from code. There's no mechanism to notify the code that the database changed. The rename is invisible to the agent.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Optimistic Assumptions</h4>
+        <p>The original agent assumed the field names were stable. It hardcoded them as string constants. Nobody told the next agent that the field names had changed — because nobody told anyone.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--gold);">
+        <h4>Ghost References</h4>
+        <p>Some fields were planned but never created. The code referenced <code>Gold Lines Preserved</code> — a field that existed in the design doc but was never added to the database. The code compiled. The feature silently failed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <h2>The Fix: Build for Rename Tolerance</h2>
+    <div class="lesson-box">
+      <h4>1. Use Field IDs, Not Names</h4>
+      <p>Airtable, Coda, and most databases have stable internal IDs (<code>fldXXXXXX</code>). Reference those in code. Let the human rename the display label freely.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>2. Schema Validation on Startup</h4>
+      <p>When the dashboard loads, fetch the current field list and compare against expected fields. If a field is missing, show an error — don't silently skip it.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>3. Fuzzy Matching Fallback</h4>
+      <p>If <code>Timeline Check</code> isn't found, search for fields containing "timeline" and "check". This handles the common case where a field was renamed with additional descriptors.</p>
+    </div>
+    <div class="lesson-box">
+      <h4>4. Agent Constitution Rule</h4>
+      <p>Add to your agent's rules: "After any session that modifies database schema, update the corresponding code constants and document the change in the schema changelog."</p>
+    </div>
+    <blockquote class="module-quote">"In a system where humans rename fields through the Airtable UI and agents read field names from code, drift is inevitable. Build for rename tolerance."</blockquote>
+    <div class="module-nav" style="margin-top:48px">
+      <a href="api-key-leak.html">← Prev: The API Key in the Public Repo</a>
+      <a href="repo-identity-crisis.html">Next: Repo Identity Crisis →</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer"><div class="container"><p>© 2026 Dr. Yamicia Connor · Labora Collective</p><p class="footer-sub">Built with parallel genius.</p></div></footer>
+</body>
+</html>
