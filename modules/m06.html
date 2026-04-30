@@ -3,69 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Module 06: Knowledge Extraction — Parallel Genius</title>
-<meta name="description" content="AI has zero persistent memory between sessions. Building systems that survive the amnesia is the foundational infrastructure problem. By Dr. Yamicia Connor.">
+<title>Module 06: The Knowledge Extraction Problem — Parallel Genius</title>
+<meta name="description" content="AI has zero memory. Every session starts from scratch. Learn to extract, preserve, and route institutional knowledge before it disappears. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 3: Research</p>
-    <p class="module-label" style="color: var(--teal)">Module 06</p>
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 2: Building Your AI System</p>
+    <p class="module-label" style="color: var(--rose)">Module 06</p>
     <h1>The Knowledge Extraction Problem</h1>
-    <p class="module-subtitle">Surviving AI's Zero-Memory Problem</p>
-    <div class="module-meta"><span class="meta-item"><strong>Track:</strong> Research</span><span class="meta-item"><strong>Duration:</strong> 90 min</span><span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span></div>
+    <p class="module-subtitle">Surviving AI's Zero-Memory Architecture</p>
+    <div class="module-meta">
+      <span class="meta-item"><strong>Track:</strong> Building Your AI System</span>
+      <span class="meta-item"><strong>Duration:</strong> 90 min</span>
+      <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
+    </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p><h2>Core Thesis</h2>
-    <div class="prose-block"><p>AI has zero persistent memory between sessions. Every conversation is temporary. If you don't extract knowledge before the session ends, it's gone forever. Building systems that survive the amnesia is the foundational infrastructure problem of AI-powered operations.</p></div>
-    <blockquote class="module-quote">"AI agents have ZERO persistent memory between sessions. The checkpoint/sync systems exist BECAUSE of this limitation. Never assume an agent 'remembers.'"</blockquote>
+    <p class="section-eyebrow">The Argument</p>
+    <h2>Core Thesis</h2>
+    <div class="prose-block">
+      <p>Every AI conversation is a temporary container. When the session ends, the container is deleted. Everything you discussed, decided, discovered, and built — gone. The AI doesn't remember you. It doesn't remember what you agreed on yesterday. It starts from zero.</p>
+      <p>This is the most dangerous property of AI systems, because <strong>it feels like the AI remembers</strong>. It responds so naturally, with such continuity within a session, that people assume there's persistent memory across sessions. There isn't. And the work you did in a session that doesn't get extracted is work that never happened.</p>
+    </div>
+    <blockquote class="module-quote">"Chat dies. Everything must be extracted. Write it like you're briefing someone who wasn't in the room."</blockquote>
   </div>
 </section>
 
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p><h2>What You'll Learn</h2>
+    <p class="section-eyebrow">The Cost</p>
+    <h2>What Gets Lost</h2>
     <div class="concept-grid">
-      <div class="concept-card"><h4>1. Knowledge Extraction Before Deletion</h4><p>"When a task completes, extract institutional knowledge → route to permanent home → then delete. Don't let the completed folder become a graveyard."</p></div>
-      <div class="concept-card"><h4>2. Brain Dump Mode</h4><p>YC dumps rapid-fire ideas/tasks into a file. The Conductor processes each entry into a proper task, workflow design, or decision point. This captures thinking that would otherwise die in the chat.</p></div>
-      <div class="concept-card"><h4>3. AGENT_SYNC_STATE</h4><p>A single file that tells every agent what every other agent has been doing. Updated at session close. This is how agents coordinate without persistent memory.</p></div>
-      <div class="concept-card"><h4>4. Archived Session Recovery</h4><p>"If a session is archived without close-down, the file system survives. The loss is narrative context. Reconstruct from: file timestamps, dashboard state, Slack posts, folder contents."</p></div>
+      <div class="concept-card">
+        <h4>The Decision That Vanished</h4>
+        <p>You and the AI spent 45 minutes discussing options. You made a decision. You moved on. The next day, you start a new session. The AI doesn't know about the decision. You re-discuss the same options. You might make a different decision this time — not because you changed your mind, but because neither you nor the AI remembers what was decided.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Work That Was Repeated</h4>
+        <p>Agent A builds a folder structure in Session 1. In Session 3, Agent A (which has no memory of Session 1) builds a different folder structure. Now you have two. Neither is the canonical one. You've paid the time-cost of building a folder structure twice and still don't have one.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Context That Was Rebuilt</h4>
+        <p>Every session, you spend the first 15 minutes re-establishing context. "We've been working on X. The current status is Y. The files are at Z." This is the knowledge extraction tax — the time you pay when you didn't extract properly last time.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Insight That Died</h4>
+        <p>Mid-conversation, the AI surfaces a pattern you hadn't noticed. A connection between two projects. A better way to structure something. You say "that's interesting" and keep going. The session ends. That insight is gone. Nobody wrote it down. It doesn't exist anymore.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Slide Deck</p><h2>Module 06 Presentation</h2>
-    <div class="deck-embed"><iframe src="../decks/M06_knowledge_extraction_deck.html" title="Module 06 Slide Deck"></iframe><div class="deck-actions"><a href="../decks/M06_knowledge_extraction_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a><a href="../worksheets/M06_knowledge_extraction_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a></div></div>
+    <p class="section-eyebrow">The Solutions</p>
+    <h2>Four Extraction Mechanisms</h2>
+    <div class="concept-grid">
+      <div class="concept-card">
+        <h4>1. The Session Close-Down</h4>
+        <p>Before ending any AI session, extract: (1) What was decided. (2) What was created (with file locations). (3) What's still pending. (4) What the next session should start with. This takes 3-5 minutes. It saves hours of reconstruction later.</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. AGENT_SYNC_STATE</h4>
+        <p>A single file that tells every agent what every other agent has been doing. Updated at session close. Contains: last updated timestamp, active projects, recent completions, pending items, known blockers. This is how agents coordinate without persistent memory.</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. Brain Dump Mode</h4>
+        <p>YC dumps rapid-fire ideas, tasks, and questions into a file during a session. The agent processes each entry into proper tasks, workflow designs, or decision points. This captures thinking that would otherwise die in the chat — raw, unstructured, but preserved.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. Archived Session Recovery</h4>
+        <p>"If a session is archived without close-down, the file system survives. The loss is narrative context. Reconstruct from: file timestamps, dashboard state, Slack posts, folder contents." Even without a proper extraction, the artifacts left behind are breadcrumbs you can follow.</p>
+      </div>
+    </div>
+    <blockquote class="module-quote" style="margin-top:32px">"When a task completes, extract institutional knowledge → route to permanent home → then delete. Don't let the completed folder become a graveyard."</blockquote>
   </div>
 </section>
 
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p><h3>Write an Extraction Memo</h3>
-      <p>End your next AI session by writing a 5-sentence "extraction memo": what you worked on, what you decided, what you'd tell the next version of yourself (or the next agent) to pick up.</p>
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Build Your Extraction System</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: The Close-Down Checklist</h4>
+        <p>Write a 5-item checklist you will run before ending every AI session. Start with: "What was decided? What was created? What's pending? What's blocked? What should the next session start with?" Tape this to your monitor. Use it every time.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: Reconstruct a Lost Session</h4>
+        <p>Think of an AI conversation from the past week where you didn't extract anything. Try to reconstruct what happened from the artifacts left behind — files created, changes made, messages sent. What can you recover? What is permanently lost? This exercise teaches you what extraction is worth.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: Write Your First Sync State</h4>
+        <p>Create an AGENT_SYNC_STATE file for your current projects. Include: your name, today's date, active projects (with one-sentence status), last completed work, next priorities, and known blockers. Save it somewhere persistent. Start your next AI session by giving the AI this file.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
+    <p class="section-eyebrow">Slide Deck</p>
+    <h2>Module 06 Presentation</h2>
+    <div class="deck-embed">
+      <iframe src="../decks/M06_knowledge_extraction_deck.html" title="Module 06 Slide Deck"></iframe>
+      <div class="deck-actions">
+        <a href="../decks/M06_knowledge_extraction_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a>
+        <a href="../worksheets/M06_knowledge_extraction_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Source Readings</p>
+    <h2>Go Deeper</h2>
     <ul class="source-list">
-      <li><span class="source-label">Primary</span> CONDUCTOR.md — Close-Down Procedure, AGENT_SYNC_STATE, Brain Dump Processing</li>
-      <li><span class="source-label">System</span> Lesson #5: "AI agents have ZERO persistent memory between sessions."</li>
-      <li><span class="source-label">System</span> Lesson #14: "Knowledge extraction before deletion."</li>
+      <li><span class="source-label">Primary</span> AGENT_SYNC_STATE template — the operational synchronization document</li>
+      <li><span class="source-label">System</span> Lesson #1: "The Decision That Vanished" — the first knowledge extraction failure</li>
+      <li><span class="source-label">Framework</span> Session close-down procedures from CONDUCTOR.md</li>
     </ul>
-    <div class="module-nav"><a href="m05.html">← Prev: Visual-First Communication</a><a href="m07.html">Next: The Production Loop →</a></div>
+    <div class="module-nav">
+      <a href="m05.html">← Prev: Visual-First Communication</a>
+      <a href="m07.html">Next: The Production Loop →</a>
+    </div>
   </div>
 </section>
 

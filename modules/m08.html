@@ -4,67 +4,184 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 08: Building Your AI Brain — Parallel Genius</title>
-<meta name="description" content="Your AI is only as good as the knowledge system it can access. Build a persistent AI brain. By Dr. Yamicia Connor.">
+<meta name="description" content="An AI Brain is persistent knowledge architecture — a web-accessible layer that serves as memory for systems that have none. Learn to build one. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 4: Production</p>
-    <p class="module-label" style="color: var(--plum)">Module 08</p>
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 2: Building Your AI System</p>
+    <p class="module-label" style="color: var(--rose)">Module 08</p>
     <h1>Building Your AI Brain</h1>
     <p class="module-subtitle">Persistent Knowledge Architecture</p>
-    <div class="module-meta"><span class="meta-item"><strong>Track:</strong> Production</span><span class="meta-item"><strong>Duration:</strong> 90 min</span><span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span></div>
+    <div class="module-meta">
+      <span class="meta-item"><strong>Track:</strong> Building Your AI System</span>
+      <span class="meta-item"><strong>Duration:</strong> 90 min</span>
+      <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
+    </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p><h2>Core Thesis</h2>
-    <div class="prose-block"><p>Your AI is only as good as the knowledge system it can access. Building a persistent, web-accessible knowledge layer — an "AI brain" — turns temporary AI sessions into durable institutional memory.</p></div>
+    <p class="section-eyebrow">The Argument</p>
+    <h2>Core Thesis</h2>
+    <div class="prose-block">
+      <p>Module 06 taught you why knowledge extraction matters. This module teaches you where the extracted knowledge <em>goes</em>. The AI Brain is a structured, web-accessible knowledge layer that serves as persistent memory for systems that have none.</p>
+      <p>Without a Brain, your knowledge extraction has no destination. You write close-down memos that go into a folder nobody reads. You create sync states that sit in Google Drive. You extract decisions that die in chat. The Brain is the permanent home — the place where institutional knowledge accumulates instead of scattering.</p>
+    </div>
+    <blockquote class="module-quote">"We cannot move forward until we have a source of truth in one place. So that we're not going back to Claude." — YC coaching Ayesha on the AI Sync call</blockquote>
   </div>
 </section>
 
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p><h2>What You'll Learn</h2>
+    <p class="section-eyebrow">The Architecture</p>
+    <h2>What Lives in the AI Brain</h2>
     <div class="concept-grid">
-      <div class="concept-card"><h4>1. The AI Brain Concept</h4><p>A web-accessible knowledge layer (deployed on Netlify) that serves as persistent memory. Contains: system docs, project briefs, source inventories, decision logs, workflow definitions. The AI reads this at every session boot.</p></div>
-      <div class="concept-card"><h4>2. The Boot Sequence as Memory Retrieval</h4><p>Every session starts: mount the system folder → read AGENT_SYNC_STATE → read CONDUCTOR.md → scan all pipeline stages → sweep for dictations → check Slack. Without this, AI starts from zero.</p></div>
-      <div class="concept-card"><h4>3. Single Source of Truth</h4><p>"We cannot move forward until we have a source of truth in one place. So that we're not going back to Claude." — from YC coaching Ayesha on the AI Sync call.</p></div>
-      <div class="concept-card"><h4>4. The Repository Structure</h4><p>The AI Brain is a structured repository: system docs, project briefs, source inventories, workflow definitions, and decision logs. Not a single file — an architecture.</p></div>
+      <div class="concept-card">
+        <h4>System Documents</h4>
+        <p>CONDUCTOR.md, INBOX_RULES.md, Agent Constitution. The operating rules your system runs on. These are the documents every agent reads at session boot. They define how the system behaves.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Project Briefs</h4>
+        <p>One-page summaries of every active project. Current status, key decisions, blockers, next steps. These prevent the 15-minute context-rebuilding tax at the start of every session.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Source Inventories</h4>
+        <p>What exists. Where it lives. What format it's in. Whether it's been processed. This is the master catalog that prevents the most common AI failure: creating something that already exists because nobody knew it was there.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Decision Logs</h4>
+        <p>What was decided, when, and why. The antidote to the "Decision That Vanished" problem from Module 06. If a decision isn't in the log, it doesn't count. When two agents disagree, the decision log is the authority.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Workflow Definitions</h4>
+        <p>How work moves through the system. The pipeline stages from Module 02. The production loop from Module 07. The editorial workflow with its 15 phases and exit criteria. These are living documents that evolve as the system matures.</p>
+      </div>
+      <div class="concept-card">
+        <h4>Knowledge Items</h4>
+        <p>Curated, distilled knowledge on specific topics. Not raw chat logs — processed, structured insights with metadata, references, and artifacts. Each Knowledge Item is a small unit of institutional memory that any agent can access.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Slide Deck</p><h2>Module 08 Presentation</h2>
-    <div class="deck-embed"><iframe src="../decks/M08_ai_brain_deck.html" title="Module 08 Slide Deck"></iframe><div class="deck-actions"><a href="../decks/M08_ai_brain_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a><a href="../worksheets/M08_ai_brain_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a></div></div>
+    <p class="section-eyebrow">The Boot Sequence</p>
+    <h2>Memory Retrieval as System Startup</h2>
+    <div class="prose-block">
+      <p>The Brain is useless if nobody reads it. The Boot Sequence is the mechanism that ensures the Brain gets loaded into every session:</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card">
+        <table style="width:100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--rose); text-align:left;">
+              <th style="padding: 10px 16px; width:40px">Step</th>
+              <th style="padding: 10px 16px;">Action</th>
+              <th style="padding: 10px 16px;">Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:10px 16px">1</td><td style="padding:10px 16px">Mount the system folder</td><td style="padding:10px 16px">Establish file access</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:10px 16px">2</td><td style="padding:10px 16px">Read AGENT_SYNC_STATE</td><td style="padding:10px 16px">What happened since last session</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:10px 16px">3</td><td style="padding:10px 16px">Read CONDUCTOR.md</td><td style="padding:10px 16px">Operating rules and system design</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:10px 16px">4</td><td style="padding:10px 16px">Scan all pipeline stages</td><td style="padding:10px 16px">What's in progress, what's stuck</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:10px 16px">5</td><td style="padding:10px 16px">Sweep for new inputs</td><td style="padding:10px 16px">Dictations, emails, Slack messages</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:10px 16px">6</td><td style="padding:10px 16px">Check for pending approvals</td><td style="padding:10px 16px">What's waiting on the human</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <blockquote class="module-quote" style="margin-top:32px">"The AI Brain is a structured repository: system docs, project briefs, source inventories, workflow definitions, and decision logs. Not a single file — an architecture."</blockquote>
   </div>
 </section>
 
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p><h3>Build Your Starter Brain</h3>
-      <p>Build a starter "AI brain" for your own work: 3 files. (1) A system doc that describes how you use AI. (2) A project brief for your biggest current project. (3) A "what I've learned" log. Use this as your boot sequence for every future AI session.</p>
+    <p class="section-eyebrow">Implementation</p>
+    <h2>How to Actually Build It</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>The Free Version</h4>
+        <p>A GitHub repository with markdown files, deployed to Netlify or GitHub Pages. Your AI Brain is literally a website. Agents can read URLs. You give them the URL at session start, they read the Brain, they have context. Total cost: $0.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Database Version</h4>
+        <p>Coda, Airtable, or Notion as the structured data layer. Each knowledge item is a row. Each project brief is a page. The database provides filtering, sorting, and relational links that flat files can't. Cost: free tier is usually sufficient.</p>
+      </div>
+    </div>
+    <div class="prose-block" style="margin-top:24px">
+      <p><strong>The key insight:</strong> Start with the free version. A GitHub repo with 5 markdown files is infinitely more valuable than a sophisticated database you never build. You can always upgrade. You can't upgrade from nothing.</p>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Build Your AI Brain</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: The 5-File Brain</h4>
+        <p>Create a folder called "AI_BRAIN" (or whatever you want to call it). Create 5 files: (1) SYSTEM.md — your operating rules. (2) PROJECTS.md — active projects with one-sentence status. (3) DECISIONS.md — key decisions and rationale. (4) SYNC_STATE.md — what happened last session. (5) INVENTORY.md — what content/assets you have and where they live.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: The Boot Test</h4>
+        <p>Start a new AI session. Give it your 5-file Brain. Ask it: "Based on these documents, what should we work on today?" If the AI gives you a sensible answer, your Brain is working. If it asks you to re-explain everything, your files are too vague.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: Deploy Your Brain</h4>
+        <p>Put your AI Brain folder on GitHub. Deploy it to Netlify or GitHub Pages. Now it has a URL. Give that URL to every AI session. Your Brain is now web-accessible, version-controlled, and persistent. Congratulations — you've built infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Slide Deck</p>
+    <h2>Module 08 Presentation</h2>
+    <div class="deck-embed">
+      <iframe src="../decks/M08_ai_brain_deck.html" title="Module 08 Slide Deck"></iframe>
+      <div class="deck-actions">
+        <a href="../decks/M08_ai_brain_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a>
+        <a href="../worksheets/M08_ai_brain_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Source Readings</p>
+    <h2>Go Deeper</h2>
     <ul class="source-list">
-      <li><span class="source-label">Primary</span> Brain Dump Session 10 — "AI Brain" concept</li>
-      <li><span class="source-label">Supporting</span> CONDUCTOR.md — boot sequence, AGENT_SYNC_STATE, sync state architecture</li>
-      <li><span class="source-label">System</span> Lesson #15: "Before creating anything, check if it already exists."</li>
+      <li><span class="source-label">Primary</span> AI Brain Architecture (TASK_61) — the proprietary intelligence database design</li>
+      <li><span class="source-label">System</span> Boot Sequence specification from CONDUCTOR.md</li>
+      <li><span class="source-label">System</span> 3-tier knowledge hierarchy — system docs, project briefs, knowledge items</li>
+      <li><span class="source-label">Case Study</span> "Setting up a Database in Coda" — 48-message session building persistent state</li>
     </ul>
-    <div class="module-nav"><a href="m07.html">← Prev: The Production Loop</a><a href="m09.html">Next: Protecting the Human →</a></div>
+    <div class="module-nav">
+      <a href="m07.html">← Prev: The Production Loop</a>
+      <a href="m09.html">Next: Protecting the Human →</a>
+    </div>
   </div>
 </section>
 

@@ -4,73 +4,173 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 05: Visual-First Communication — Parallel Genius</title>
-<meta name="description" content="Reading is slow. Default to visual formats. If someone can't absorb your output mid-workday, the output failed. By Dr. Yamicia Connor.">
+<meta name="description" content="Busy humans don't read walls of text. Learn the format hierarchy that determines whether your work gets consumed or ignored. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 2: Editorial</p>
-    <p class="module-label" style="color: var(--gold)">Module 05</p>
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 1: Foundation</p>
+    <p class="module-label" style="color: var(--rose)">Module 05</p>
     <h1>Visual-First Communication</h1>
     <p class="module-subtitle">The Format Hierarchy for Busy Humans</p>
-    <div class="module-meta"><span class="meta-item"><strong>Track:</strong> Editorial</span><span class="meta-item"><strong>Duration:</strong> 60 min</span><span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span></div>
+    <div class="module-meta">
+      <span class="meta-item"><strong>Track:</strong> Foundation — "How I Deliver"</span>
+      <span class="meta-item"><strong>Duration:</strong> 90 min</span>
+      <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
+    </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p>
+    <p class="section-eyebrow">The Argument</p>
     <h2>Core Thesis</h2>
     <div class="prose-block">
-      <p>Reading is slow. Your principal is context-switching all day. Default to visual formats. If someone can't absorb your output mid-workday, the output failed — not the person.</p>
+      <p>The format you deliver work in determines whether it gets consumed or ignored. Most people default to long-form text — reports, documents, emails — because that's what they know how to produce. But <strong>the person consuming your output doesn't have time to read</strong>.</p>
+      <p>This is especially true when AI is accelerating your output speed. You can now produce 10x more content in the same time. But the human reviewing it still has the same 24 hours. If you deliver everything as text, you've created a bottleneck that no amount of AI can solve.</p>
+      <p>The solution is a format hierarchy — a priority order that determines how you package information based on the context, the audience, and the urgency.</p>
     </div>
-    <blockquote class="module-quote">"Visual-first, always. Status briefings should be 5 slides you flip through in 90 seconds, not paragraphs."</blockquote>
+    <blockquote class="module-quote">"Anything YC is supposed to read must be HTML or a proper document format. Markdown is for agents and systems."</blockquote>
   </div>
 </section>
 
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p>
-    <h2>What You'll Learn</h2>
-    <div class="concept-grid">
-      <div class="concept-card"><h4>1. The Format Hierarchy</h4><p>Slide deck (flip in 90s) → Annotated images → Clickable HTML → Audio summary → Long-form text (last resort).</p></div>
-      <div class="concept-card"><h4>2. Markdown Is for Agents</h4><p>"Anything YC is supposed to read must be HTML or a proper document format. Markdown is for agents and systems."</p></div>
-      <div class="concept-card"><h4>3. Audio Is the Review Layer</h4><p>"YC cannot sit at a computer to read articles. Convert EVERYTHING that needs review to audio. This directly unblocks the review bottleneck."</p></div>
-      <div class="concept-card"><h4>4. Dashboard as Dispatch Center</h4><p>"The dashboard itself should contain the dispatch prompts needed to spin off new agents, eliminating the need to go anywhere else."</p></div>
+    <p class="section-eyebrow">The Hierarchy</p>
+    <h2>The Five Formats — In Priority Order</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card">
+        <h4>1. Slide Deck — "Flip in 90 Seconds"</h4>
+        <p>The highest-impact format. A well-designed deck communicates complex ideas in under two minutes. The reader controls the pace. Each slide makes one point. No paragraphs. This is the format for stakeholders, decision-makers, and anyone who needs to understand fast.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>When to use:</strong> Status updates, project briefs, strategic proposals, team briefings.</p>
+      </div>
+      <div class="concept-card">
+        <h4>2. Annotated Images — "Show, Don't Tell"</h4>
+        <p>A screenshot with arrows. A diagram with labels. A table with highlighted rows. Visual annotations communicate what paragraphs of text cannot. The brain processes images 60,000x faster than text. Use this.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>When to use:</strong> Debugging, design feedback, data analysis, workflow documentation.</p>
+      </div>
+      <div class="concept-card">
+        <h4>3. Clickable HTML — "Self-Guided Experience"</h4>
+        <p>Interactive documents deployed to a URL. Dashboards, microsites, styled reports. The reader can explore at their own pace. This is more work to produce but creates a professional, persistent artifact that lives beyond the conversation.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>When to use:</strong> Published resources, client-facing deliverables, team tools, curriculum.</p>
+      </div>
+      <div class="concept-card">
+        <h4>4. Audio Summary — "The Review Unblock"</h4>
+        <p>"YC cannot sit at a computer to read articles. Convert EVERYTHING that needs review to audio. This directly unblocks the review bottleneck." Audio lets busy people review work while driving, exercising, or doing clinical rounds. It's the format that converts dead time into productive time.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>When to use:</strong> Article review, session briefings, meeting summaries, daily dispatches.</p>
+      </div>
+      <div class="concept-card">
+        <h4>5. Long-Form Text — "Last Resort"</h4>
+        <p>The format most people default to. It should be your last choice, not your first. Long-form text is appropriate for published essays, formal documentation, and reference material. It is <em>not</em> appropriate for status updates, feedback requests, or anything time-sensitive.</p>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:8px"><strong>When to use:</strong> Published essays, formal reports, reference documentation, legal/compliance documents.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Slide Deck</p><h2>Module 05 Presentation</h2>
-    <div class="deck-embed"><iframe src="../decks/M05_visual_first_deck.html" title="Module 05 Slide Deck"></iframe><div class="deck-actions"><a href="../decks/M05_visual_first_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a><a href="../worksheets/M05_visual_first_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a></div></div>
+    <p class="section-eyebrow">The Rule</p>
+    <h2>Markdown Is for Agents. Humans Get Formatted Output.</h2>
+    <div class="prose-block">
+      <p>There's a practical version of this hierarchy that matters for AI workflows: <strong>the output format you request from AI determines its utility</strong>.</p>
+      <p>If you ask AI to produce markdown, you'll get something that's easy for agents to process but painful for humans to read. If you ask for HTML, you get something deployable and professional. If you ask for a slide deck, you get something people will actually look at.</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>The Dashboard as Dispatch Center</h4>
+        <p>"The dashboard itself should contain the dispatch prompts needed to spin off new agents, eliminating the need to go anywhere else." The best dashboards aren't just status displays — they're launch pads. One-click access to the actions you take most frequently.</p>
+      </div>
+      <div class="concept-card">
+        <h4>12 Decisions as a Card Deck</h4>
+        <p>YC turned a complex decision framework into a set of cards — each card presents one decision, the options, and the trade-offs. Not a report. Not a document. A card deck you can flip through and mark your choices. The format <em>is</em> the interface.</p>
+      </div>
+    </div>
+    <blockquote class="module-quote" style="margin-top:32px">"Let's lock in a rule. You always ask me what format I want things in. I very rarely want things in PDF. The formats I want are either plain text or fancy markdown."</blockquote>
   </div>
 </section>
 
+<!-- CONTENT STICKINESS -->
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p>
-      <h3>Convert a Report</h3>
-      <p>Take a 3-page written status report. Convert it to: (a) 5 slides, (b) a 90-second audio summary, (c) a single-screen HTML dashboard. Which one would you actually look at during a busy workday?</p>
+    <p class="section-eyebrow">The Theory</p>
+    <h2>Making Information Stick</h2>
+    <div class="prose-block">
+      <p>Yamicia has a theory about information stickiness that drives her publishing strategy and, by extension, this module:</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--rose);">
+        <p style="font-style: italic; color: var(--text-secondary);">"There's so much content out there. How do people really decide what is important? How can I create information that's sticky? That's one of the reasons I like fiction writing — it creates a stickiness that makes information penetrable. It's like in studying, right? Why you use case studies and not just an outline in a book."</p>
+        <p style="margin-top: 12px;"><strong>The principle:</strong> Narrative format makes information penetrable in a way that data-first format does not. A case study teaches more than a framework. A story teaches more than a lecture. Format is not decoration — it's the delivery mechanism for comprehension.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="module-section">
   <div class="container">
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Reformat Your Work</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: The Format Audit</h4>
+        <p>Look at the last 5 things you sent to a colleague or client. For each one, identify: (1) What format you used. (2) Whether they read it. (3) What format would have been better. Most people will find they defaulted to text for everything — and got ignored for at least half.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: Convert Text to Visual</h4>
+        <p>Take a report, email, or document you've written. Convert it into two alternative formats: a 5-slide deck and an annotated screenshot/diagram. Compare the time-to-comprehension across all three. Which one communicates the core message fastest?</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: The Audio Test</h4>
+        <p>Take something that's stuck in your review queue — a draft, a proposal, something you've been meaning to read. Use a text-to-speech tool (ElevenLabs, NotebookLM, or your phone's accessibility features) to convert it to audio. Listen to it while doing something else. Did you finish it? That's the power of format.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">Slide Deck</p>
+    <h2>Module 05 Presentation</h2>
+    <div class="deck-embed">
+      <iframe src="../decks/M05_visual_communication_deck.html" title="Module 05 Slide Deck"></iframe>
+      <div class="deck-actions">
+        <a href="../decks/M05_visual_communication_deck.html" target="_blank" class="deck-btn deck-btn-primary">Open Full Screen</a>
+        <a href="../worksheets/M05_visual_communication_worksheet.html" target="_blank" class="deck-btn deck-btn-secondary">Download Worksheet</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">Source Readings</p>
+    <h2>Go Deeper</h2>
     <ul class="source-list">
-      <li><span class="source-label">Primary</span> Conductor Lesson #24: "Visual-first, always."</li>
-      <li><span class="source-label">System</span> Lesson #17: "YC-facing documents must NOT be markdown."</li>
-      <li><span class="source-label">System</span> Lesson #29: "Audio is the review layer."</li>
+      <li><span class="source-label">System</span> Conductor Lessons #17, #24, #29 — Format hierarchy arguments</li>
+      <li><span class="source-label">System</span> Lesson #8: "12 Decisions as a Card Deck" — format as interface</li>
+      <li><span class="source-label">Framework</span> EDITORIAL_FORMAT_STRATEGY.md — paid vs. free content format logic</li>
+      <li><span class="source-label">Case Study</span> ElevenLabs voice clone pipeline — audio as review layer</li>
     </ul>
-    <div class="module-nav"><a href="m04.html">← Prev: Multi-Agent Orchestration</a><a href="m06.html">Next: Knowledge Extraction →</a></div>
+    <div class="module-nav">
+      <a href="m04.html">← Prev: Multi-Agent Orchestration</a>
+      <a href="m06.html">Next: The Knowledge Extraction Problem →</a>
+    </div>
   </div>
 </section>
 

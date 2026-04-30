@@ -4,65 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Module 04: Multi-Agent Orchestration — Parallel Genius</title>
-<meta name="description" content="A single AI agent is useful. A system of agents working in parallel is transformational — if you have orchestration. By Dr. Yamicia Connor.">
+<meta name="description" content="One AI is a tool. Multiple AIs are a team — and teams need management. Learn to orchestrate multi-agent operations. By Dr. Yamicia Connor.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<nav class="nav"><a href="../index.html" class="nav-brand">Parallel Genius</a><div class="nav-links"><a href="../index.html#tracks">Curriculum</a><a href="../index.html#lessons">Lessons</a><a href="../index.html#about">About</a><a href="../index.html#access" class="nav-cta">Get Access</a></div><button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button></nav>
 
-<section class="module-hero">
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Parallel Genius</a>
+  <div class="nav-links">
+    <a href="../index.html#tracks">Curriculum</a>
+    <a href="../syllabus.html">Syllabus</a>
+    <a href="../index.html#lessons">Lessons</a>
+    <a href="../index.html#access" class="nav-cta">Get Access</a>
+  </div>
+  <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="module-hero" style="--accent: var(--rose)">
   <div class="container">
-    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 2: Editorial</p>
-    <p class="module-label" style="color: var(--gold)">Module 04</p>
+    <p class="breadcrumb"><a href="../index.html">← Back to Curriculum</a> · Track 3: Agent Operations</p>
+    <p class="module-label" style="color: var(--rose)">Module 04</p>
     <h1>Multi-Agent Orchestration</h1>
-    <p class="module-subtitle">Roles, Rosters, and Assignment Rules</p>
+    <p class="module-subtitle">Roles, Rosters, and the Reconciliation Tax</p>
     <div class="module-meta">
-      <span class="meta-item"><strong>Track:</strong> Editorial</span>
+      <span class="meta-item"><strong>Track:</strong> Agent Operations — "How I Scale"</span>
       <span class="meta-item"><strong>Duration:</strong> 90 min</span>
       <span class="meta-item"><strong>Format:</strong> Lecture + Workshop</span>
     </div>
   </div>
 </section>
 
+<!-- CORE THESIS -->
 <section class="module-section">
   <div class="container">
-    <p class="section-eyebrow">Overview</p>
+    <p class="section-eyebrow">The Argument</p>
     <h2>Core Thesis</h2>
     <div class="prose-block">
-      <p>A single AI agent is useful. A system of agents working in parallel, each with defined roles and constraints, is transformational — but only if you have an orchestration layer that prevents them from stepping on each other.</p>
+      <p>One AI is a tool. Multiple AIs are a team — and teams need management. The moment you go from one AI conversation to two, you've introduced the hardest problem in computing: <strong>coordination</strong>.</p>
+      <p>Most people discover multi-agent workflows by accident. They start a second chat because the first one got too long. They open Claude in one tab and ChatGPT in another. They create a "project" and then forget it exists. Now they have two agents with different contexts, different histories, and no shared state. They've just created the AI equivalent of two employees who've never met, working on the same project, in different buildings, with no shared drive.</p>
+      <p>Orchestration is the discipline of making multiple agents work together without producing chaos. It requires roles, assignment rules, synchronization mechanisms, and — most importantly — a human conductor.</p>
     </div>
-    <blockquote class="module-quote">"I don't want to make more agents. We need the agents to actually be effective... No automated scheduling until output consumption is proven reliable. Gate is whether output is read, not whether automation is possible."</blockquote>
+    <blockquote class="module-quote">"I'm trying to create these personas, for DA and Labora. And for myself. And it's kind of been like a disaster. A little bit. The conductor is supposed to be the persona that orchestrates and tasks distributes to the other agents. And it just can't keep itself straight."</blockquote>
   </div>
 </section>
 
+<!-- THE AGENT ROSTER -->
 <section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
-    <p class="section-eyebrow">Key Concepts</p>
-    <h2>What You'll Learn</h2>
+    <p class="section-eyebrow">The Framework</p>
+    <h2>The Agent Roster</h2>
+    <div class="prose-block">
+      <p>Every agent in your system must have a defined role, a defined scope, and defined boundaries. Yamicia's roster evolved through trial and error. Here's what it looks like:</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="overflow-x: auto;">
+        <table style="width:100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--rose); text-align:left;">
+              <th style="padding: 8px 12px;">Agent</th>
+              <th style="padding: 8px 12px;">Role</th>
+              <th style="padding: 8px 12px;">What It Receives</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px"><strong>The Conductor</strong></td><td style="padding:8px 12px">Orchestration + dispatch</td><td style="padding:8px 12px">Everything — editorial map, strategic decisions, session scheduling</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px"><strong>Quantum</strong></td><td style="padding:8px 12px">YC Hub primary</td><td style="padding:8px 12px">Editorial map, writing sessions, strategic decisions</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px"><strong>The Organizer</strong></td><td style="padding:8px 12px">Community track</td><td style="padding:8px 12px">Community engagement, member management</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px"><strong>The Communicator</strong></td><td style="padding:8px 12px">Contact/outreach</td><td style="padding:8px 12px">External communications, partnerships</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px"><strong>The Scientist</strong></td><td style="padding:8px 12px">Clinical science</td><td style="padding:8px 12px">Research, clinical content, evidence review</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06); background:rgba(0,0,0,0.015)"><td style="padding:8px 12px"><strong>The Financier</strong></td><td style="padding:8px 12px">Finance/legal</td><td style="padding:8px 12px">Budget, contracts, legal review</td></tr>
+            <tr style="border-bottom:1px solid rgba(0,0,0,0.06)"><td style="padding:8px 12px"><strong>CoWork / Antigravity</strong></td><td style="padding:8px 12px">Desktop execution</td><td style="padding:8px 12px">Build tasks, deployment, file operations</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <blockquote class="module-quote" style="margin-top: 32px">"Hamza receives clean manuscript files only, never raw drafts." — Every agent has not just a role, but explicit rules about what it can and cannot see.</blockquote>
+  </div>
+</section>
+
+<!-- THE RECONCILIATION TAX -->
+<section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow">The Hidden Cost</p>
+    <h2>The Reconciliation Tax</h2>
+    <div class="prose-block">
+      <p>Here's what nobody tells you about running multiple agents: <strong>every agent you add creates coordination overhead</strong>. Yamicia calls this the Reconciliation Tax.</p>
+      <p>Two agents who don't share state will produce conflicting work. Agent A creates a folder structure. Agent B creates a different one. Now you're spending your time reconciling two systems instead of doing the work. This gets worse with every additional agent.</p>
+    </div>
+    <div class="concept-grid" style="grid-template-columns: 1fr 1fr;">
+      <div class="concept-card">
+        <h4>What Goes Wrong</h4>
+        <p>"The conductor has all these logs, but they're not condensing them. A lot of the stuff we talk about is the exact same because it's still fucked up. So we're talking about the same thing because it's still not fixed. So it's just not being consolidated."</p>
+        <p style="margin-top:12px">Without reconciliation, agents repeat work, contradict each other, and create parallel realities that the human has to manually merge.</p>
+      </div>
+      <div class="concept-card">
+        <h4>The Secretary Pattern</h4>
+        <p>"What I wanna do is have a secretary that essentially takes that structured information and compiles it up and organizes it. The secretary's stuff should just be picked up by the conductor. It should be taking the same updates and condensing them."</p>
+        <p style="margin-top:12px">The solution isn't fewer agents — it's a <strong>reconciliation layer</strong>. An agent whose only job is to consolidate what other agents have done.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSIGNMENT RULES -->
+<section class="module-section" style="background: var(--surface-warm)">
+  <div class="container">
+    <p class="section-eyebrow">The Rules</p>
+    <h2>Four Rules for Agent Assignment</h2>
     <div class="concept-grid">
       <div class="concept-card">
-        <h4>1. The Agent Roster</h4>
-        <p>Real agents with specific capabilities: Prism (research), Archivist (reports/deploys), Lumen (document creation), Scout (briefings), Inspector (QC), Conductor (orchestration).</p>
+        <h4>1. Scope Lock</h4>
+        <p>Every agent does <em>one</em> thing. The Scientist does research. The Communicator handles outreach. When an agent tries to help with something outside its scope, it will make worse decisions because it lacks the context that the scoped agent has.</p>
       </div>
       <div class="concept-card">
-        <h4>2. Assignment Rules</h4>
-        <p>Match the work to the tool. Research → Gemini agents. Coda writes → Claude with MCP. Briefings → Scout. Anything needing YC's voice → Flag for dictation. Never assign to an agent.</p>
+        <h4>2. The Consumption Test</h4>
+        <p>Before adding an agent, ask: "Can I absorb the output?" If you already can't review what two agents produce, adding a third doesn't help — it creates a backlog you'll never clear. The bottleneck is always the human's capacity to consume and approve.</p>
       </div>
       <div class="concept-card">
-        <h4>3. The Consumption Test</h4>
-        <p>Agent proliferation is the default failure mode. The test of an agent is not capability, but consumption — whether its output is actually read and used by the human.</p>
+        <h4>3. Clean Handoffs Only</h4>
+        <p>Agents don't talk to each other. They communicate through artifacts — files, databases, sync states. Agent A writes a file. Agent B reads it. There's no chat between agents. The handoff must be through structured, persistent documents.</p>
       </div>
       <div class="concept-card">
         <h4>4. The Inspector Pattern</h4>
-        <p>Automated quality control: Inspector sweeps every 2 hours, verifies outputs against specs, moves passing work forward, blocks failing work. The human only sees work that has passed automated QC.</p>
+        <p>"The executive essentially the whole goal is to make sure the conductor is doing its job correctly. It double checks the persona's role, it double checks that I'm getting my dashboard updates." Every system needs a quality check that runs independently of the production agents.</p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- EXERCISES -->
 <section class="module-section">
+  <div class="container">
+    <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercises</p>
+    <h2>Design Your Agent Team</h2>
+    <div class="concept-grid" style="grid-template-columns: 1fr;">
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 1: Map Your Current Agents</h4>
+        <p>List every AI tool, conversation, or project you currently use. For each one, write: (1) What it does. (2) What context it has. (3) What context it's missing. (4) Where its output goes. If any two agents produce output that overlaps, you have a reconciliation problem.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 2: Write an Agent Constitution</h4>
+        <p>Pick your most important AI agent. Write a one-page constitution that defines: its name, its role (one sentence), what it can do, what it cannot do, what inputs it receives, what outputs it produces, and what rules it must follow. This becomes the agent's system prompt.</p>
+      </div>
+      <div class="concept-card" style="border-left: 3px solid var(--teal);">
+        <h4>Exercise 3: Design a Sync State</h4>
+        <p>If you have two or more agents, design an AGENT_SYNC_STATE — a single file that tells every agent what every other agent has been doing. Define: what fields it contains, when it gets updated, who updates it, and where it lives. Then test it: start a new session with your AI and give it the sync state. Does it know what happened in the last session?</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="module-section" style="background: var(--surface-warm)">
   <div class="container">
     <p class="section-eyebrow">Slide Deck</p>
     <h2>Module 04 Presentation</h2>
@@ -76,25 +171,15 @@
   </div>
 </section>
 
-<section class="module-section" style="background: var(--surface-warm)">
-  <div class="container">
-    <div class="workshop-block">
-      <p class="section-eyebrow" style="color: var(--teal)">Workshop Exercise</p>
-      <h3>Design Your Agent System</h3>
-      <p>Design a 3-agent system for your own workflow. Define: what each agent does, what each agent is NOT allowed to do, and how work flows between them. Where does the human sit in the loop?</p>
-    </div>
-  </div>
-</section>
-
 <section class="module-section">
   <div class="container">
     <p class="section-eyebrow">Source Readings</p>
     <h2>Go Deeper</h2>
     <ul class="source-list">
-      <li><span class="source-label">Primary</span> CONDUCTOR.md — Agent Roster + Assignment Rules</li>
-      <li><span class="source-label">System</span> Lesson #2: "Think about parallelization proactively."</li>
-      <li><span class="source-label">System</span> Lesson #3: "If an agent is already in Coda, give them all the Coda work."</li>
-      <li><span class="source-label">System</span> Lesson #30: "Dispatch aggressively, explain later."</li>
+      <li><span class="source-label">Primary</span> CONDUCTOR.md — Agent Roster and Assignment Rules sections</li>
+      <li><span class="source-label">System</span> Lesson #3: "Two Agents, One Project" — the first reconciliation failure</li>
+      <li><span class="source-label">System</span> Lesson #16: "The Reconciliation Tax" — what coordination costs</li>
+      <li><span class="source-label">Case Study</span> "Orchestrating multi-agent personas and file management" — 18-message session designing the Secretary/Executive/Conductor hierarchy</li>
     </ul>
     <div class="module-nav">
       <a href="m03.html">← Prev: Writing for Machines</a>
